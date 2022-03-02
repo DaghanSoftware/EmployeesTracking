@@ -1,0 +1,75 @@
+﻿<!doctype html>
+<html>
+<head>
+</head>
+<body>
+
+    <label>İsim</label>
+    <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+    <br />
+    <label>Soy İsim.. </label>
+    <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+    <br />
+    <label>Baba Adı        </label>
+    <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+    <br />
+    <label>Anne Adı</label>
+    <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+    <br />
+    <label>Cinsiyet</label>
+    <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+    <br />
+    <label>Medeni Hal</label>
+    <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+    <br />
+    <label>TcNo</label>
+    <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+    <br />
+    <label>Dogum Yeri</label>
+    <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+
+</body>
+</html>
+
+@*<h1>Index3</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>*@
