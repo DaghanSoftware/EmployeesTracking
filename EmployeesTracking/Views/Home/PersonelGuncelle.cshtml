@@ -1,0 +1,48 @@
+﻿@model EmployeesTracking.Entities.Personel
+@section menu
+{
+    @*@await Html.PartialAsync("_menu",Model.Genres)*@
+    <div class="container-fluid py-5">
+        <center><h1 class="display-5 fw-bold">Bilgilendirme !!!</h1></center>
+        <center><p class="col-md-12 fs-4">Güncelleme işlemi yaparken tüm bigileri doldurduğunuzdan emin olun</p></center>
+    </div>
+    <form asp-action="PersonelGuncelle" class="row g-3">
+        <div class="col-md-6">
+            <label asp-for="Adi" class="form-label">İsim</label>
+            <input asp-for="Adi" value="@Model.Adi" class="form-control">
+        </div>
+        <div class="col-md-6">
+            <label asp-for="Soyadi" class="form-label">Soyisim</label>
+            <input asp-for="Soyadi" value="@Model.Soyadi" class="form-control" id="inputPassword4">
+        </div>
+        <div class="col-md-6">
+            <label asp-for="TcNo" class="form-label">Tc Kimlik Numarası</label>
+            <input asp-for="TcNo" value="@Model.TcNo" maxlength="11" class="form-control">
+        </div>
+        <div class="col-md-6">
+            <label asp-for="BabaAdi" class="form-label">Baba Adı</label>
+            <input asp-for="BabaAdi" value="@Model.BabaAdi" class="form-control">
+        </div>
+        <div class="col-md-6">
+            <label asp-for="AnaAdi" class="form-label">Anne Adı</label>
+            <input asp-for="AnaAdi" value="@Model.AnaAdi" class="form-control">
+        </div>
+        <div class="col-md-6">
+            <label asp-for="Cinsiyet" class="form-label">Cinsiyet</label>
+            <input asp-for="Cinsiyet" value="@Model.Cinsiyet"  class="form-control">
+        </div>
+        <div class="col-md-6">
+            <label asp-for="MedeniHali" class="form-label">Medeni Hali</label>
+            <input asp-for="MedeniHali" value="@Model.MedeniHali" class="form-control">
+        </div>
+        <div class="col-md-6">
+            <label asp-for="DogumYeri" class="form-label">Doğum Yeri</label>
+            <input asp-for="DogumYeri" value="@Model.DogumYeri" class="form-control">
+        </div>
+
+        <div class="col-12">
+            <center><button type="submit" class="btn btn-primary">Personel Guncelle</button></center>
+        </div>
+    </form>
+
+}

@@ -7,7 +7,7 @@ namespace EmployeesTracking.Entities
 {
     public class Personel
     {
-        public Int32 Id { get; set; }
+        public int Id { get; set; }
         public string Adi { get; set; }
         public string Soyadi { get; set; }
         public string BabaAdi { get; set; }
@@ -15,5 +15,6 @@ namespace EmployeesTracking.Entities
         public string Cinsiyet { get; set; }
         public string MedeniHali { get; set; }
         public string DogumYeri { get; set; }
+        public Int64 TcNo { get; set; }
     }
 }

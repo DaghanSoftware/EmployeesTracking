@@ -1,0 +1,43 @@
+﻿@model EmployeesTracking.Entities.Personel
+    <div class="container-fluid py-5">
+        <center><h1 class="display-5 fw-bold">Bilgilendirme !!!</h1></center>
+       <center><p class="col-md-12 fs-4">Personel eklemek için tüm bilgileri doldurmanız gerekmektedir.</p></center> 
+    </div>
+<form asp-action="PersonelEkle" class="row g-3">
+    <div class="col-md-6">
+        <label asp-for="Adi" class="form-label">İsim</label>
+        <input asp-for="Adi"    class="form-control" >
+    </div>
+    <div class="col-md-6">
+        <label asp-for="Soyadi" class="form-label">Soyisim</label>
+        <input asp-for="Soyadi" class="form-control" id="inputPassword4">
+    </div>
+    <div class="col-md-6">
+        <label asp-for="TcNo" class="form-label">Tc Kimlik Numarası</label>
+        <input asp-for="TcNo" maxlength="11" class="form-control" >
+    </div>
+    <div class="col-md-6">
+        <label asp-for="BabaAdi" class="form-label">Baba Adı</label>
+        <input asp-for="BabaAdi" class="form-control">
+    </div>
+    <div class="col-md-6">
+        <label asp-for="AnaAdi" class="form-label">Anne Adı</label>
+        <input asp-for="AnaAdi" class="form-control">
+    </div>
+    <div class="col-md-6">
+        <label asp-for="Cinsiyet" class="form-label">Cinsiyet</label>
+        <input asp-for="Cinsiyet" class="form-control">
+    </div>
+    <div class="col-md-6">
+        <label asp-for="MedeniHali" class="form-label">Medeni Hali</label>
+        <input asp-for="MedeniHali" class="form-control">
+    </div>
+    <div class="col-md-6">
+        <label asp-for="DogumYeri" class="form-label">Doğum Yeri</label>
+        <input asp-for="DogumYeri" class="form-control">
+    </div>
+
+    <div class="col-12">
+        <center><button type="submit" class="btn btn-primary">Personel Ekle</button></center>
+    </div>
+</form>

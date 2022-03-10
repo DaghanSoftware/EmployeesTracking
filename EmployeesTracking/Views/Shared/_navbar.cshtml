@@ -1,0 +1,22 @@
+﻿<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="/Home/Index">Personel Takip</a>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/Home/Index">Anasayfa</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Home/PersonelEkle">Personel Ekle</a>
+                </li>
+            </ul>
+            <form class="d-flex" action="/movies/list" method="get">
+                <input class="form-control me-2" name="q" type="text" placeholder="Personel Ara" aria-label="Ara">
+                <button class="btn btn-outline-light " type="submit">Ara</button>
+            </form>
+        </div>
+    </div>
+</nav>

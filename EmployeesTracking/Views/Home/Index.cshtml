@@ -1,75 +1,60 @@
-﻿<!doctype html>
+﻿@addTagHelper * ,Microsoft.AspNetCore.Mvc.TagHelpers
+@model EmployeesTracking.Entities.Personel
+@{
+    ViewData["Title"] = "PersonelListele";
+}
+<!doctype html>
 <html>
 <head>
 </head>
 <body>
 
-    <label>İsim</label>
-    <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
-    <br />
-    <label>Soy İsim.. </label>
-    <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
-    <br />
-    <label>Baba Adı        </label>
-    <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
-    <br />
-    <label>Anne Adı</label>
-    <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
-    <br />
-    <label>Cinsiyet</label>
-    <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
-    <br />
-    <label>Medeni Hal</label>
-    <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
-    <br />
-    <label>TcNo</label>
-    <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
-    <br />
-    <label>Dogum Yeri</label>
-    <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
 
+    <br />
+    <center><h4>Personeller</h4></center>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">İsim</th>
+                <th scope="col">Soyisim</th>
+                <th scope="col">Tc</th>
+                <th scope="col">Baba Adı</th>
+                <th scope="col">Anne Adı</th>
+                <th scope="col">Cinsiyet</th>
+                <th scope="col">Medeni Hal</th>
+                <th scope="col">Doğum Yeri</th>
+                <th scope="col">Güncelleme</th>
+                <th scope="col">Sime</th>
+                <th scope="col">Ayrıntı</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var employee in ViewData["personeller"] as List<EmployeesTracking.Entities.Personel>)
+            {
+
+            <tr>
+                <th>@Html.DisplayFor(modelItem => employee.Id)</th>
+                <td>@Html.DisplayFor(modelItem => employee.Adi)</td>
+                <td>@Html.DisplayFor(modelItem => employee.Soyadi)</td>
+                <td>@Html.DisplayFor(modelItem => employee.TcNo)</td>
+                <td>@Html.DisplayFor(modelItem => employee.BabaAdi)</td>
+                <td>@Html.DisplayFor(modelItem => employee.AnaAdi)</td>
+                <td>@Html.DisplayFor(modelItem => employee.Cinsiyet)</td>
+                <td>@Html.DisplayFor(modelItem => employee.MedeniHali)</td>
+                <td>@Html.DisplayFor(modelItem => employee.DogumYeri)</td>
+                <td><a class="btn btn-primary" href="/Home/PersonelGuncelle/@employee.Id">Güncelle</a></td>
+                <td><a class="btn btn-danger" href="/Home/PersoneSil/@employee.Id">Sil</a></td>
+                <td><a class="btn btn-danger" href="/Home/Index">Ayrıntı</a></td>
+            </tr>
+            }
+
+        </tbody>
+    </table>
+    @*@Html.Partial("/Views/Home/Partials/PersonelEkle.cshtml")*@
+
+    @*@Html.Partial("/Views/Home/Partials/Update.cshtml")*@
 </body>
 </html>
 
-@*<h1>Index3</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Quantity)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProductName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Quantity)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>*@
