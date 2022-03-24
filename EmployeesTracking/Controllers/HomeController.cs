@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using EmployeesTracking.Models;
 using EmployeesTracking.Entities;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace EmployeesTracking.Controllers
 {
@@ -17,6 +18,7 @@ namespace EmployeesTracking.Controllers
         {
             _context = context;
         }
+     
         public IActionResult Index()
         {
             //Personel personel = new Personel() {Id=1,Adi="Semih",Soyadi="Dağhan",AnaAdi="Rukiye",BabaAdi="Halil",Cinsiyet="Erkek",DogumYeri="Eskişehir",MedeniHali="Bekar"};
@@ -29,53 +31,101 @@ namespace EmployeesTracking.Controllers
 
             EmployeeDal employeeDal = new EmployeeDal(_context);
 
+            if (_context.Personels!=null)
+            {
+                ViewData["personeller"] = _context.Personels.ToList();
+            }
             
-            ViewData["personeller"] = employeeDal.GetAll().ToList();
             //ViewBag.semih= employeeDal.GetAll().ToList();
             //return View(employeeDal.GetAll().ToList());
             return View();
 
         }
 
-        public IActionResult PersonelEkle()
+
+
+        public IActionResult PersonelEkle(int? id)
         {
-            return View();
+            if (id==null)
+            {
+                ViewBag.Cities = new SelectList(_context.Cities.ToList(), "CityId", "CityName");
+                return View();
+            }
+            else
+            {
+                ViewBag.Cities = new SelectList(_context.Cities.ToList(), "CityId", "CityName");
+                ViewBag.guncelle = id;
+                return View(_context.Personels.FirstOrDefault(m => m.Id == id));
+            }
+
         }
 
         [HttpPost]
-        public IActionResult PersonelEkle(Personel personel)
+        public IActionResult PersonelEkle(Personel personel,int? id)
         {
-            EmployeeDal employeeDal = new EmployeeDal(_context);
-            employeeDal.Add(personel);
+            if (id==null)
+            {
+                if (ModelState.IsValid)
+                {
+                    _context.Personels.Add(personel);
+                    _context.SaveChanges();
+                    ViewBag.Cities = new SelectList(_context.Cities.ToList(), "CityId", "CityName");
+                    return RedirectToAction("Index");
+
+                }
+                else
+                {
+                    ViewBag.Cities = new SelectList(_context.Cities.ToList(), "CityId", "CityName");
+                    return View();
+                }
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    ViewBag.Cities = new SelectList(_context.Cities.ToList(), "CityId", "CityName");
+                    var EmployeeToUpdate = _context.Personels.SingleOrDefault(p => p.Id == personel.Id);
+                    EmployeeToUpdate.Adi = personel.Adi;
+                    EmployeeToUpdate.Soyadi = personel.Soyadi;
+                    EmployeeToUpdate.BabaAdi = personel.BabaAdi;
+                    EmployeeToUpdate.TcNo = personel.TcNo;
+                    EmployeeToUpdate.AnaAdi = personel.AnaAdi;
+                    EmployeeToUpdate.Cinsiyet = personel.Cinsiyet;
+                    EmployeeToUpdate.MedeniHali = personel.MedeniHali;
+                    EmployeeToUpdate.CityId = personel.CityId;
+                    _context.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ViewBag.Cities = new SelectList(_context.Cities.ToList(), "CityId", "CityName");
+                    return View();
+                } 
+            }
+            
             //_context.Personels.Add(personel);
             //_context.SaveChanges();
-            return View();
         }
 
-        public IActionResult PersonelListele()
+        public IActionResult PersoneSil(int id)
         {
-            EmployeeDal employeeDal = new EmployeeDal(_context);
-            return View(employeeDal.GetAll().ToList());
+            _context.Personels.Remove(_context.Personels.SingleOrDefault(e => e.Id == id));
+            _context.SaveChanges();
 
-        }
-
-        public IActionResult PersoneSil(Personel personel)
-        {
-            EmployeeDal employeeDal = new EmployeeDal(_context);
-            employeeDal.Delete(personel);
-            return View("Index");
+            return RedirectToAction("Index");
         }
 
-        public IActionResult PersonelGuncelle(int id)
-        {
-            return View(_context.Personels.FirstOrDefault(m=>m.Id==id));
-        }
-        [HttpPost]
-        public IActionResult PersonelGuncelle(Personel personel)
-        {
-            EmployeeDal employeeDal = new EmployeeDal(_context);
-            employeeDal.Update(personel);
-            return View("Index");
-        }
+
+        //public IActionResult PersonelGuncelle(int id)
+        //{
+        //    return View(_context.Personels.FirstOrDefault(m=>m.Id==id));
+        //}
+        //[HttpPost]
+        //public IActionResult PersonelGuncelle(Personel personel)
+        //{
+        //    EmployeeDal employeeDal = new EmployeeDal(_context);
+        //    employeeDal.Update(personel);
+        //    return RedirectToAction("Index");
+        //}
     }
 }

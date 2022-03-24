@@ -19,5 +19,6 @@ namespace EmployeesTracking
         //    optionsBuilder.UseSqlServer(@"Server=(localdb)\\MSSQLLocalDB;Database=Employees;Trusted_Connection=true");
         //}
         public DbSet<Personel> Personels { get; set; }
+        public DbSet<City> Cities { get; set; }
     }
 }

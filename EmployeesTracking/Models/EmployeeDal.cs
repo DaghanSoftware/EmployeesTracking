@@ -32,13 +32,13 @@ namespace EmployeesTracking.Models
             }
         }
 
-        public List<Personel> GetAll()
-        {
-            using (_context)
-            {
-                return _context.Personels.ToList();
-            }
-        }
+        //public List<Personel> GetAll()
+        //{
+        //    using (_context)
+        //    {
+        //        return _context.Personels.ToList();
+        //    }
+        //}
 
 
         public void Update(Personel personel)
@@ -52,7 +52,7 @@ namespace EmployeesTracking.Models
                 EmployeeToUpdate.AnaAdi = personel.AnaAdi;
                 EmployeeToUpdate.Cinsiyet = personel.Cinsiyet;
                 EmployeeToUpdate.MedeniHali = personel.MedeniHali;
-                EmployeeToUpdate.DogumYeri = personel.DogumYeri;
+                EmployeeToUpdate.CityId = personel.CityId;
 
 
                 _context.SaveChanges();

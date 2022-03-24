@@ -8,7 +8,7 @@ namespace EmployeesTracking.Models
 {
     public interface IEmployeeDal
     {
-        List<Personel> GetAll();
+        //List<Personel> GetAll();
         void Add(Personel personel);
         void Update(Personel personel);
         void Delete(Personel personel);

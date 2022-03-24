@@ -30,26 +30,38 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var employee in ViewData["personeller"] as List<EmployeesTracking.Entities.Personel>)
+            @if (ViewData["personeller"] == null)
             {
-
-            <tr>
-                <th>@Html.DisplayFor(modelItem => employee.Id)</th>
-                <td>@Html.DisplayFor(modelItem => employee.Adi)</td>
-                <td>@Html.DisplayFor(modelItem => employee.Soyadi)</td>
-                <td>@Html.DisplayFor(modelItem => employee.TcNo)</td>
-                <td>@Html.DisplayFor(modelItem => employee.BabaAdi)</td>
-                <td>@Html.DisplayFor(modelItem => employee.AnaAdi)</td>
-                <td>@Html.DisplayFor(modelItem => employee.Cinsiyet)</td>
-                <td>@Html.DisplayFor(modelItem => employee.MedeniHali)</td>
-                <td>@Html.DisplayFor(modelItem => employee.DogumYeri)</td>
-                <td><a class="btn btn-primary" href="/Home/PersonelGuncelle/@employee.Id">Güncelle</a></td>
-                <td><a class="btn btn-danger" href="/Home/PersoneSil/@employee.Id">Sil</a></td>
-                <td><a class="btn btn-danger" href="/Home/Index">Ayrıntı</a></td>
-            </tr>
+                <div class="alert alert-warning" role="alert">
+                    Kayıtlı Personel Bulunmamakta
+                </div>
             }
+            else
+            {
+            <tbody>
+                @foreach (var employee in ViewData["personeller"] as List<EmployeesTracking.Entities.Personel>)
+                {
 
-        </tbody>
+                    <tr>
+                        <th>@Html.DisplayFor(modelItem => employee.Id)</th>
+                        <td>@Html.DisplayFor(modelItem => employee.Adi)</td>
+                        <td>@Html.DisplayFor(modelItem => employee.Soyadi)</td>
+                        <td>@Html.DisplayFor(modelItem => employee.TcNo)</td>
+                        <td>@Html.DisplayFor(modelItem => employee.BabaAdi)</td>
+                        <td>@Html.DisplayFor(modelItem => employee.AnaAdi)</td>
+                        <td>@Html.DisplayFor(modelItem => employee.Cinsiyet)</td>
+                        <td>@Html.DisplayFor(modelItem => employee.MedeniHali)</td>
+                        <td>@Html.DisplayFor(modelItem => employee.CityId)</td>
+                        <td><a class="btn btn-primary" href="/Home/PersonelEkle/@employee.Id">Güncelle</a></td>
+                        <td><a class="btn btn-danger" href="/Home/PersoneSil/@employee.Id">Sil</a></td>
+                        <td><a class="btn btn-danger" href="/Home/Index">Ayrıntı</a></td>
+                    </tr>
+                }
+            </tbody>
+            }
+            
+
+        
     </table>
     @*@Html.Partial("/Views/Home/Partials/PersonelEkle.cshtml")*@
 
