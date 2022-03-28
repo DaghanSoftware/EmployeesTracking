@@ -19,26 +19,35 @@ namespace EmployeesTracking.Controllers
             _context = context;
         }
      
-        public IActionResult Index()
+        public IActionResult Index(string q)
         {
             //Personel personel = new Personel() {Id=1,Adi="Semih",Soyadi="Dağhan",AnaAdi="Rukiye",BabaAdi="Halil",Cinsiyet="Erkek",DogumYeri="Eskişehir",MedeniHali="Bekar"};
             //EmployeeDal employeeDal = new EmployeeDal();
             //employeeDal.Add(personel);
-            Personel personel = new Personel();
             //_context.Personels.Add(personel);
             //_context.SaveChanges();
             //var personel = _context.Personels;
 
-            EmployeeDal employeeDal = new EmployeeDal(_context);
+            var personelarama = q;
 
-            if (_context.Personels!=null)
+            var personels = _context.Personels.AsQueryable();
+
+            if (!string.IsNullOrEmpty(q))
             {
-                ViewData["personeller"] = _context.Personels.ToList();
+                personels = personels.Where(i => i.Adi.ToLower().Contains(q.ToLower()) || i.Soyadi.ToLower().Contains(q.ToLower()));
             }
+            var model = new PersonelViewModel()
+            {
+                Personels = personels.ToList()
+            };
+            //if (_context.Personels!=null)
+            //{
+            //    ViewData["personeller"] = _context.Personels.ToList();
+            //}
             
             //ViewBag.semih= employeeDal.GetAll().ToList();
             //return View(employeeDal.GetAll().ToList());
-            return View();
+            return View(model);
 
         }
 
@@ -70,6 +79,7 @@ namespace EmployeesTracking.Controllers
                     _context.Personels.Add(personel);
                     _context.SaveChanges();
                     ViewBag.Cities = new SelectList(_context.Cities.ToList(), "CityId", "CityName");
+                    TempData["Message"] = $"{personel.TcNo} kimlik numaralı personelin kayıt işlemi başarıyla gerçekleşti";
                     return RedirectToAction("Index");
 
                 }
@@ -94,6 +104,7 @@ namespace EmployeesTracking.Controllers
                     EmployeeToUpdate.MedeniHali = personel.MedeniHali;
                     EmployeeToUpdate.CityId = personel.CityId;
                     _context.SaveChanges();
+                    TempData["Message"] = $"{personel.TcNo} kimlik numaralı personelin bilgileri güncellendi.";
                     return RedirectToAction("Index");
                 }
                 else
@@ -110,6 +121,7 @@ namespace EmployeesTracking.Controllers
         public IActionResult PersoneSil(int id)
         {
             _context.Personels.Remove(_context.Personels.SingleOrDefault(e => e.Id == id));
+            TempData["Message"] = $"{id} id li personel silindi";
             _context.SaveChanges();
 
             return RedirectToAction("Index");

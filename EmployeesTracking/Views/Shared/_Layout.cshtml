@@ -4,20 +4,21 @@
     <title></title>
 </head>
 <body>
+    @RenderSection("message", false)
     @await Html.PartialAsync("_navbar")
     @if (IsSectionDefined("menu"))
     {
-    <div class="row">
-        <div class="col-md-2 bg-light">
-        </div>
-        <div class="col-md-8">
-            @RenderSection("menu", false)
-        </div>
+        <div class="row">
+            <div class="col-md-2 bg-light">
+            </div>
+            <div class="col-md-8">
+                @RenderSection("menu", false)
+            </div>
 
-        <div class="col-md-2 bg-light">
-        </div>
+            <div class="col-md-2 bg-light">
+            </div>
 
-    </div>
+        </div>
     }
     else
     {
