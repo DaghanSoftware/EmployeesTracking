@@ -55,67 +55,53 @@ namespace EmployeesTracking.Controllers
 
         public IActionResult PersonelEkle(int? id)
         {
-            if (id==null)
+            ViewBag.Cities = new SelectList(_context.Cities.ToList(), "CityId", "CityName");
+
+            Personel model;
+            if (id > 0)
             {
-                ViewBag.Cities = new SelectList(_context.Cities.ToList(), "CityId", "CityName");
-                return View();
+                model = _context.Personels.FirstOrDefault(m => m.Id == id);
             }
             else
             {
-                ViewBag.Cities = new SelectList(_context.Cities.ToList(), "CityId", "CityName");
-                ViewBag.guncelle = id;
-                return View(_context.Personels.FirstOrDefault(m => m.Id == id));
+                model = new Personel();
+                model.MedeniHali = "0";
             }
 
+            return View(model);
         }
 
         [HttpPost]
-        public IActionResult PersonelEkle(Personel personel,int? id)
+        public IActionResult PersonelEkle(Personel personelGelen)
         {
-            if (id==null)
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
+                if (personelGelen.Id > 0)
                 {
-                    _context.Personels.Add(personel);
-                    _context.SaveChanges();
-                    ViewBag.Cities = new SelectList(_context.Cities.ToList(), "CityId", "CityName");
-                    TempData["Message"] = $"{personel.TcNo} kimlik numaralı personelin kayıt işlemi başarıyla gerçekleşti";
-                    return RedirectToAction("Index");
-
+                    var personel = _context.Personels.SingleOrDefault(p => p.Id == personelGelen.Id);
+                    personel.Adi = personelGelen.Adi;
+                    personel.Soyadi = personelGelen.Soyadi;
+                    personel.BabaAdi = personelGelen.BabaAdi;
+                    personel.TcNo = personelGelen.TcNo;
+                    personel.AnaAdi = personelGelen.AnaAdi;
+                    personel.Cinsiyet = personelGelen.Cinsiyet;
+                    personel.MedeniHali = personelGelen.MedeniHali;
+                    personel.CityId = personelGelen.CityId;
                 }
                 else
                 {
-                    ViewBag.Cities = new SelectList(_context.Cities.ToList(), "CityId", "CityName");
-                    return View();
+                    _context.Personels.Add(personelGelen);
                 }
+
+                _context.SaveChanges();
+
+                return RedirectToAction("Index");
             }
             else
             {
-                if (ModelState.IsValid)
-                {
-                    ViewBag.Cities = new SelectList(_context.Cities.ToList(), "CityId", "CityName");
-                    var EmployeeToUpdate = _context.Personels.SingleOrDefault(p => p.Id == personel.Id);
-                    EmployeeToUpdate.Adi = personel.Adi;
-                    EmployeeToUpdate.Soyadi = personel.Soyadi;
-                    EmployeeToUpdate.BabaAdi = personel.BabaAdi;
-                    EmployeeToUpdate.TcNo = personel.TcNo;
-                    EmployeeToUpdate.AnaAdi = personel.AnaAdi;
-                    EmployeeToUpdate.Cinsiyet = personel.Cinsiyet;
-                    EmployeeToUpdate.MedeniHali = personel.MedeniHali;
-                    EmployeeToUpdate.CityId = personel.CityId;
-                    _context.SaveChanges();
-                    TempData["Message"] = $"{personel.TcNo} kimlik numaralı personelin bilgileri güncellendi.";
-                    return RedirectToAction("Index");
-                }
-                else
-                {
-                    ViewBag.Cities = new SelectList(_context.Cities.ToList(), "CityId", "CityName");
-                    return View();
-                } 
+                ViewBag.Cities = new SelectList(_context.Cities.ToList(), "CityId", "CityName");
+                return View(personelGelen);
             }
-            
-            //_context.Personels.Add(personel);
-            //_context.SaveChanges();
         }
 
         public IActionResult PersoneSil(int id)
