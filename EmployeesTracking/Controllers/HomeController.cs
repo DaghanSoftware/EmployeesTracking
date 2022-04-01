@@ -36,6 +36,7 @@ namespace EmployeesTracking.Controllers
             {
                 personels = personels.Where(i => i.Adi.ToLower().Contains(q.ToLower()) || i.Soyadi.ToLower().Contains(q.ToLower()));
             }
+            var sonuc = _context.Personels.FromSqlRaw("Select * From Personels").ToList();
             var model = new PersonelViewModel()
             {
                 Personels = personels.ToList()
@@ -44,9 +45,11 @@ namespace EmployeesTracking.Controllers
             //{
             //    ViewData["personeller"] = _context.Personels.ToList();
             //}
-            
+
             //ViewBag.semih= employeeDal.GetAll().ToList();
             //return View(employeeDal.GetAll().ToList());
+
+            
             return View(model);
 
         }
@@ -55,7 +58,7 @@ namespace EmployeesTracking.Controllers
 
         public IActionResult PersonelEkle(int? id)
         {
-            ViewBag.Cities = new SelectList(_context.Cities.ToList(), "CityId", "CityName");
+            //ViewBag.Cities = new SelectList(_context.Cities.ToList(), "CityId", "CityName");
 
             Personel model;
             if (id > 0)
@@ -65,7 +68,6 @@ namespace EmployeesTracking.Controllers
             else
             {
                 model = new Personel();
-                model.MedeniHali = "0";
             }
 
             return View(model);
@@ -84,8 +86,8 @@ namespace EmployeesTracking.Controllers
                     personel.BabaAdi = personelGelen.BabaAdi;
                     personel.TcNo = personelGelen.TcNo;
                     personel.AnaAdi = personelGelen.AnaAdi;
-                    personel.Cinsiyet = personelGelen.Cinsiyet;
-                    personel.MedeniHali = personelGelen.MedeniHali;
+                    personel.GenderId = personelGelen.GenderId;
+                    personel.MaritalStatusId = personelGelen.MaritalStatusId;
                     personel.CityId = personelGelen.CityId;
                 }
                 else

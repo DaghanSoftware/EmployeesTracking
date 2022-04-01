@@ -50,8 +50,8 @@ namespace EmployeesTracking.Models
                 EmployeeToUpdate.Soyadi = personel.Soyadi;
                 EmployeeToUpdate.BabaAdi = personel.BabaAdi;
                 EmployeeToUpdate.AnaAdi = personel.AnaAdi;
-                EmployeeToUpdate.Cinsiyet = personel.Cinsiyet;
-                EmployeeToUpdate.MedeniHali = personel.MedeniHali;
+                EmployeeToUpdate.GenderId = personel.GenderId;
+                EmployeeToUpdate.MaritalStatusId = personel.MaritalStatusId;
                 EmployeeToUpdate.CityId = personel.CityId;
 
 

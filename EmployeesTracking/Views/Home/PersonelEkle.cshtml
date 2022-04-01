@@ -20,31 +20,36 @@
         <div class="col-md-6">
             <label asp-for="Adi" class="form-label">İsim</label>
             <input asp-for="Adi" class="form-control">
-            <span asp-validation-for="Cinsiyet" class="text-danger"></span>
+            <span asp-validation-for="Adi" class="text-danger"></span>
         </div>
         <div class="col-md-6">
             <label asp-for="Soyadi" class="form-label">Soyisim</label>
             <input asp-for="Soyadi" class="form-control" id="inputPassword4">
-            <span asp-validation-for="Cinsiyet" class="text-danger"></span>
+            <span asp-validation-for="Soyadi" class="text-danger"></span>
         </div>
         <div class="col-md-6">
             <label asp-for="TcNo" class="form-label">Tc Kimlik Numarası</label>
             <input asp-for="TcNo" maxlength="11" class="form-control">
-            <span asp-validation-for="Cinsiyet" class="text-danger"></span>
+            <span asp-validation-for="TcNo" class="text-danger"></span>
         </div>
         <div class="col-md-6">
             <label asp-for="BabaAdi" class="form-label">Baba Adı</label>
             <input asp-for="BabaAdi" class="form-control">
-            <span asp-validation-for="Cinsiyet" class="text-danger"></span>
+            <span asp-validation-for="BabaAdi" class="text-danger"></span>
         </div>
         <div class="col-md-6">
             <label asp-for="AnaAdi" class="form-label">Anne Adı</label>
             <input asp-for="AnaAdi" class="form-control">
         </div>
         <div class="col-md-6">
-            <label asp-for="Cinsiyet" class="form-label">Cinsiyet</label>
-            <input asp-for="Cinsiyet" class="form-control">
-            <span asp-validation-for="Cinsiyet" class="text-danger"></span>
+            <div class="form-group">
+                <label>Erkek</label>
+                <input type="radio" value="1" asp-for="GenderId" />
+                <br />
+                <label>Kadın</label>
+                <input type="radio" value="2" asp-for="GenderId" />
+                <span asp-validation-for="GenderId" class="text-danger"></span>
+            </div>
         </div>
         @*<div class="col-md-6">
                 <label asp-for="MedeniHali" class="form-label">Medeni Hali</label>
@@ -65,11 +70,11 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label>Bekar</label>
-                <input type="radio" value="0" asp-for="MedeniHali" />
+                <input type="radio" value="1" asp-for="MaritalStatusId" />
                 <br />
                 <label>Evli</label>
-                <input type="radio" value="1" asp-for="MedeniHali" />
-                <span asp-validation-for="MedeniHali" class="text-danger"></span>
+                <input type="radio" value="2" asp-for="MaritalStatusId" />
+                <span asp-validation-for="MaritalStatusId" class="text-danger"></span>
             </div>
         </div>
         <div class="col-12">

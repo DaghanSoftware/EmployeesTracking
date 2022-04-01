@@ -20,5 +20,8 @@ namespace EmployeesTracking
         //}
         public DbSet<Personel> Personels { get; set; }
         public DbSet<City> Cities { get; set; }
+        public DbSet<Gender> Genders { get; set; }
+        public DbSet<MaritalStatu> MaritalStatus { get; set; }
+        public DbSet<District> Districts { get; set; }
     }
 }

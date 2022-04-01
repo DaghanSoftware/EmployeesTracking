@@ -51,9 +51,11 @@
                         <td>@Html.DisplayFor(modelItem => employee.TcNo)</td>
                         <td>@Html.DisplayFor(modelItem => employee.BabaAdi)</td>
                         <td>@Html.DisplayFor(modelItem => employee.AnaAdi)</td>
-                        <td>@Html.DisplayFor(modelItem => employee.Cinsiyet)</td>
-                        <td>@Html.DisplayFor(modelItem => employee.MedeniHali)</td>
-                        <td>@Html.DisplayFor(modelItem => employee.CityId)</td>
+                        <td>@Html.DisplayFor(modelItem => employee.GenderId)</td>
+                        <td>@Html.DisplayFor(modelItem => employee.MaritalStatusId)</td>
+                        <td>
+                            
+                        </td>
                         <td><a class="btn btn-primary" href="/Home/PersonelEkle/@employee.Id">Güncelle</a></td>
                         <td><a class="btn btn-danger" href="/Home/PersoneSil/@employee.Id">Sil</a></td>
                         <td><a class="btn btn-danger" href="/Home/Index">Ayrıntı</a></td>
