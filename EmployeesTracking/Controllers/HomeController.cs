@@ -37,6 +37,27 @@ namespace EmployeesTracking.Controllers
                 personels = personels.Where(i => i.Adi.ToLower().Contains(q.ToLower()) || i.Soyadi.ToLower().Contains(q.ToLower()));
             }
             var sonuc = _context.Personels.FromSqlRaw("Select * From Personels").ToList();
+            //var personels = _context.Personels.FromSqlRaw("Select p.Id,p.Adi,p.Soyadi,p.TcNo,p.BabaAdi,p.AnaAdi,p.GenderId,p.MaritalStatusId,p.CityId,p.DistrictId,g.GenderName from Personels p left join Genders g on g.GenderId=p.GenderId");
+
+            //var personels = (from p in _context.Personels
+            //                 join s in _context.Genders on p.GenderId equals s.GenderId
+            //                 select new
+            //                 {
+            //                     p.Id,
+            //                     p.Adi,
+            //                     p.Soyadi,
+            //                     p.TcNo,
+            //                     p.BabaAdi,
+            //                     p.AnaAdi,
+            //                     p.GenderId,
+            //                     p.MaritalStatusId,
+            //                     p.CityId,
+            //                     p.DistrictId,
+            //                     s.GenderName
+            //                 }).ToList();
+
+
+
             var model = new PersonelViewModel()
             {
                 Personels = personels.ToList()
