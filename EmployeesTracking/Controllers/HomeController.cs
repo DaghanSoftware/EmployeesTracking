@@ -21,6 +21,7 @@ namespace EmployeesTracking.Controllers
      
         public IActionResult Index(string q)
         {
+            #region Eski Kodlar
             //Personel personel = new Personel() {Id=1,Adi="Semih",Soyadi="Dağhan",AnaAdi="Rukiye",BabaAdi="Halil",Cinsiyet="Erkek",DogumYeri="Eskişehir",MedeniHali="Bekar"};
             //EmployeeDal employeeDal = new EmployeeDal();
             //employeeDal.Add(personel);
@@ -28,40 +29,16 @@ namespace EmployeesTracking.Controllers
             //_context.SaveChanges();
             //var personel = _context.Personels;
 
-            var personelarama = q;
+            //var personels = _context.Personels.AsQueryable();
 
-            var personels = _context.Personels.AsQueryable();
 
-            if (!string.IsNullOrEmpty(q))
-            {
-                personels = personels.Where(i => i.Adi.ToLower().Contains(q.ToLower()) || i.Soyadi.ToLower().Contains(q.ToLower()));
-            }
-            var sonuc = _context.Personels.FromSqlRaw("Select * From Personels").ToList();
+            //var sonuc = _context.Personels.FromSqlRaw("Select * From Personels").ToList();
             //var personels = _context.Personels.FromSqlRaw("Select p.Id,p.Adi,p.Soyadi,p.TcNo,p.BabaAdi,p.AnaAdi,p.GenderId,p.MaritalStatusId,p.CityId,p.DistrictId,g.GenderName from Personels p left join Genders g on g.GenderId=p.GenderId");
 
-            //var personels = (from p in _context.Personels
-            //                 join s in _context.Genders on p.GenderId equals s.GenderId
-            //                 select new
-            //                 {
-            //                     p.Id,
-            //                     p.Adi,
-            //                     p.Soyadi,
-            //                     p.TcNo,
-            //                     p.BabaAdi,
-            //                     p.AnaAdi,
-            //                     p.GenderId,
-            //                     p.MaritalStatusId,
-            //                     p.CityId,
-            //                     p.DistrictId,
-            //                     s.GenderName
-            //                 }).ToList();
-
-
-
-            var model = new PersonelViewModel()
-            {
-                Personels = personels.ToList()
-            };
+            //var model = new PersonelViewModel()
+            //{
+            //    Personels = personels.ToList()
+            //};
             //if (_context.Personels!=null)
             //{
             //    ViewData["personeller"] = _context.Personels.ToList();
@@ -69,9 +46,42 @@ namespace EmployeesTracking.Controllers
 
             //ViewBag.semih= employeeDal.GetAll().ToList();
             //return View(employeeDal.GetAll().ToList());
+            #endregion
 
+            var personelarama = q;
+            var personels = (from p in _context.Personels
+                             join s in _context.Genders on p.GenderId equals s.GenderId
+                             select new PersonelViewModel
+                             {
+                                 Id = p.Id,
+                                 Adi = p.Adi,
+                                 Soyadi = p.Soyadi,
+                                 TcNo = p.TcNo,
+                                 BabaAdi = p.BabaAdi,
+                                 AnaAdi = p.AnaAdi,
+                                 GenderId = p.GenderId,
+                                 GenderName = s.GenderName
+                             }).ToList();
             
-            return View(model);
+            if (!string.IsNullOrEmpty(q))
+            {
+                personels = personels = (from p in _context.Personels
+                                             join s in _context.Genders on p.GenderId equals s.GenderId
+                                             where p.Adi.ToLower().Contains(q.ToLower()) || p.Soyadi.ToLower().Contains(q.ToLower())
+                                             select new PersonelViewModel
+                                             {
+                                                 Id = p.Id,
+                                                 Adi = p.Adi,
+                                                 Soyadi = p.Soyadi,
+                                                 TcNo = p.TcNo,
+                                                 BabaAdi = p.BabaAdi,
+                                                 AnaAdi = p.AnaAdi,
+                                                 GenderId = p.GenderId,
+                                                 GenderName = s.GenderName
+                                             }).ToList();
+                //personels = personels.Where(i => i.Adi.ToLower().Contains(q.ToLower()) || i.Soyadi.ToLower().Contains(q.ToLower()));
+            }
+            return View(personels.ToList());
 
         }
 

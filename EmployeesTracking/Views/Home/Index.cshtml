@@ -1,5 +1,5 @@
 ﻿@addTagHelper * ,Microsoft.AspNetCore.Mvc.TagHelpers
-@model EmployeesTracking.Models.PersonelViewModel
+@model List<EmployeesTracking.Models.PersonelViewModel>
 @{
     ViewData["Title"] = "PersonelListele";
 }
@@ -39,35 +39,34 @@
             </tr>
         </thead>
         <tbody>
-            @if (Model.Personels.Count() > 0)
+            @if (Model.Count() > 0)
             {
-                @foreach (var employee in Model.Personels)
+                @foreach (var employee in Model)
                 {
 
-                    <tr>
-                        <th>@Html.DisplayFor(modelItem => employee.Id)</th>
-                        <td>@Html.DisplayFor(modelItem => employee.Adi)</td>
-                        <td>@Html.DisplayFor(modelItem => employee.Soyadi)</td>
-                        <td>@Html.DisplayFor(modelItem => employee.TcNo)</td>
-                        <td>@Html.DisplayFor(modelItem => employee.BabaAdi)</td>
-                        <td>@Html.DisplayFor(modelItem => employee.AnaAdi)</td>
-                        <td>@Html.DisplayFor(modelItem => employee.GenderId)</td>
-                        <td>@Html.DisplayFor(modelItem => employee.MaritalStatusId)</td>
-                        @*<td>
-                            <ul>
-                                @foreach (var item in employee.Genders)
-                                {
-                                    <li>@item.GenderName</li>
-                                }
-                            </ul>
-                        </td>*@
-                        <td>
-                            
-                        </td>
-                        <td><a class="btn btn-primary" href="/Home/PersonelEkle/@employee.Id">Güncelle</a></td>
-                        <td><a class="btn btn-danger" href="/Home/PersoneSil/@employee.Id">Sil</a></td>
-                        <td><a class="btn btn-danger" href="/Home/Index">Ayrıntı</a></td>
-                    </tr>
+            <tr>
+                <th>@Html.DisplayFor(modelItem => employee.Id)</th>
+                <td>@Html.DisplayFor(modelItem => employee.Adi)</td>
+                <td>@Html.DisplayFor(modelItem => employee.Soyadi)</td>
+                <td>@Html.DisplayFor(modelItem => employee.TcNo)</td>
+                <td>@Html.DisplayFor(modelItem => employee.BabaAdi)</td>
+                <td>@Html.DisplayFor(modelItem => employee.AnaAdi)</td>
+                <td>@Html.DisplayFor(modelItem => employee.GenderId)</td>
+                <td>@Html.DisplayFor(modelItem => employee.GenderName)</td>
+                @*<td>
+            <ul>
+                @foreach (var item in employee.Genders)
+                {
+                    <li>@item.GenderName</li>
+                }
+            </ul>
+        </td>*@
+                <td>
+                </td>
+                <td><a class="btn btn-primary" href="/Home/PersonelEkle/@employee.Id">Güncelle</a></td>
+                <td><a class="btn btn-danger" href="/Home/PersoneSil/@employee.Id">Sil</a></td>
+                <td><a class="btn btn-danger" href="/Home/Index">Ayrıntı</a></td>
+            </tr>
                 }
             }
             else

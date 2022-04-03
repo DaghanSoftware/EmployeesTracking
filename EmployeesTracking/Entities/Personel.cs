@@ -34,7 +34,7 @@ namespace EmployeesTracking.Entities
         public Int64 TcNo { get; set; }
         public int DistrictId { get; set; }
 
-        public List<City> Cities { get; set; }
-        public List<Gender> Genders { get; set; }
+        //public List<City> Cities { get; set; }
+        //public List<Gender> Genders { get; set; }
     }
 }
