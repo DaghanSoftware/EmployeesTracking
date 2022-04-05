@@ -19,7 +19,7 @@ namespace EmployeesTracking.Controllers
             _context = context;
         }
      
-        public IActionResult Index(string q,int gendernumber,int maritalnumber)
+        public IActionResult Index(string q,int gendernumber,int maritalnumber,int sehir)
         {
             #region Eski Kodlar
             //Personel personel = new Personel() {Id=1,Adi="Semih",Soyadi="Dağhan",AnaAdi="Rukiye",BabaAdi="Halil",Cinsiyet="Erkek",DogumYeri="Eskişehir",MedeniHali="Bekar"};
@@ -47,49 +47,38 @@ namespace EmployeesTracking.Controllers
             //ViewBag.semih= employeeDal.GetAll().ToList();
             //return View(employeeDal.GetAll().ToList());
             #endregion
+
             ViewBag.Cities = new SelectList(_context.Cities.ToList(), "CityId", "CityName");
-            var personelarama = q;
-            var personels = (from p in _context.Personels
-                             join s in _context.Genders on p.GenderId equals s.GenderId
-                             join c in _context.Cities on p.CityId equals c.CityId
-                             join m in _context.MaritalStatus on p.MaritalStatusId equals m.MaritalStatusId
-                             select new PersonelViewModel
-                             {
-                                 Id = p.Id,
-                                 Adi = p.Adi,
-                                 Soyadi = p.Soyadi,
-                                 TcNo = p.TcNo,
-                                 BabaAdi = p.BabaAdi,
-                                 AnaAdi = p.AnaAdi,
-                                 GenderId = p.GenderId,
-                                 GenderName = s.GenderName,
-                                 MaritalStatusName = m.MaritalStatusName,
-                                 CityName = c.CityName
-                             }).ToList();
-            
-            if (!string.IsNullOrEmpty(q))
-            {
-                personels = personels = (from p in _context.Personels
-                                             join s in _context.Genders on p.GenderId equals s.GenderId
-                                             join c in _context.Cities on p.CityId equals c.CityId
-                                             join m in _context.MaritalStatus on p.MaritalStatusId equals m.MaritalStatusId
-                                             where p.Adi.ToLower().Contains(q.ToLower()) || p.Soyadi.ToLower().Contains(q.ToLower())
-                                             select new PersonelViewModel
-                                             {
-                                                 Id = p.Id,
-                                                 Adi = p.Adi,
-                                                 Soyadi = p.Soyadi,
-                                                 TcNo = p.TcNo,
-                                                 BabaAdi = p.BabaAdi,
-                                                 AnaAdi = p.AnaAdi,
-                                                 GenderId = p.GenderId,
-                                                 GenderName = s.GenderName,
-                                                 MaritalStatusName = m.MaritalStatusName,
-                                                 CityName = c.CityName
-                                             }).ToList();
-                //personels = personels.Where(i => i.Adi.ToLower().Contains(q.ToLower()) || i.Soyadi.ToLower().Contains(q.ToLower()));
-            }
-            return View(personels.ToList());
+
+            var query = (from p in _context.Personels
+                         join s in _context.Genders on p.GenderId equals s.GenderId
+                         join c in _context.Cities on p.CityId equals c.CityId
+                         join m in _context.MaritalStatus on p.MaritalStatusId equals m.MaritalStatusId
+                         //where p.GenderId==gendernumber || p.MaritalStatusId==maritalnumber
+                         select new PersonelViewModel
+                         {
+                             Id = p.Id,
+                             Adi = p.Adi,
+                             Soyadi = p.Soyadi,
+                             TcNo = p.TcNo,
+                             BabaAdi = p.BabaAdi,
+                             AnaAdi = p.AnaAdi,
+                             GenderId = p.GenderId,
+                             GenderName = s.GenderName,
+                             MaritalStatusId = p.MaritalStatusId,
+                             MaritalStatusName = m.MaritalStatusName,
+                             CityId = p.CityId,
+                             CityName = c.CityName
+                         });
+
+            if (gendernumber > 0)
+                query = query.Where(x => x.GenderId == gendernumber);
+            if (maritalnumber > 0)
+                query = query.Where(x => x.MaritalStatusId == maritalnumber);
+            if (sehir > 0)
+                query = query.Where(x => x.CityId == sehir);
+
+            return View(query.ToList());
 
         }
 

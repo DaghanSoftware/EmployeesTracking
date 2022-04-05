@@ -21,6 +21,7 @@ namespace EmployeesTracking.Models
         public string GenderName { get; set; }
         public string MaritalStatusName { get; set; }
         public string CityName { get; set; }
-
+        public int MaritalStatusId { get; internal set; }
+        public int CityId { get; internal set; }
     }
 }

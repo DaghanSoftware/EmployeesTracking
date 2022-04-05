@@ -17,98 +17,110 @@
 <head>
 </head>
 <body>
+    
+        <div class="row">
+            <div class="col-md-2">
 
-    <form asp-controller="Home" asp-action="Index" method="get">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title">Kriterlere Göre Filtreleme</h3>
+                            </div>
+                            <form asp-controller="Home" asp-action="Index" method="get">
+                                <center>
+                                    <select asp-items="@ViewBag.Cities" name="sehir" class="form-control">
+                                        <option selected disabled>Şehir Seçiniz</option>
 
-        <div class="row g-3">
-            <div class="col-sm-2">
-                <select asp-items="@ViewBag.Cities" class="form-control">
-                    <option selected disabled>Şehir Seçiniz</option>
+                                    </select>
+                                    <br />
+                                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                        <input type="radio" class="btn-check" name="gendernumber" id="btnradio1" value="1" autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="btnradio1">Erkek</label>
 
-                </select>
+                                        <input type="radio" class="btn-check" name="gendernumber" id="btnradio2" value="2" autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="btnradio2">Kadın</label>
+                                    </div>
+                                    <br />
+                                    <hr />
+
+                                    <input type="radio" class="btn-check" name="maritalnumber" id="vbtn-radio1" value="1" autocomplete="off">
+                                    <label class="btn btn-outline-danger" for="vbtn-radio1">Evli</label>
+
+                                    <input type="radio" class="btn-check" name="maritalnumber" id="vbtn-radio2" value="2" autocomplete="off">
+                                    <label class="btn btn-outline-danger" for="vbtn-radio2">Bekar</label>
+                                    <br />
+                                    
+                                    <div class="modal-footer">
+                                        <div style="text-align:center">
+                                            <button type="submit" class="btn btn-primary">Filtrele</button>
+                                        </div>
+                                        
+                                    </div>
+                                </center>
+                            </form>
+                        </div>
+                    </div>
             </div>
-            <div class="col-sm-1">
-                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                    <input type="radio" class="btn-check" name="gendernumber" value="1" autocomplete="off" checked>
-                    <label class="btn btn-outline-primary" for="gendernumber">Erkek</label>
+            <div class="col-md-10">
+                <center><h4>Personeller</h4></center>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">İsim</th>
+                            <th scope="col">Soyisim</th>
+                            <th scope="col">Tc</th>
+                            <th scope="col">Baba Adı</th>
+                            <th scope="col">Anne Adı</th>
+                            <th scope="col">Cinsiyet</th>
+                            <th scope="col">Medeni Hal</th>
+                            <th scope="col">Doğum Yeri</th>
+                            <th scope="col">Güncelleme</th>
+                            <th scope="col">Sime</th>
+                            <th scope="col">Ayrıntı</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Count() > 0)
+                        {
+                            @foreach (var employee in Model)
+                            {
 
-                    <input type="radio" class="btn-check" name="gendernumber" value="2" autocomplete="off">
-                    <label class="btn btn-outline-primary" for="gendernumber">Kadın</label>
+                                <tr>
+                                    <th>@Html.DisplayFor(modelItem => employee.Id)</th>
+                                    <td>@Html.DisplayFor(modelItem => employee.Adi)</td>
+                                    <td>@Html.DisplayFor(modelItem => employee.Soyadi)</td>
+                                    <td>@Html.DisplayFor(modelItem => employee.TcNo)</td>
+                                    <td>@Html.DisplayFor(modelItem => employee.BabaAdi)</td>
+                                    <td>@Html.DisplayFor(modelItem => employee.AnaAdi)</td>
+                                    <td>@Html.DisplayFor(modelItem => employee.GenderName)</td>
+                                    <td>@Html.DisplayFor(modelItem => employee.MaritalStatusName)</td>
+                                    <td>@Html.DisplayFor(modelItem => employee.CityName)</td>
+                                    <td><a class="btn btn-primary" href="/Home/PersonelEkle/@employee.Id">Güncelle</a></td>
+                                    <td><a class="btn btn-danger" href="/Home/PersoneSil/@employee.Id">Sil</a></td>
+                                    <td><a class="btn btn-danger" href="/Home/Index">Ayrıntı</a></td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <div class="alert alert-warning" role="alert" text>
+                                Daha Önce Kayıtlı Personel Bulunmamakta
+                            </div>
+                        }
+                    </tbody>
 
-                </div>
-            </div>
-            <div class="col-sm-2">
-                <input type="radio" class="btn-check" name="maritalnumber" value="1" autocomplete="off" checked>
-                <label class="btn btn-outline-danger" for="maritalnumber">Evli</label>
-                <input type="radio" class="btn-check" name="maritalnumber" value="2" autocomplete="off">
-                <label class="btn btn-outline-danger" for="maritalnumber">Bekar</label>
 
-            </div>
-            <div class="col-sm-1">
-                <button type="submit" class="btn btn-primary">Filtrele</button>
-            </div>
-            <div class="bd-example">
-                    <input type="radio" class="btn-check" name="maritalnumber" id="vbtn-radio1" value="1" autocomplete="off" checked>
-                    <label class="btn btn-outline-danger" for="vbtn-radio1">Evli</label>
-                    <input type="radio" class="btn-check" name="maritalnumber" id="vbtn-radio2"  value="2" autocomplete="off">
-                    <label class="btn btn-outline-danger" for="vbtn-radio2">Bekar</label>
+
+
+                </table>
             </div>
         </div>
-    </form>
-
-
-    <center><h4>Personeller</h4></center>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">İsim</th>
-                <th scope="col">Soyisim</th>
-                <th scope="col">Tc</th>
-                <th scope="col">Baba Adı</th>
-                <th scope="col">Anne Adı</th>
-                <th scope="col">Cinsiyet</th>
-                <th scope="col">Medeni Hal</th>
-                <th scope="col">Doğum Yeri</th>
-                <th scope="col">Güncelleme</th>
-                <th scope="col">Sime</th>
-                <th scope="col">Ayrıntı</th>
-            </tr>
-        </thead>
-        <tbody>
-            @if (Model.Count() > 0)
-            {
-                @foreach (var employee in Model)
-                {
-
-                    <tr>
-                        <th>@Html.DisplayFor(modelItem => employee.Id)</th>
-                        <td>@Html.DisplayFor(modelItem => employee.Adi)</td>
-                        <td>@Html.DisplayFor(modelItem => employee.Soyadi)</td>
-                        <td>@Html.DisplayFor(modelItem => employee.TcNo)</td>
-                        <td>@Html.DisplayFor(modelItem => employee.BabaAdi)</td>
-                        <td>@Html.DisplayFor(modelItem => employee.AnaAdi)</td>
-                        <td>@Html.DisplayFor(modelItem => employee.GenderName)</td>
-                        <td>@Html.DisplayFor(modelItem => employee.MaritalStatusName)</td>
-                        <td>@Html.DisplayFor(modelItem => employee.CityName)</td>
-                        <td><a class="btn btn-primary" href="/Home/PersonelEkle/@employee.Id">Güncelle</a></td>
-                        <td><a class="btn btn-danger" href="/Home/PersoneSil/@employee.Id">Sil</a></td>
-                        <td><a class="btn btn-danger" href="/Home/Index">Ayrıntı</a></td>
-                    </tr>
-                }
-            }
-            else
-            {
-                <div class="alert alert-warning" role="alert" text>
-                    Daha Önce Kayıtlı Personel Bulunmamakta
-                </div>
-            }
-        </tbody>
 
 
 
 
-    </table>
+
 </body>
 </html>
 @*@Html.Partial("/Views/Home/Partials/PersonelEkle.cshtml")*@
