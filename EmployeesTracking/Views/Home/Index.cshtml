@@ -28,6 +28,9 @@
                             </div>
                             <form asp-controller="Home" asp-action="Index" method="get">
                                 <center>
+
+                                    <input class="form-control me-2" name="q" type="text" placeholder="Personel Ara" aria-label="Ara">
+                                    <br />
                                     <select asp-items="@ViewBag.Cities" name="sehir" class="form-control">
                                         <option selected disabled>Şehir Seçiniz</option>
 
@@ -49,12 +52,14 @@
                                     <input type="radio" class="btn-check" name="maritalnumber" id="vbtn-radio2" value="2" autocomplete="off">
                                     <label class="btn btn-outline-danger" for="vbtn-radio2">Bekar</label>
                                     <br />
-                                    
+
+
+
                                     <div class="modal-footer">
                                         <div style="text-align:center">
                                             <button type="submit" class="btn btn-primary">Filtrele</button>
                                         </div>
-                                        
+
                                     </div>
                                 </center>
                             </form>

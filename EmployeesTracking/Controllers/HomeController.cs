@@ -77,6 +77,10 @@ namespace EmployeesTracking.Controllers
                 query = query.Where(x => x.MaritalStatusId == maritalnumber);
             if (sehir > 0)
                 query = query.Where(x => x.CityId == sehir);
+            if (!string.IsNullOrEmpty(q))
+            {
+                query = query.Where(i => i.Adi.ToLower().Contains(q.ToLower()) || i.Soyadi.ToLower().Contains(q.ToLower()));
+            }
 
             return View(query.ToList());
 
