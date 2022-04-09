@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using EmployeesTracking.Models;
 using EmployeesTracking.Entities;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using X.PagedList;
 
 namespace EmployeesTracking.Controllers
 {
@@ -19,7 +20,7 @@ namespace EmployeesTracking.Controllers
             _context = context;
         }
      
-        public IActionResult Index(string q,int gendernumber,int maritalnumber,int sehir)
+        public IActionResult Index(string q,int gendernumber,int maritalnumber,int sehir,int page=1)
         {
             #region Eski Kodlar
             //Personel personel = new Personel() {Id=1,Adi="Semih",Soyadi="Dağhan",AnaAdi="Rukiye",BabaAdi="Halil",Cinsiyet="Erkek",DogumYeri="Eskişehir",MedeniHali="Bekar"};
@@ -82,7 +83,7 @@ namespace EmployeesTracking.Controllers
                 query = query.Where(i => i.Adi.ToLower().Contains(q.ToLower()) || i.Soyadi.ToLower().Contains(q.ToLower()));
             }
 
-            return View(query.ToList());
+            return View(query.ToList().ToPagedList(page,3));
 
         }
 
