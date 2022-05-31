@@ -2,7 +2,8 @@
 
 @section menu
 {
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <div class="container-fluid py-5">
         <center><h1 class="display-5 fw-bold">Bilgilendirme !!!</h1></center>
         @if (Model.Id > 0)
@@ -15,7 +16,8 @@
             <center><p class="col-md-12 fs-4">Ekleme işlemi yaparken tüm bigileri doldurduğunuzdan emin olun</p></center>
         }
     </div>
-    <form asp-action="PersonelEkle" class="row g-3">
+    <form class="row g-3">
+        <div asp-validation-summary="All"> </div>
         <input type="hidden" asp-for="Id" class="form-control">
         <div class="col-md-6">
             <label asp-for="Adi" class="form-label">İsim</label>
@@ -24,7 +26,7 @@
         </div>
         <div class="col-md-6">
             <label asp-for="Soyadi" class="form-label">Soyisim</label>
-            <input asp-for="Soyadi" class="form-control" id="inputPassword4">
+            <input asp-for="Soyadi" class="form-control">
             <span asp-validation-for="Soyadi" class="text-danger"></span>
         </div>
         <div class="col-md-6">
@@ -52,10 +54,10 @@
             </div>
         </div>
         @*<div class="col-md-6">
-                <label asp-for="MedeniHali" class="form-label">Medeni Hali</label>
-                <input asp-for="MedeniHali" class="form-control">
-                <span asp-validation-for="MedeniHali" class="text-danger"></span>
-            </div>*@
+            <label asp-for="MedeniHali" class="form-label">Medeni Hali</label>
+            <input asp-for="MedeniHali" class="form-control">
+            <span asp-validation-for="MedeniHali" class="text-danger"></span>
+        </div>*@
 
         <div class="col-md-6">
             <div class="form-group">
@@ -78,9 +80,37 @@
             </div>
         </div>
         <div class="col-12">
-            <center><button type="submit" class="btn btn-primary">@( Model.Id>0 ? "Personel Güncelle":"Personel Ekle")</button></center>
+            <button type="button" id="btnaddwriter" class="btn btn-outline-info"> Yazar Ekle  </button>
+            @*<center><button type="submit" class="btn btn-primary">@( Model.Id>0 ? "Personel Güncelle":"Personel Ekle")</button></center>*@
         </div>
     </form>
 
+    <script>
+        $("#btnaddwriter").click(function () {
+            let writer = {
+                Id: $("#Id").val(),
+                Adi: $("#Adi").val(),
+                Soyadi: $("#Soyadi").val(),
+                TcNo: $("#TcNo").val(),
+                BabaAdi: $("#BabaAdi").val(),
+                AnaAdi: $("#AnaAdi").val(),
+                GenderId: $("#GenderId").val(),
+                CityId: $("#CityId").val(),
+                MaritalStatusId: $("#MaritalStatusId").val(),
+            };
 
+            $.ajax({
+                type: "post",
+                url: "/Home/PersonelEkle",
+                data: writer,
+                success: function (func) {
+                    let gelenmesaj = jQuery.parseJSON(func);
+                    swal("Tebrikler! ", gelenmesaj , "success");
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("Status: " + textStatus); alert("Error: " + errorThrown);
+                }
+            });
+        });
+    </script>
 }

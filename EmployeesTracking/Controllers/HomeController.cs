@@ -8,6 +8,7 @@ using EmployeesTracking.Models;
 using EmployeesTracking.Entities;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using X.PagedList;
+using Newtonsoft.Json;
 
 namespace EmployeesTracking.Controllers
 {
@@ -109,6 +110,7 @@ namespace EmployeesTracking.Controllers
         [HttpPost]
         public IActionResult PersonelEkle(Personel personelGelen)
         {
+            var sonucMesaji= "";
             if (ModelState.IsValid)
             {
                 if (personelGelen.Id > 0)
@@ -122,15 +124,21 @@ namespace EmployeesTracking.Controllers
                     personel.GenderId = personelGelen.GenderId;
                     personel.MaritalStatusId = personelGelen.MaritalStatusId;
                     personel.CityId = personelGelen.CityId;
+
+                    sonucMesaji = JsonConvert.SerializeObject($"{personelGelen.Adi} {personelGelen.Soyadi} İsimli Personeli Güncelleme İşlemi Başarılı");
                 }
                 else
                 {
                     _context.Personels.Add(personelGelen);
+
+                    sonucMesaji = JsonConvert.SerializeObject($"{personelGelen.Adi} {personelGelen.Soyadi} İsimli Personeli Ekleme İşlemi Başarılı");
                 }
 
                 _context.SaveChanges();
 
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                
+                return Ok(sonucMesaji);
             }
             else
             {
@@ -148,6 +156,19 @@ namespace EmployeesTracking.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
+        public IActionResult Ajaxpersonelekleme()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Ajaxpersonelekleme(Personel p)
+        {
+            _context.Personels.Add(p);
+            _context.SaveChanges();
+            var jsonWriters = JsonConvert.SerializeObject(p);
+            return Json(jsonWriters);
+        }
 
         //public IActionResult PersonelGuncelle(int id)
         //{
