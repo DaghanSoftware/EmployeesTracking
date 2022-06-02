@@ -9,6 +9,8 @@ using EmployeesTracking.Entities;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using X.PagedList;
 using Newtonsoft.Json;
+using EmployeesTracking.ValidationRules;
+using FluentValidation.Results;
 
 namespace EmployeesTracking.Controllers
 {
@@ -108,10 +110,12 @@ namespace EmployeesTracking.Controllers
         }
 
         [HttpPost]
-        public IActionResult PersonelEkle(Personel personelGelen)
+        public IActionResult PersonelEkle(Personel personelGelen,string hatalar)
         {
+            PersonelValidator validationRules = new PersonelValidator();
+            ValidationResult result = validationRules.Validate(personelGelen);
             var sonucMesaji= "";
-            if (ModelState.IsValid)
+            if (result.IsValid)
             {
                 if (personelGelen.Id > 0)
                 {
@@ -142,8 +146,9 @@ namespace EmployeesTracking.Controllers
             }
             else
             {
-                ViewBag.Cities = new SelectList(_context.Cities.ToList(), "CityId", "CityName");
-                return View(personelGelen);
+                //ViewBag.Cities = new SelectList(_context.Cities.ToList(), "CityId", "CityName");
+                sonucMesaji = JsonConvert.SerializeObject($"HATA");
+                return NotFound(sonucMesaji);
             }
         }
 

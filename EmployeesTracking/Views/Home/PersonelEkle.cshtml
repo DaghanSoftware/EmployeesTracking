@@ -17,7 +17,7 @@
         }
     </div>
     <form class="row g-3">
-        <div asp-validation-summary="All"> </div>
+        <div asp-validation-summary="All" id="hatalar"> </div>
         <input type="hidden" asp-for="Id" class="form-control">
         <div class="col-md-6">
             <label asp-for="Adi" class="form-label">İsim</label>
@@ -107,8 +107,8 @@
                     let gelenmesaj = jQuery.parseJSON(func);
                     swal("Tebrikler! ", gelenmesaj , "success");
                 },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    alert("Status: " + textStatus); alert("Error: " + errorThrown);
+                error: function (sonucMesaji) {
+                    swal("Hata! ", "Lütfen Tüm Alanları Doldurunuz", "error");
                 }
             });
         });
