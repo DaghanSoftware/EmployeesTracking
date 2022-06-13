@@ -78,7 +78,22 @@ namespace EmployeesTracking.Controllers
             return Json(jsonWriters);
 
         }
+        public IActionResult AjaxileVeriSilme(int id)
+        {
+            _context.Personels.Remove(_context.Personels.SingleOrDefault(e => e.Id == id));
+            TempData["Message"] = $"{id} id li personel silindi";
+            _context.SaveChanges();
+            var yazarlar = "Başarılı Bir Şekilde Silindi";
+            var jsonWriters = JsonConvert.SerializeObject(yazarlar);
+            return Json(jsonWriters);
 
+            //var jsonWriters = JsonConvert.SerializeObject(employee);
+            //return Json(jsonWriters);
+        }
+        public IActionResult PersonelListesiPartial(int id)
+        {
+            return View();
+        }
         public static List<EmployeeList> employee = new List<EmployeeList>
         {
             new EmployeeList
