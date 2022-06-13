@@ -1,0 +1,61 @@
+﻿@model List<EmployeesTracking.Models.PersonelViewModel> 
+
+@{
+    ViewData["Title"] = "PersonelListele";
+    Layout = "";
+}
+
+<div class="col-md-10">
+    <center><h4>Personeller</h4></center>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">İsim</th>
+                <th scope="col">Soyisim</th>
+                <th scope="col">Tc</th>
+                <th scope="col">Baba Adı</th>
+                <th scope="col">Anne Adı</th>
+                <th scope="col">Cinsiyet</th>
+                <th scope="col">Medeni Hal</th>
+                <th scope="col">Doğum Yeri</th>
+                <th scope="col">Güncelleme</th>
+                <th scope="col">Sime</th>
+                <th scope="col">Ayrıntı</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Count() > 0)
+            {
+                @foreach (var employee in Model)
+                {
+
+                    <tr>
+                        <th>@Html.DisplayFor(modelItem => employee.Id)</th>
+                        <td>@Html.DisplayFor(modelItem => employee.Adi)</td>
+                        <td>@Html.DisplayFor(modelItem => employee.Soyadi)</td>
+                        <td>@Html.DisplayFor(modelItem => employee.TcNo)</td>
+                        <td>@Html.DisplayFor(modelItem => employee.BabaAdi)</td>
+                        <td>@Html.DisplayFor(modelItem => employee.AnaAdi)</td>
+                        <td>@Html.DisplayFor(modelItem => employee.GenderName)</td>
+                        <td>@Html.DisplayFor(modelItem => employee.MaritalStatusName)</td>
+                        <td>@Html.DisplayFor(modelItem => employee.CityName)</td>
+                        <td><a class="btn btn-primary" href="/Home/PersonelEkle/@employee.Id">Güncelle</a></td>
+                        <td><a class="btn btn-danger" href="/Home/PersoneSil/@employee.Id">Sil</a></td>
+                        <td><a class="btn btn-danger" href="/Home/Index">Ayrıntı</a></td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <div class="alert alert-warning" role="alert" text>
+                    Daha Önce Kayıtlı Personel Bulunmamakta
+                </div>
+            }
+        </tbody>
+
+
+
+
+    </table>
+</div>

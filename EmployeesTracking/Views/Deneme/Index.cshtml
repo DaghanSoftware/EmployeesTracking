@@ -76,8 +76,7 @@
         </div>
         <div class="col-md-10">
             <center><h4>Personeller</h4></center>
-            <div id="writerlist2">
-                Daha Önce Personel Eklenmemiştir.
+            <div id="divPersoneller">
             </div>
         </div>
     </div>
@@ -167,42 +166,21 @@
     $(document).ready(function () {
         $("#btngetlistfilter").click();
 
-        $("#divPersoneller").load("asdfadsf");
+        /*$("#divPersoneller").load("asdfadsf");*/
     });
 
     $("#btngetlistfilter").click(function () {
-
+      
         let filtreler = {
             q: $("#personeladi").val(),
             gendernumber: $("input[name='gendernumber']:checked").val(),
             maritalnumber: $("input[name='maritalnumber']:checked").val(),
             sehir: $('#sehir2').val(),
         };
-
-        $.ajax({
-            contentType: "application/json",
-            dataType: "json",
-            type: "Get",
-            url: "/Deneme/AjaxileFiltrelenVeriGetirme",
-            data: filtreler,
-            success: function (func) {
-                let w = jQuery.parseJSON(func);
-                console.log(w);
-                let tablehtml = "<table class=table table-bordered> <tr> <th>#</th> <th>İsim</th>  <th>Soyisim</th>  <th>Tc</th>  <th>Baba Adı</th> <th>Anne Adı</th> <th>Cinsiyet</th> <th>Medeni Hal</th> <th>Doğum Yeri</th>  <th>Güncelleme</th> <th>Sime</th>  <th>Ayrıntı</th> </tr>";
-                $.each(w, (index, value) => {
-
-                    /**/
-                    /**/
-                    tablehtml += `<tr><td>${value.Id}</td> <td>${value.Adi}</td> <td>${value.Soyadi}</td> <td>${value.TcNo}</td> <td>${value.BabaAdi}</td> <td>${value.AnaAdi}</td> <td>${value.GenderName}</td> <td>${value.MaritalStatusName}</td> <td>${value.CityName}</td> <td>${value.Adi}</td>   <td><a class="btn btn-primary" href="/Home/PersonelEkle/${value.Id}">Güncelle</a></td>  <td><button type="button" class="btn btn-info editAccount" id="${value.Id}">Personel Sil</button></td> <td><a class="btn btn-danger" href="/Home/Index">Ayrıntı</a></td> </tr>`
-                    /**/
-                    /**/
-                });
-                tablehtml += "</table>";
-                $("#writerlist2").html(tablehtml);
-            }
-        });
+        $("#divPersoneller").load("/Deneme/PersonelListesiPartial", filtreler);
 
     });
+    
 
 
     $(document).on('click', '.editAccount', function () {
@@ -266,5 +244,69 @@
         });
     });
 
+</script>
 
+<script>
+    //Eski yöntem ile verileri tablo görünümünde listeleme. Yeni revize edilmiş projede bir tane partialview oluşturup onun üzerinden verileri getiriyoruz.
+
+    //$("#btngetlistfilter").click(function () {
+
+    //    let filtreler = {
+    //        q: $("#personeladi").val(),
+    //        gendernumber: $("input[name='gendernumber']:checked").val(),
+    //        maritalnumber: $("input[name='maritalnumber']:checked").val(),
+    //        sehir: $('#sehir2').val(),
+    //    };
+
+    //    $.ajax({
+    //        contentType: "application/json",
+    //        dataType: "json",
+    //        type: "Get",
+    //        url: "/Deneme/AjaxileFiltrelenVeriGetirme",
+    //        data: filtreler,
+    //        success: function (func) {
+    //            let w = jQuery.parseJSON(func);
+    //            console.log(w);
+    //            let tablehtml = "<table class=table table-bordered> <tr> <th>#</th> <th>İsim</th>  <th>Soyisim</th>  <th>Tc</th>  <th>Baba Adı</th> <th>Anne Adı</th> <th>Cinsiyet</th> <th>Medeni Hal</th> <th>Doğum Yeri</th>  <th>Güncelleme</th> <th>Sime</th>  <th>Ayrıntı</th> </tr>";
+    //            $.each(w, (index, value) => {
+
+    //                /**/
+    //                /**/
+    //                tablehtml += `<tr><td>${value.Id}</td> <td>${value.Adi}</td> <td>${value.Soyadi}</td> <td>${value.TcNo}</td> <td>${value.BabaAdi}</td> <td>${value.AnaAdi}</td> <td>${value.GenderName}</td> <td>${value.MaritalStatusName}</td> <td>${value.CityName}</td> <td>${value.Adi}</td>   <td><a class="btn btn-primary" href="/Home/PersonelEkle/${value.Id}">Güncelle</a></td>  <td><button type="button" class="btn btn-info editAccount" id="${value.Id}">Personel Sil</button></td> <td><a class="btn btn-danger" href="/Home/Index">Ayrıntı</a></td> </tr>`
+    //                /**/
+    //                /**/
+    //            });
+    //            tablehtml += "</table>";
+    //            $("#writerlist2").html(tablehtml);
+    //        }
+    //    });
+
+    //});
+
+
+
+
+    //Aşağıdaki kodlarda işi uzattım o yüzden kullanılmayacak. Sebebi ise ilk önce bir actiona gidip filtreleme yapıyorum sonrada o filtreden gelen veriyi partial olarak kullandığım actiona gönderip oradan kodu kullanıyorum.
+    //$("#button1").click(function () {
+    //    let filtreler = {
+    //        q: $("#personeladi").val(),
+    //        gendernumber: $("input[name='gendernumber']:checked").val(),
+    //        maritalnumber: $("input[name='maritalnumber']:checked").val(),
+    //        sehir: $('#sehir2').val(),
+    //    };
+
+    //    $.ajax({
+    //        contentType: "application/json",
+    //        dataType: "json",
+    //        type: "Get",
+    //        url: "/Deneme/AjaxileFiltrelenVeriGetirme",
+    //        data: filtreler,
+    //        success: function (func) {
+    //            let w = jQuery.parseJSON(func);
+    //            console.log(w);
+    //            $("#div1").load("/Deneme/PersonelListesiPartial", { personel: w });
+    //        }
+    //    });
+    //    /*        $("#div1").load("/Deneme/PersonelListesiPartial");*/
+    //});
 </script>
