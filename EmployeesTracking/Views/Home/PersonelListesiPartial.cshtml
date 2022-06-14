@@ -20,7 +20,7 @@
                 <th scope="col">Medeni Hal</th>
                 <th scope="col">Doğum Yeri</th>
                 <th scope="col">Güncelleme</th>
-                <th scope="col">Sime</th>
+                <th scope="col">Silme</th>
                 <th scope="col">Ayrıntı</th>
             </tr>
         </thead>
@@ -40,8 +40,8 @@
                         <td>@Html.DisplayFor(modelItem => employee.GenderName)</td>
                         <td>@Html.DisplayFor(modelItem => employee.MaritalStatusName)</td>
                         <td>@Html.DisplayFor(modelItem => employee.CityName)</td>
-                        <td><a class="btn btn-primary" href="/Home/PersonelEkle/@employee.Id">Güncelle</a></td>
-                        <td><a class="btn btn-danger" href="/Home/PersoneSil/@employee.Id">Sil</a></td>
+                        <td><button type="button" class="btn btn-primary"  onclick="PersonelDetay(@employee.Id);" >Personel Güncelle</button></td>
+                        <td><button type="button" class="btn btn-info" onclick="PersonelSil(@employee.Id)">Personel Sil</button></td>
                         <td><a class="btn btn-danger" href="/Home/Index">Ayrıntı</a></td>
                     </tr>
                 }

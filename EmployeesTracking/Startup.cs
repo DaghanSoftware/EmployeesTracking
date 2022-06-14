@@ -1,3 +1,4 @@
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -15,16 +16,27 @@ namespace EmployeesTracking
     public class Startup
     {
         public IConfiguration Configuration { get; }
-        public Startup(IConfiguration configuration)
+
+        public IWebHostEnvironment Env { get; set; }
+
+        public Startup(IConfiguration configuration, IWebHostEnvironment _env)
         {
             Configuration = configuration;
+            Env = _env;
         }
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<EmployeesContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DatabaseEmployees")));
-            services.AddControllersWithViews();
+        
+
+            var mvcBuilder = services.AddControllersWithViews().AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<Startup>());
+
+            if (Env.IsDevelopment())
+            {
+                mvcBuilder.AddRazorRuntimeCompilation();
+            }
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

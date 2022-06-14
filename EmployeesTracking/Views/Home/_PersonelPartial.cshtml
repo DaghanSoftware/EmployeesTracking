@@ -1,0 +1,112 @@
+﻿@model EmployeesTracking.Entities.Personel
+
+<div class="modal fade" id="personelDetayModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <form id="formPersonelDetay" asp-action="PersonelKaydet" style="padding:40px 50px;" class="row g-3">
+                    <div asp-validation-summary="All" id="hatalar"> </div>
+                    <input type="hidden" asp-for="Id" class="form-control">
+                    <div class="col-md-6">
+                        <label asp-for="Adi" class="form-label">İsim</label>
+                        <input asp-for="Adi" class="form-control">
+                        <span asp-validation-for="Adi" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Soyadi" class="form-label">Soyisim</label>
+                        <input asp-for="Soyadi" class="form-control">
+                        <span asp-validation-for="Soyadi" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="TcNo" class="form-label">Tc Kimlik Numarası</label>
+                        <input asp-for="TcNo" maxlength="11" class="form-control">
+                        <span asp-validation-for="TcNo" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="BabaAdi" class="form-label">Baba Adı</label>
+                        <input asp-for="BabaAdi" class="form-control">
+                        <span asp-validation-for="BabaAdi" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="AnaAdi" class="form-label">Anne Adı</label>
+                        <input asp-for="AnaAdi" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Erkek</label>
+                            <input type="radio" value="1" asp-for="GenderId" />
+                            <br />
+                            <label>Kadın</label>
+                            <input type="radio" value="2" asp-for="GenderId" />
+                            <span asp-validation-for="GenderId" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp="Doğum Yeri">Doğum Yeri</label>
+                            <select asp-for="CityId" asp-items="@ViewBag.Cities" class="form-control">
+                                <option selected disabled>Şehir Seçiniz</option>
+
+                            </select>
+                            <span asp-validation-for="CityId" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Evli</label>
+                            <input type="radio" value="1" asp-for="MaritalStatusId" />
+                            <br />
+                            <label>Bekar</label>
+                            <input type="radio" value="2" asp-for="MaritalStatusId" />
+                            <span asp-validation-for="MaritalStatusId" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" id="btnPersonelKaydet" class="btn btn-success"> Personel Kaydet  </button>
+                        @*<center><button type="submit" class="btn btn-primary">@( Model.Id>0 ? "Personel Güncelle":"Personel Ekle")</button></center>*@
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+
+<script>
+
+
+    $("#formPersonelDetay").submit(function (e) {
+        e.preventDefault();
+
+        var form = $(this);
+        var url = form.attr('action');
+
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: form.serialize(),
+            success: function (result)
+            {
+                console.log(result);
+                if (result.success)
+                {
+                    $('#personelDetayModal').modal('hide');
+
+                    PersonelleriListele();
+
+                    swal("Bilgi! ", " İşlem Başarılı", "success");
+
+                }
+                else
+                {
+                    swal("Bilgi! ", result.message, "error");
+                }
+            },
+            error: function (err) {
+
+                swal("Bilgi! ", "Kayıt hata", "error");
+            }
+        });
+    });
+
+
+</script>

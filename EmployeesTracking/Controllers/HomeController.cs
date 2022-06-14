@@ -1,63 +1,37 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using EmployeesTracking.Entities;
+using EmployeesTracking.Models;
+using EmployeesTracking.ValidationRules;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using EmployeesTracking.Models;
-using EmployeesTracking.Entities;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using X.PagedList;
-using Newtonsoft.Json;
-using EmployeesTracking.ValidationRules;
-using FluentValidation.Results;
 
 namespace EmployeesTracking.Controllers
 {
     public class HomeController : Controller
     {
-
         private readonly EmployeesContext _context;
+
         public HomeController(EmployeesContext context)
         {
             _context = context;
         }
-     
-        public IActionResult Index(string q,int gendernumber,int maritalnumber,int sehir,int page=1)
+
+        public IActionResult Index()
         {
-            #region Eski Kodlar
-            //Personel personel = new Personel() {Id=1,Adi="Semih",Soyadi="Dağhan",AnaAdi="Rukiye",BabaAdi="Halil",Cinsiyet="Erkek",DogumYeri="Eskişehir",MedeniHali="Bekar"};
-            //EmployeeDal employeeDal = new EmployeeDal();
-            //employeeDal.Add(personel);
-            //_context.Personels.Add(personel);
-            //_context.SaveChanges();
-            //var personel = _context.Personels;
-
-            //var personels = _context.Personels.AsQueryable();
-
-
-            //var sonuc = _context.Personels.FromSqlRaw("Select * From Personels").ToList();
-            //var personels = _context.Personels.FromSqlRaw("Select p.Id,p.Adi,p.Soyadi,p.TcNo,p.BabaAdi,p.AnaAdi,p.GenderId,p.MaritalStatusId,p.CityId,p.DistrictId,g.GenderName from Personels p left join Genders g on g.GenderId=p.GenderId");
-
-            //var model = new PersonelViewModel()
-            //{
-            //    Personels = personels.ToList()
-            //};
-            //if (_context.Personels!=null)
-            //{
-            //    ViewData["personeller"] = _context.Personels.ToList();
-            //}
-
-            //ViewBag.semih= employeeDal.GetAll().ToList();
-            //return View(employeeDal.GetAll().ToList());
-            #endregion
-
             ViewBag.Cities = new SelectList(_context.Cities.ToList(), "CityId", "CityName");
+            return View();
+        }
 
+        public IActionResult PersonelListesiPartial(string q, int gendernumber, int maritalnumber, int sehir, int page = 1)
+        {
             var query = (from p in _context.Personels
-                         join s in _context.Genders on p.GenderId equals s.GenderId
-                         join c in _context.Cities on p.CityId equals c.CityId
-                         join m in _context.MaritalStatus on p.MaritalStatusId equals m.MaritalStatusId
+                         from s in _context.Genders.Where(x => x.GenderId == p.GenderId).DefaultIfEmpty()
+                         from c in _context.Cities.Where(x => x.CityId == p.CityId).DefaultIfEmpty()
+                         from m in _context.MaritalStatus.Where(x => x.MaritalStatusId == p.MaritalStatusId).DefaultIfEmpty()
                          //where p.GenderId==gendernumber || p.MaritalStatusId==maritalnumber
                          select new PersonelViewModel
                          {
@@ -85,17 +59,12 @@ namespace EmployeesTracking.Controllers
             {
                 query = query.Where(i => i.Adi.ToLower().Contains(q.ToLower()) || i.Soyadi.ToLower().Contains(q.ToLower()));
             }
-
-            return View(query.ToList().ToPagedList(page,3));
-
+            var yazarlar = query.ToList();
+            return View(yazarlar);
         }
-
-
-
-        public IActionResult PersonelEkle(int? id)
+        public IActionResult PersonelPartial(int? id)
         {
             ViewBag.Cities = new SelectList(_context.Cities.ToList(), "CityId", "CityName");
-
             Personel model;
             if (id > 0)
             {
@@ -105,18 +74,20 @@ namespace EmployeesTracking.Controllers
             {
                 model = new Personel();
             }
-
-            return View(model);
+            return PartialView("_PersonelPartial", model);
         }
 
         [HttpPost]
-        public IActionResult PersonelEkle(Personel personelGelen,string hatalar)
+        public IActionResult PersonelKaydet(Personel personelGelen, string hatalar)
         {
-            PersonelValidator validationRules = new PersonelValidator();
-            ValidationResult result = validationRules.Validate(personelGelen);
-            var sonucMesaji= "";
-            if (result.IsValid)
+            try
             {
+                PersonelValidator validationRules = new PersonelValidator();
+                ValidationResult result = validationRules.Validate(personelGelen);
+                var sonucMesaji = "";
+                if (!result.IsValid)
+                    throw new Exception("validasyon hatası");
+
                 if (personelGelen.Id > 0)
                 {
                     var personel = _context.Personels.SingleOrDefault(p => p.Id == personelGelen.Id);
@@ -128,63 +99,40 @@ namespace EmployeesTracking.Controllers
                     personel.GenderId = personelGelen.GenderId;
                     personel.MaritalStatusId = personelGelen.MaritalStatusId;
                     personel.CityId = personelGelen.CityId;
-
-                    sonucMesaji = JsonConvert.SerializeObject($"{personelGelen.Adi} {personelGelen.Soyadi} İsimli Personeli Güncelleme İşlemi Başarılı");
                 }
                 else
                 {
                     _context.Personels.Add(personelGelen);
 
-                    sonucMesaji = JsonConvert.SerializeObject($"{personelGelen.Adi} {personelGelen.Soyadi} İsimli Personeli Ekleme İşlemi Başarılı");
                 }
-
                 _context.SaveChanges();
 
-                //return RedirectToAction("Index");
-                
-                return Ok(sonucMesaji);
+                return Json(new ReturnModel() { Success = true });
             }
-            else
+            catch (Exception ex)
             {
-                //ViewBag.Cities = new SelectList(_context.Cities.ToList(), "CityId", "CityName");
-                sonucMesaji = JsonConvert.SerializeObject($"HATA");
-                return NotFound(sonucMesaji);
+                return Json(new ReturnModel() { Success = false, Message = ex.Message });
             }
         }
-
-        public IActionResult PersoneSil(int id)
+        public IActionResult PersonelSil(int id)
         {
-            _context.Personels.Remove(_context.Personels.SingleOrDefault(e => e.Id == id));
-            TempData["Message"] = $"{id} id li personel silindi";
-            _context.SaveChanges();
+            try
+            {
+                _context.Personels.Remove(_context.Personels.SingleOrDefault(e => e.Id == id));
+                _context.SaveChanges();
 
-            return RedirectToAction("Index");
-        }
+                return Json(new ReturnModel() { Success = true,Message = "Silme İşlemi Başarıyla Gerçekleşti" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new ReturnModel() { Success = false, Message = ex.Message });
+            }
 
-        [HttpGet]
-        public IActionResult Ajaxpersonelekleme()
-        {
-            return View();
+            //var yazarlar = "Başarılı Bir Şekilde Silindi";
+            //var jsonWriters = JsonConvert.SerializeObject(yazarlar);
+            //return Json(jsonWriters);
+            //var jsonWriters = JsonConvert.SerializeObject(employee);
+            //return Json(jsonWriters);
         }
-        [HttpPost]
-        public IActionResult Ajaxpersonelekleme(Personel p)
-        {
-            _context.Personels.Add(p);
-            _context.SaveChanges();
-            var jsonWriters = JsonConvert.SerializeObject(p);
-            return Json(jsonWriters);
-        }
-
-        //public IActionResult PersonelGuncelle(int id)
-        //{
-        //    return View(_context.Personels.FirstOrDefault(m=>m.Id==id));
-        //}
-        //[HttpPost]
-        //public IActionResult PersonelGuncelle(Personel personel)
-        //{
-        //    EmployeeDal employeeDal = new EmployeeDal(_context);
-        //    employeeDal.Update(personel);
-        //    return RedirectToAction("Index");
-        //}
     }
 }
