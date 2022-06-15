@@ -60,6 +60,8 @@
                             <input type="radio" class="btn-check" name="maritalnumber" id="vbtn-radio2" value="2" autocomplete="off">
                             <label class="btn btn-outline-danger" for="vbtn-radio2">Bekar</label>
                             <br />
+                            <br />
+                            <input class="form-control me-2" id="tarih" type="date" placeholder="Personel Ara" aria-label="Ara">
 
 
 
@@ -123,6 +125,27 @@
             success: function (response) {
                 $('#divPartial').html(response);
                 $("#personelDetayModal").modal('show');
+            },
+            error: function (err) {
+
+                swal("Bilgi! ", err.status + "-" + err.statusText, "success");
+            }
+        });
+    }
+
+    //$("#btnPersonelEkle").click(function () {
+    //    PersonelDetayCardPartial(0);
+    //});
+    function PersonelDetayCardPartial(personelId) {
+        $.ajax({
+            url: '/Home/PersonelDetayCardPartial',
+            data: {
+                id: personelId
+            },
+            type: 'GET',
+            success: function (response) {
+                $('#divPartial').html(response);
+                $("#personelDetayCard").modal('show');
             },
             error: function (err) {
 

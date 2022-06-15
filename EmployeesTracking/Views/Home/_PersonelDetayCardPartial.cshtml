@@ -1,0 +1,76 @@
+﻿@model EmployeesTracking.Models.PersonelViewModel
+
+@{
+    ViewData["Title"] = "PersonelListele";
+    Layout = "";
+}
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+
+
+<!-- Central Modal Warning Demo-->
+<div class="modal fade left" id="personelDetayCard" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-notify modal-warning modal-side modal-bottom-left" role="document">
+        <!--Content-->
+        <div class="modal-content">
+            <!--Header-->
+            <div class="modal-header">
+                <a type="button" class="btn btn-warning"><i class="far fa-user ml-1 white-text"></i> Personel Detay <i class="far fa-user ml-1 white-text"></i></a>
+
+            </div>
+
+            <!--Body-->
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-3 text-center">
+                        <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(1).webp" alt="Personel Resimleri "
+                             class="img-fluid z-depth-1-half rounded-circle">
+                        <div style="height: 10px"></div>
+                        <p class="title mb-0">@Model.Adi</p>
+                        <p class="title mb-0" style="font-size: 16px">@Model.Soyadi</p>
+                        <br />
+                        <p class="text-muted " style="font-size: 13px">Software Developer</p>
+                    </div>
+
+                    <div class="col-9">
+                        <p>Kimlik Numarası: @Model.TcNo</p>
+                        <p>
+                            Anne Adı:  @Model.AnaAdi
+                        </p>
+                        <p>
+                            Baba Adı:  @Model.BabaAdi
+                        </p>
+                        <p>
+                            Cinsiyeti:  @Model.GenderName
+                        </p>
+                        <p>
+                            Medeni Durumu:  @Model.MaritalStatusName
+                        </p>
+                        <p>
+                            Doğum Yeri:  @Model.CityName
+                        </p>
+                        <p class="card-text"><strong>Doğum Tarihi : </strong></p>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <!--Footer-->
+            <div class="modal-footer justify-content-center">
+                <a type="button" class="btn btn-outline-warning waves-effect" data-dismiss="modal">Kapat</a>
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+</div>
+<!-- Central Modal Warning Demo-->
+
+
+
+
+

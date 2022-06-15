@@ -42,7 +42,7 @@
                         <td>@Html.DisplayFor(modelItem => employee.CityName)</td>
                         <td><button type="button" class="btn btn-primary"  onclick="PersonelDetay(@employee.Id);" >Personel Güncelle</button></td>
                         <td><button type="button" class="btn btn-info" onclick="PersonelSil(@employee.Id)">Personel Sil</button></td>
-                        <td><a class="btn btn-danger" href="/Home/Index">Ayrıntı</a></td>
+                        <td><a class="btn btn-danger" onclick="PersonelDetayCardPartial(@employee.Id)">Detay</a></td>
                     </tr>
                 }
             }

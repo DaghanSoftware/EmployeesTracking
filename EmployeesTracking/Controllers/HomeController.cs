@@ -2,11 +2,13 @@
 using EmployeesTracking.Models;
 using EmployeesTracking.ValidationRules;
 using FluentValidation.Results;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace EmployeesTracking.Controllers
@@ -65,20 +67,33 @@ namespace EmployeesTracking.Controllers
         public IActionResult PersonelPartial(int? id)
         {
             ViewBag.Cities = new SelectList(_context.Cities.ToList(), "CityId", "CityName");
-            Personel model;
+            PersonelViewModel model;
+            Personel personel;
             if (id > 0)
             {
-                model = _context.Personels.FirstOrDefault(m => m.Id == id);
+                personel = _context.Personels.FirstOrDefault(m => m.Id == id);
+                model = new PersonelViewModel
+                {
+                    Id = personel.Id,
+                    Adi = personel.Adi,
+                    Soyadi = personel.Soyadi,
+                    TcNo = personel.TcNo,
+                    BabaAdi = personel.BabaAdi,
+                    AnaAdi = personel.AnaAdi,
+                    GenderId = personel.GenderId,
+                    MaritalStatusId = personel.MaritalStatusId,
+                    CityId = personel.CityId
+                };
             }
             else
             {
-                model = new Personel();
+                model = new PersonelViewModel();
             }
             return PartialView("_PersonelPartial", model);
         }
 
         [HttpPost]
-        public IActionResult PersonelKaydet(Personel personelGelen, string hatalar)
+        public IActionResult PersonelKaydet(PersonelViewModel personelGelen, string hatalar)
         {
             try
             {
@@ -88,8 +103,10 @@ namespace EmployeesTracking.Controllers
                 if (!result.IsValid)
                     throw new Exception("validasyon hatası");
 
+                
                 if (personelGelen.Id > 0)
                 {
+
                     var personel = _context.Personels.SingleOrDefault(p => p.Id == personelGelen.Id);
                     personel.Adi = personelGelen.Adi;
                     personel.Soyadi = personelGelen.Soyadi;
@@ -99,10 +116,37 @@ namespace EmployeesTracking.Controllers
                     personel.GenderId = personelGelen.GenderId;
                     personel.MaritalStatusId = personelGelen.MaritalStatusId;
                     personel.CityId = personelGelen.CityId;
+                    if (personelGelen.Resim != null)
+                    {
+                        var extension = Path.GetExtension(personelGelen.Resim.FileName);
+                        var newimagename = Guid.NewGuid() + extension;
+                        var location = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/PersonelResimFiles", newimagename);
+                        var stream = new FileStream(location, FileMode.Create);
+                        personelGelen.Resim.CopyTo(stream);
+                        personel.Resim = newimagename;
+                    }
                 }
                 else
                 {
-                    _context.Personels.Add(personelGelen);
+                    Personel personel = new Personel();
+                    personel.Adi = personelGelen.Adi;
+                    personel.Soyadi = personelGelen.Soyadi;
+                    personel.BabaAdi = personelGelen.BabaAdi;
+                    personel.TcNo = personelGelen.TcNo;
+                    personel.AnaAdi = personelGelen.AnaAdi;
+                    personel.GenderId = personelGelen.GenderId;
+                    personel.MaritalStatusId = personelGelen.MaritalStatusId;
+                    personel.CityId = personelGelen.CityId;
+                    if (personelGelen.Resim != null)
+                    {
+                        var extension = Path.GetExtension(personelGelen.Resim.FileName);
+                        var newimagename = Guid.NewGuid() + extension;
+                        var location = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/PersonelResimFiles", newimagename);
+                        var stream = new FileStream(location, FileMode.Create);
+                        personelGelen.Resim.CopyTo(stream);
+                        personel.Resim = newimagename;
+                    }
+                    _context.Personels.Add(personel);
 
                 }
                 _context.SaveChanges();
@@ -111,7 +155,7 @@ namespace EmployeesTracking.Controllers
             }
             catch (Exception ex)
             {
-                return Json(new ReturnModel() { Success = false, Message = ex.Message });
+                return Json(new ReturnModel() { Success = false,Message="hatalı işlem" });
             }
         }
         public IActionResult PersonelSil(int id)
@@ -133,6 +177,39 @@ namespace EmployeesTracking.Controllers
             //return Json(jsonWriters);
             //var jsonWriters = JsonConvert.SerializeObject(employee);
             //return Json(jsonWriters);
+        }
+
+        public IActionResult PersonelDetayCardPartial(int id)
+        {
+
+            var query = (from p in _context.Personels
+                         from s in _context.Genders.Where(x => x.GenderId == p.GenderId).DefaultIfEmpty()
+                         from c in _context.Cities.Where(x => x.CityId == p.CityId).DefaultIfEmpty()
+                         from m in _context.MaritalStatus.Where(x => x.MaritalStatusId == p.MaritalStatusId).DefaultIfEmpty()
+                             //where p.GenderId==gendernumber || p.MaritalStatusId==maritalnumber
+                         select new PersonelViewModel
+                         {
+                             Id = p.Id,
+                             Adi = p.Adi,
+                             Soyadi = p.Soyadi,
+                             TcNo = p.TcNo,
+                             BabaAdi = p.BabaAdi,
+                             AnaAdi = p.AnaAdi,
+                             GenderId = p.GenderId,
+                             GenderName = s.GenderName,
+                             MaritalStatusId = p.MaritalStatusId,
+                             MaritalStatusName = m.MaritalStatusName,
+                             CityId = p.CityId,
+                             CityName = c.CityName
+                         });
+
+            var yazarlar = query.FirstOrDefault(x=>x.Id==id);
+            return PartialView("_PersonelDetayCardPartial", yazarlar);
+        }
+        public IActionResult Deneme(PersonelViewModel personelGelen)
+        {
+            ViewBag.Cities = new SelectList(_context.Cities.ToList(), "CityId", "CityName");
+            return View();
         }
     }
 }

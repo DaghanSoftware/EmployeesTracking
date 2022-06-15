@@ -1,5 +1,6 @@
 ﻿using EmployeesTracking.Entities;
 using EmployeesTracking.Models;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace EmployeesTracking.Models
 {
     public class PersonelViewModel
     {
-        public List<Personel> Personels { get; set; }
+        //public List<Personel> Personels { get; set; }
 
         public int Id { get; set; }
         public string Adi { get; set; }
@@ -21,7 +22,9 @@ namespace EmployeesTracking.Models
         public string GenderName { get; set; }
         public string MaritalStatusName { get; set; }
         public string CityName { get; set; }
-        public int MaritalStatusId { get; internal set; }
-        public int CityId { get; internal set; }
+        public int MaritalStatusId { get; set; }
+        public int CityId { get; set; }
+
+        public IFormFile Resim { get; set; }
     }
 }

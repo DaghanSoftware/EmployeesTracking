@@ -1,4 +1,5 @@
 ﻿using EmployeesTracking.Entities;
+using EmployeesTracking.Models;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EmployeesTracking.ValidationRules
 {
-    public class PersonelValidator : AbstractValidator<Personel>
+    public class PersonelValidator : AbstractValidator<PersonelViewModel>
     {
         public PersonelValidator()
         {

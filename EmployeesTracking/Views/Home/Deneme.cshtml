@@ -1,0 +1,77 @@
+﻿@model EmployeesTracking.Models.PersonelViewModel
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Profi bilgileri düzenleme</h4>
+            <form asp-action="Deneme" asp-controller="Home" class="forms-sample" enctype="multipart/form-data">
+                <div asp-validation-summary="All" id="hatalar"> </div>
+                <input type="hidden" asp-for="Id" class="form-control">
+                <div class="col-md-6">
+                    <label asp-for="Adi" class="form-label">İsim</label>
+                    <input asp-for="Adi" class="form-control">
+                    <span asp-validation-for="Adi" class="text-danger"></span>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="Soyadi" class="form-label">Soyisim</label>
+                    <input asp-for="Soyadi" class="form-control">
+                    <span asp-validation-for="Soyadi" class="text-danger"></span>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="TcNo" class="form-label">Tc Kimlik Numarası</label>
+                    <input asp-for="TcNo" maxlength="11" class="form-control">
+                    <span asp-validation-for="TcNo" class="text-danger"></span>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="BabaAdi" class="form-label">Baba Adı</label>
+                    <input asp-for="BabaAdi" class="form-control">
+                    <span asp-validation-for="BabaAdi" class="text-danger"></span>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="AnaAdi" class="form-label">Anne Adı</label>
+                    <input asp-for="AnaAdi" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Erkek</label>
+                        <input type="radio" value="1" asp-for="GenderId" />
+                        <br />
+                        <label>Kadın</label>
+                        <input type="radio" value="2" asp-for="GenderId" />
+                        <span asp-validation-for="GenderId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp="Doğum Yeri">Doğum Yeri</label>
+                        <select asp-for="CityId" asp-items="@ViewBag.Cities" class="form-control">
+                            <option selected disabled>Şehir Seçiniz</option>
+
+                        </select>
+                        <span asp-validation-for="CityId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Evli</label>
+                        <input type="radio" value="1" asp-for="MaritalStatusId" />
+                        <br />
+                        <label>Bekar</label>
+                        <input type="radio" value="2" asp-for="MaritalStatusId" />
+                        <span asp-validation-for="MaritalStatusId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Profil Resmi</label>
+                        <input type="file" asp-for="Resim" class="form-control">
+                    </div>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-gradient-primary mr-2">Güncelle</button>
+                    @*<center><button type="submit" class="btn btn-primary">@( Model.Id>0 ? "Personel Güncelle":"Personel Ekle")</button></center>*@
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
