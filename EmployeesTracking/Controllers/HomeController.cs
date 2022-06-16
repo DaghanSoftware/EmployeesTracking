@@ -1,4 +1,5 @@
-﻿using EmployeesTracking.Entities;
+﻿using ClosedXML.Excel;
+using EmployeesTracking.Entities;
 using EmployeesTracking.Models;
 using EmployeesTracking.ValidationRules;
 using FluentValidation.Results;
@@ -213,11 +214,55 @@ namespace EmployeesTracking.Controllers
             ViewBag.Cities = new SelectList(_context.Cities.ToList(), "CityId", "CityName");
             return View();
         }
-        [HttpPost]
-        public async Task<IActionResult> Index(IList<IFormFile> files,int id)
+
+        public IActionResult ExportDynamicExcelBlogList()
         {
-            ViewBag.Cities = new SelectList(_context.Cities.ToList(), "CityId", "CityName");
-            return View();
+            using (var workbook = new XLWorkbook())
+            {
+                var worksheet = workbook.Worksheets.Add("Personel Listesi");
+                worksheet.Cell(1, 1).Value = "ID";
+                worksheet.Cell(1, 2).Value = "Adı";
+                worksheet.Cell(1, 3).Value = "Soyadi";
+                worksheet.Cell(1, 4).Value = "BabaAdi";
+                worksheet.Cell(1, 5).Value = "AnaAdi";
+                worksheet.Cell(1, 6).Value = "TcNo";
+
+                int BlogRowCount = 2;
+                foreach (var item in BlogTitlelist())
+                {
+                    worksheet.Cell(BlogRowCount, 1).Value = item.Id;
+                    worksheet.Cell(BlogRowCount, 2).Value = item.Adi;
+                    worksheet.Cell(BlogRowCount, 3).Value = item.Soyadi;
+                    worksheet.Cell(BlogRowCount, 4).Value = item.BabaAdi;
+                    worksheet.Cell(BlogRowCount, 5).Value = item.AnaAdi;
+                    worksheet.Cell(BlogRowCount, 6).Value = item.TcNo;
+                    BlogRowCount++;
+                }
+
+                using (var stream = new MemoryStream())
+                {
+                    workbook.SaveAs(stream);
+                    var content = stream.ToArray();
+                    return File(content, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "PersonelListesi.xlsx");
+                }
+            }
+        }
+
+        public List<PersonelDetayCardViewModel> BlogTitlelist()
+        {
+            List<PersonelDetayCardViewModel> bm = new List<PersonelDetayCardViewModel>();
+                bm = _context.Personels.Select(x => new PersonelDetayCardViewModel
+                {
+                    Id = x.Id,
+                    Adi = x.Adi,
+                    Soyadi = x.Soyadi,
+                    BabaAdi = x.BabaAdi,
+                    AnaAdi = x.AnaAdi,
+                    TcNo = x.TcNo
+
+                }).ToList();
+
+            return bm;
         }
     }
 }

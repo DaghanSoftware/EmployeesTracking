@@ -63,7 +63,9 @@
                             <hr />
                             <label for="vbtn-radio2">Başlama Tarihi</label>
                             <input class="form-control me-2" id="tarih" type="date" placeholder="Personel Ara" aria-label="Ara">
-
+                            <div style="text-align:center">
+                                <button  class="btn btn-outline-primary" onclick="PersonelListesiniIndır()"> Excel Listesini İndir </button>
+                            </div>
 
 
                             <div class="modal-footer">
@@ -134,9 +136,6 @@
         });
     }
 
-    //$("#btnPersonelEkle").click(function () {
-    //    PersonelDetayCardPartial(0);
-    //});
     function PersonelDetayCardPartial(personelId) {
         $.ajax({
             url: '/Home/PersonelDetayCardPartial',
@@ -173,8 +172,12 @@
             }
         });
     }
-    
 
+
+
+    function PersonelListesiniIndır() {
+        window.open("/Home/ExportDynamicExcelBlogList");
+    }
 
 
 

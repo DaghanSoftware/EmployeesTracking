@@ -50,6 +50,10 @@
               "target": "Package",
               "version": "[0.95.4, )"
             },
+            "ClosedXML.Report": {
+              "target": "Package",
+              "version": "[0.2.4, )"
+            },
             "EntityFramework": {
               "target": "Package",
               "version": "[6.4.4, )"
