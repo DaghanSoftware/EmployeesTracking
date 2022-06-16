@@ -5,45 +5,45 @@
             <div class="modal-content">
                 <form id="formPersonelDetay" asp-action="PersonelKaydet" style="padding:40px 50px;" enctype="multipart/form-data" class="row g-3">
                     <div asp-validation-summary="All" id="hatalar"> </div>
-                    <input type="hidden" asp-for="Id" class="form-control">
+                    <input id="Id" type="hidden" asp-for="Id" class="form-control">
                     <div class="col-md-6">
                         <label asp-for="Adi" class="form-label">İsim</label>
-                        <input asp-for="Adi" class="form-control">
+                        <input id="Adi" asp-for="Adi" class="form-control">
                         <span asp-validation-for="Adi" class="text-danger"></span>
                     </div>
                     <div class="col-md-6">
                         <label asp-for="Soyadi" class="form-label">Soyisim</label>
-                        <input asp-for="Soyadi" class="form-control">
+                        <input id="Soyadi" asp-for="Soyadi" class="form-control">
                         <span asp-validation-for="Soyadi" class="text-danger"></span>
                     </div>
                     <div class="col-md-6">
                         <label asp-for="TcNo" class="form-label">Tc Kimlik Numarası</label>
-                        <input asp-for="TcNo" maxlength="11" class="form-control">
+                        <input id="TcNo" asp-for="TcNo" maxlength="11" class="form-control">
                         <span asp-validation-for="TcNo" class="text-danger"></span>
                     </div>
                     <div class="col-md-6">
                         <label asp-for="BabaAdi" class="form-label">Baba Adı</label>
-                        <input asp-for="BabaAdi" class="form-control">
+                        <input id="BabaAdi" asp-for="BabaAdi" class="form-control">
                         <span asp-validation-for="BabaAdi" class="text-danger"></span>
                     </div>
                     <div class="col-md-6">
                         <label asp-for="AnaAdi" class="form-label">Anne Adı</label>
-                        <input asp-for="AnaAdi" class="form-control">
+                        <input id="AnaAdi" asp-for="AnaAdi" class="form-control">
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Erkek</label>
-                            <input type="radio" value="1" asp-for="GenderId" />
+                            <input  type="radio" value="1" asp-for="GenderId" />
                             <br />
                             <label>Kadın</label>
-                            <input type="radio" value="2" asp-for="GenderId" />
+                            <input  type="radio" value="2" asp-for="GenderId" />
                             <span asp-validation-for="GenderId" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label asp="Doğum Yeri">Doğum Yeri</label>
-                            <select asp-for="CityId" asp-items="@ViewBag.Cities" class="form-control">
+                            <select id="CityId" asp-for="CityId" asp-items="@ViewBag.Cities" class="form-control">
                                 <option selected disabled>Şehir Seçiniz</option>
 
                             </select>
@@ -53,17 +53,17 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Evli</label>
-                            <input type="radio" value="1" asp-for="MaritalStatusId" />
+                            <input id="MaritalStatusId" type="radio" value="1" asp-for="MaritalStatusId" />
                             <br />
                             <label>Bekar</label>
-                            <input type="radio" value="2" asp-for="MaritalStatusId" />
+                            <input id="MaritalStatusId" type="radio" value="2" asp-for="MaritalStatusId" />
                             <span asp-validation-for="MaritalStatusId" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Profil Resmi</label>
-                            <input id="resimm" type="file" asp-for="Resim" class="form-control">
+                            <input id="Resim" type="file" asp-for="Resim" class="form-control">
                         </div>
                     </div>
                     <div class="col-12">
@@ -85,10 +85,33 @@
         var form = $(this);
         var url = form.attr('action');
 
+        //Resim Yükleme işlemleri başlangıç
+        var input = document.getElementById("Resim");
+        var files = input.files;
+        var formData = new FormData();
+        for (var i = 0; i != files.length; i++) {
+            formData.append("Resim", files[i]);
+        }
+        //Resim Yükleme işlemleri son
+        formData.append('Adi', document.getElementById("Adi").value);
+        formData.append('Id', document.getElementById("Id").value);
+        formData.append('TcNo', document.getElementById("TcNo").value);
+        formData.append('Soyadi', document.getElementById("Soyadi").value);
+        formData.append('BabaAdi', document.getElementById("BabaAdi").value);
+        formData.append('AnaAdi', document.getElementById("AnaAdi").value);
+        formData.append('CityId', document.getElementById("CityId").value);
+        formData.append('GenderId', $("input[name='GenderId']:checked").val());
+        formData.append('MaritalStatusId', $("input[name='MaritalStatusId']:checked").val());
+
+
+        
+
         $.ajax({
             type: "POST",
             url: url,
-            data: form.serialize(),
+            data: formData,
+            processData: false,
+            contentType: false,
             success: function (result) {
                 console.log(result);
                 if (result.success) {

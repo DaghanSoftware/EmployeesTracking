@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace EmployeesTracking.Controllers
 {
@@ -93,7 +94,7 @@ namespace EmployeesTracking.Controllers
         }
 
         [HttpPost]
-        public IActionResult PersonelKaydet(PersonelViewModel personelGelen, string hatalar)
+        public IActionResult PersonelKaydet(PersonelViewModel personelGelen)
         {
             try
             {
@@ -120,7 +121,7 @@ namespace EmployeesTracking.Controllers
                     {
                         var extension = Path.GetExtension(personelGelen.Resim.FileName);
                         var newimagename = Guid.NewGuid() + extension;
-                        var location = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/PersonelResimFiles", newimagename);
+                        var location = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", newimagename);
                         var stream = new FileStream(location, FileMode.Create);
                         personelGelen.Resim.CopyTo(stream);
                         personel.Resim = newimagename;
@@ -141,7 +142,7 @@ namespace EmployeesTracking.Controllers
                     {
                         var extension = Path.GetExtension(personelGelen.Resim.FileName);
                         var newimagename = Guid.NewGuid() + extension;
-                        var location = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/PersonelResimFiles", newimagename);
+                        var location = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", newimagename);
                         var stream = new FileStream(location, FileMode.Create);
                         personelGelen.Resim.CopyTo(stream);
                         personel.Resim = newimagename;
@@ -187,7 +188,7 @@ namespace EmployeesTracking.Controllers
                          from c in _context.Cities.Where(x => x.CityId == p.CityId).DefaultIfEmpty()
                          from m in _context.MaritalStatus.Where(x => x.MaritalStatusId == p.MaritalStatusId).DefaultIfEmpty()
                              //where p.GenderId==gendernumber || p.MaritalStatusId==maritalnumber
-                         select new PersonelViewModel
+                         select new PersonelDetayCardViewModel
                          {
                              Id = p.Id,
                              Adi = p.Adi,
@@ -200,13 +201,20 @@ namespace EmployeesTracking.Controllers
                              MaritalStatusId = p.MaritalStatusId,
                              MaritalStatusName = m.MaritalStatusName,
                              CityId = p.CityId,
-                             CityName = c.CityName
+                             CityName = c.CityName,
+                             Resim = p.Resim
                          });
 
             var yazarlar = query.FirstOrDefault(x=>x.Id==id);
             return PartialView("_PersonelDetayCardPartial", yazarlar);
         }
-        public IActionResult Deneme(PersonelViewModel personelGelen)
+        public IActionResult Deneme(IFormFile Resim)
+        {
+            ViewBag.Cities = new SelectList(_context.Cities.ToList(), "CityId", "CityName");
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Index(IList<IFormFile> files,int id)
         {
             ViewBag.Cities = new SelectList(_context.Cities.ToList(), "CityId", "CityName");
             return View();
