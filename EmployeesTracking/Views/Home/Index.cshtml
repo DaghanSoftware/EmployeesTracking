@@ -20,27 +20,49 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
-
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <div style="display:flex" class="yazi">
+                &nbsp;
+                &nbsp;
+                <label>Başlama Tarihi</label>
+                <input  class="form-control me-2" id="baslangictarih" asp-for="DogumTarihi" max="@DateTime.Now.ToString("yyyy-MM-ddThh:mm")" min="@DateTime.Now.AddYears(-120).ToString("yyyy-MM-ddThh:mm")" />
+                <label>Bitiş Tarihi</label>
+                &nbsp;
+                <input class="form-control me-2" id="bitistarih" asp-for="DogumTarihi" max="@DateTime.Now.ToString("yyyy-MM-ddThh:mm")"  min="@DateTime.Now.AddYears(-120).ToString("yyyy-MM-ddThh:mm")" />
+                <button type="button" class="btn btn-info" id="btnTariheGoreFiltreleme">Ara</button>
+            </div>
+        </div>
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-outline-primary" onclick="PersonelListesiniIndır()"> Personel Listesini İndir </button>
+        </div>
+        <div class="col-md-2">
+            <button type="button" class="btn btn-info" id="btnPersonelEkle">Personel Ekle</button>
+        </div>
+    </div>
+    <hr>
     <div class="row">
         <div class="col-md-2">
 
-            <div class="modal-dialog">
                 <div class="modal-content">
                     <div style="text-align:center">
-                        <button type="button" class="btn btn-info" id="btnPersonelEkle">Personel Ekle</button>
+                        @*<button type="button" class="btn btn-info" id="btnPersonelEkle">Personel Ekle</button>*@
                     </div>
 
                     <div class="modal-header">
-                        <h3 class="modal-title">Kriterlere Göre Filtreleme</h3>
+                        <h5 class="modal-title">Kriterlere Göre Filtreleme</h5>
                     </div>
 
                     <form asp-controller="Home" asp-action="Index" method="get">
                         <center>
 
-                            <input class="form-control me-2" id="personeladi" name="q" type="text" placeholder="Personel Ara" aria-label="Ara">
+                            <input class="form-control me-2" id="personeladi" name="q" type="text" placeholder="Personel Adı" aria-label="Ara">
                             <br />
                             <select asp-items="@ViewBag.Cities" id="sehir2" name="sehir" class="form-control">
-                                <option selected disabled>Şehir Seçiniz</option>
+                                <option selected disabled>Doğum Yeri</option>
 
                             </select>
                             <br />
@@ -61,16 +83,10 @@
                             <label class="btn btn-outline-danger" for="vbtn-radio2">Bekar</label>
                             <br />
                             <hr />
-                            <label for="vbtn-radio2">Başlama Tarihi</label>
-                            <input class="form-control me-2" id="tarih" type="date" placeholder="Personel Ara" aria-label="Ara">
-                            <div style="text-align:center">
-                                <button  class="btn btn-outline-primary" onclick="PersonelListesiniIndır()"> Excel Listesini İndir </button>
-                            </div>
 
-
-                            <div class="modal-footer">
-                                <div style="text-align:center">
-                                    <button type="button" id="btnPersonelleriGetir" class="btn btn-outline-primary"> Filterlenen Personeli Getirme Listesi </button>
+                            <div class="modal-footer" text-align: center;>
+                                <div>
+                                    <button style="height: 50px; width: 200px; " type="button" id="btnPersonelleriGetir" class="btn btn-outline-primary"> Filtrele </button>
                                 </div>
 
                             </div>
@@ -78,7 +94,6 @@
                     </form>
                 </div>
             </div>
-        </div>
         <div class="col-md-10">
             <div id="divPersoneller">
             </div>
@@ -108,9 +123,18 @@
             gendernumber: $("input[name='gendernumber']:checked").val(),
             maritalnumber: $("input[name='maritalnumber']:checked").val(),
             sehir: $('#sehir2').val(),
+            baslangictarih: $("#baslangictarih").val(),
+            bitistarih: $("#bitistarih").val(),
         };
         $("#divPersoneller").load("/Home/PersonelListesiPartial", filtreler);
     }
+    $("#btnTariheGoreFiltreleme").click(function () {
+        let filtreler = {
+            baslangictarih: $("#baslangictarih").val(),
+            bitistarih: $("#bitistarih").val(),
+        };
+        $("#divPersoneller").load("/Home/PersonelListesiPartial", filtreler);
+    });
 
 
     $("#btnPersonelEkle").click(function ()

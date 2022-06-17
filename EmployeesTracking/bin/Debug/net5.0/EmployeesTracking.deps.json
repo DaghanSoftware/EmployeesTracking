@@ -38,6 +38,7 @@
           "EntityFramework": "6.4.4",
           "FluentValidation": "11.0.2",
           "FluentValidation.AspNetCore": "11.0.2",
+          "LinqKit": "1.2.2",
           "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": "5.0.17",
           "Microsoft.AspNetCore.Mvc.TagHelpers": "2.2.0",
           "Microsoft.EntityFrameworkCore": "5.0.0",
@@ -476,6 +477,32 @@
         },
         "compile": {
           "lib/netstandard2.0/JetBrains.Annotations.dll": {}
+        }
+      },
+      "LinqKit/1.2.2": {
+        "dependencies": {
+          "EntityFramework": "6.4.4",
+          "LinqKit.Core": "1.2.2"
+        },
+        "runtime": {
+          "lib/netstandard2.1/LinqKit.dll": {
+            "assemblyVersion": "1.2.2.0",
+            "fileVersion": "1.2.2.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.1/LinqKit.dll": {}
+        }
+      },
+      "LinqKit.Core/1.2.2": {
+        "runtime": {
+          "lib/netstandard2.1/LinqKit.Core.dll": {
+            "assemblyVersion": "1.2.2.0",
+            "fileVersion": "1.2.2.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.1/LinqKit.Core.dll": {}
         }
       },
       "Microsoft.AspNetCore.Antiforgery/2.2.0": {
@@ -4496,6 +4523,20 @@
       "sha512": "sha512-n9JSw5Z+F+6gp9vSv4aLH6p/bx3GAYA6FZVq1wJq/TJySv/kPgFKLGFeS7A8Xa5X4/GWorh5gd43yjamUgnBNA==",
       "path": "jetbrains.annotations/2021.1.0",
       "hashPath": "jetbrains.annotations.2021.1.0.nupkg.sha512"
+    },
+    "LinqKit/1.2.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-W7StCkp27bQvr/RCzEXFGbZL491xm2uetr/xs8T3skDocna6Pi2eLazQ8TQozSkSTZwY0hSgM++bR43dLxZTuQ==",
+      "path": "linqkit/1.2.2",
+      "hashPath": "linqkit.1.2.2.nupkg.sha512"
+    },
+    "LinqKit.Core/1.2.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ORnvvVKcuAak657JmRTRw4CGjo/1Aba/dMDYUlSrT9Gv2/LBKusR+IQrGR3sOLdGVQLyHvLlCUsptqWQ/XIT1Q==",
+      "path": "linqkit.core/1.2.2",
+      "hashPath": "linqkit.core.1.2.2.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Antiforgery/2.2.0": {
       "type": "package",

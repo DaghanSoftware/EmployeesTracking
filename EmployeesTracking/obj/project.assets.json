@@ -131,6 +131,28 @@
           "lib/netstandard2.0/JetBrains.Annotations.dll": {}
         }
       },
+      "LinqKit/1.2.2": {
+        "type": "package",
+        "dependencies": {
+          "EntityFramework": "6.3.0",
+          "LinqKit.Core": "1.2.2"
+        },
+        "compile": {
+          "lib/netstandard2.1/LinqKit.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/LinqKit.dll": {}
+        }
+      },
+      "LinqKit.Core/1.2.2": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/LinqKit.Core.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/LinqKit.Core.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Antiforgery/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -3658,6 +3680,51 @@
         "lib/netstandard2.0/JetBrains.Annotations.xml",
         "lib/portable40-net40+sl5+win8+wp8+wpa81/JetBrains.Annotations.dll",
         "lib/portable40-net40+sl5+win8+wp8+wpa81/JetBrains.Annotations.xml"
+      ]
+    },
+    "LinqKit/1.2.2": {
+      "sha512": "W7StCkp27bQvr/RCzEXFGbZL491xm2uetr/xs8T3skDocna6Pi2eLazQ8TQozSkSTZwY0hSgM++bR43dLxZTuQ==",
+      "type": "package",
+      "path": "linqkit/1.2.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/LinqKit.dll",
+        "lib/net45/LinqKit.xml",
+        "lib/netstandard2.1/LinqKit.dll",
+        "lib/netstandard2.1/LinqKit.xml",
+        "linqkit.1.2.2.nupkg.sha512",
+        "linqkit.nuspec"
+      ]
+    },
+    "LinqKit.Core/1.2.2": {
+      "sha512": "ORnvvVKcuAak657JmRTRw4CGjo/1Aba/dMDYUlSrT9Gv2/LBKusR+IQrGR3sOLdGVQLyHvLlCUsptqWQ/XIT1Q==",
+      "type": "package",
+      "path": "linqkit.core/1.2.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net35/LinqKit.Core.dll",
+        "lib/net35/LinqKit.Core.xml",
+        "lib/net40/LinqKit.Core.dll",
+        "lib/net40/LinqKit.Core.xml",
+        "lib/net45/LinqKit.Core.dll",
+        "lib/net45/LinqKit.Core.xml",
+        "lib/netstandard1.3/LinqKit.Core.dll",
+        "lib/netstandard1.3/LinqKit.Core.xml",
+        "lib/netstandard2.0/LinqKit.Core.dll",
+        "lib/netstandard2.0/LinqKit.Core.xml",
+        "lib/netstandard2.1/LinqKit.Core.dll",
+        "lib/netstandard2.1/LinqKit.Core.xml",
+        "lib/portable40-net40+sl5+win8+wp8+wpa81/LinqKit.Core.dll",
+        "lib/portable40-net40+sl5+win8+wp8+wpa81/LinqKit.Core.xml",
+        "lib/portable45-net45+win8+wp8+wpa81/LinqKit.Core.dll",
+        "lib/portable45-net45+win8+wp8+wpa81/LinqKit.Core.xml",
+        "lib/uap10.0.10240/LinqKit.Core.dll",
+        "lib/uap10.0.10240/LinqKit.Core.pri",
+        "lib/uap10.0.10240/LinqKit.Core.xml",
+        "linqkit.core.1.2.2.nupkg.sha512",
+        "linqkit.core.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Antiforgery/2.2.0": {
@@ -10601,6 +10668,7 @@
       "EntityFramework >= 6.4.4",
       "FluentValidation >= 11.0.2",
       "FluentValidation.AspNetCore >= 11.0.2",
+      "LinqKit >= 1.2.2",
       "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation >= 5.0.17",
       "Microsoft.AspNetCore.Mvc.TagHelpers >= 2.2.0",
       "Microsoft.EntityFrameworkCore >= 5.0.0",
@@ -10676,6 +10744,10 @@
           "FluentValidation.AspNetCore": {
             "target": "Package",
             "version": "[11.0.2, )"
+          },
+          "LinqKit": {
+            "target": "Package",
+            "version": "[1.2.2, )"
           },
           "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
             "target": "Package",

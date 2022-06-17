@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "H7BB0PXv96XEPsY9481T6nwBlL/L6aMJjRFG6vGNxlnfLsd7NH177G3qP19rMkWZc16he5nguGxGrMpTClyW/A==",
+  "dgSpecHash": "uXKyAgWGynhlCKA4aRH0qTg+oECcvH7/fde0IUnllV/fj1X7Aa+hFfzcKtDazQAKmHGnfC50USw+lxVOWJLWkQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\EmployeesTracking\\EmployeesTracking.csproj",
   "expectedPackageFiles": [
@@ -14,6 +14,8 @@
     "C:\\Users\\STElb\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.0.2\\fluentvalidation.dependencyinjectionextensions.11.0.2.nupkg.sha512",
     "C:\\Users\\STElb\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\STElb\\.nuget\\packages\\jetbrains.annotations\\2021.1.0\\jetbrains.annotations.2021.1.0.nupkg.sha512",
+    "C:\\Users\\STElb\\.nuget\\packages\\linqkit\\1.2.2\\linqkit.1.2.2.nupkg.sha512",
+    "C:\\Users\\STElb\\.nuget\\packages\\linqkit.core\\1.2.2\\linqkit.core.1.2.2.nupkg.sha512",
     "C:\\Users\\STElb\\.nuget\\packages\\microsoft.aspnetcore.antiforgery\\2.2.0\\microsoft.aspnetcore.antiforgery.2.2.0.nupkg.sha512",
     "C:\\Users\\STElb\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\STElb\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",

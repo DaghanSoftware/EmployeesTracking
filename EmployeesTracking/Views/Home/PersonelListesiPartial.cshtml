@@ -40,9 +40,9 @@
                         <td>@Html.DisplayFor(modelItem => employee.GenderName)</td>
                         <td>@Html.DisplayFor(modelItem => employee.MaritalStatusName)</td>
                         <td>@Html.DisplayFor(modelItem => employee.CityName)</td>
-                        <td><button type="button" class="btn btn-primary"  onclick="PersonelDetay(@employee.Id);" >Personel Güncelle</button></td>
-                        <td><button type="button" class="btn btn-info" onclick="PersonelSil(@employee.Id)">Personel Sil</button></td>
-                        <td><a class="btn btn-danger" onclick="PersonelDetayCardPartial(@employee.Id)">Detay</a></td>
+                        <td><button type="button" class="btn btn-primary"  onclick="PersonelDetay(@employee.Id);" >Güncelle</button></td>
+                        <td><button type="button" class="btn btn-danger" onclick="PersonelSil(@employee.Id)">Sil</button></td>
+                        <td><a class="btn btn-warning" onclick="PersonelDetayCardPartial(@employee.Id)">Detay</a></td>
                     </tr>
                 }
             }

@@ -20,6 +20,7 @@ namespace EmployeesTracking.Entities
         public Int64 TcNo { get; set; }
         public int DistrictId { get; set; }
         public string Resim { get; set; }
+        public DateTime DogumTarihi { get; set; }
 
     }
 }

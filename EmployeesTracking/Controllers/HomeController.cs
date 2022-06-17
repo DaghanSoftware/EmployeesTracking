@@ -3,6 +3,7 @@ using EmployeesTracking.Entities;
 using EmployeesTracking.Models;
 using EmployeesTracking.ValidationRules;
 using FluentValidation.Results;
+using LinqKit;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -30,9 +31,27 @@ namespace EmployeesTracking.Controllers
             return View();
         }
 
-        public IActionResult PersonelListesiPartial(string q, int gendernumber, int maritalnumber, int sehir, int page = 1)
+        public IActionResult PersonelListesiPartial(string q, int gendernumber, int maritalnumber, int sehir,DateTime baslangictarih,DateTime bitistarih, int page = 1)
         {
-            var query = (from p in _context.Personels
+            var predicate = PredicateBuilder.New<Personel>();
+            predicate = predicate.And(te => te.Id > 0);
+
+            if (gendernumber > 0)
+                predicate = predicate.And(te => te.GenderId == gendernumber);
+            if (maritalnumber > 0)
+                predicate = predicate.And(te => te.MaritalStatusId == maritalnumber);
+            if (sehir > 0)
+                predicate = predicate.And(te => te.CityId == sehir);
+            if (baslangictarih != DateTime.MinValue && bitistarih != DateTime.MinValue)
+            {
+                predicate = predicate.And(te => te.DogumTarihi >= baslangictarih && te.DogumTarihi <= bitistarih);
+            }
+            if (!string.IsNullOrEmpty(q))
+            {
+                predicate = predicate.And(te => te.Adi.ToLower().Contains(q.ToLower()) || te.Soyadi.ToLower().Contains(q.ToLower()));
+            }
+
+            var query = (from p in _context.Personels.Where(predicate)
                          from s in _context.Genders.Where(x => x.GenderId == p.GenderId).DefaultIfEmpty()
                          from c in _context.Cities.Where(x => x.CityId == p.CityId).DefaultIfEmpty()
                          from m in _context.MaritalStatus.Where(x => x.MaritalStatusId == p.MaritalStatusId).DefaultIfEmpty()
@@ -51,20 +70,9 @@ namespace EmployeesTracking.Controllers
                              MaritalStatusName = m.MaritalStatusName,
                              CityId = p.CityId,
                              CityName = c.CityName
-                         });
+                         }).ToList();
 
-            if (gendernumber > 0)
-                query = query.Where(x => x.GenderId == gendernumber);
-            if (maritalnumber > 0)
-                query = query.Where(x => x.MaritalStatusId == maritalnumber);
-            if (sehir > 0)
-                query = query.Where(x => x.CityId == sehir);
-            if (!string.IsNullOrEmpty(q))
-            {
-                query = query.Where(i => i.Adi.ToLower().Contains(q.ToLower()) || i.Soyadi.ToLower().Contains(q.ToLower()));
-            }
-            var yazarlar = query.ToList();
-            return View(yazarlar);
+            return View(query);
         }
         public IActionResult PersonelPartial(int? id)
         {
@@ -84,12 +92,15 @@ namespace EmployeesTracking.Controllers
                     AnaAdi = personel.AnaAdi,
                     GenderId = personel.GenderId,
                     MaritalStatusId = personel.MaritalStatusId,
-                    CityId = personel.CityId
-                };
+                    CityId = personel.CityId,
+                    DogumTarihi = DateTime.Parse(personel.DogumTarihi.ToShortDateString())
+            };
             }
             else
             {
-                model = new PersonelViewModel();
+                model = new PersonelViewModel { 
+                DogumTarihi=  DateTime.Parse(DateTime.Now.ToShortDateString())
+                };
             }
             return PartialView("_PersonelPartial", model);
         }
@@ -118,6 +129,7 @@ namespace EmployeesTracking.Controllers
                     personel.GenderId = personelGelen.GenderId;
                     personel.MaritalStatusId = personelGelen.MaritalStatusId;
                     personel.CityId = personelGelen.CityId;
+                    personel.DogumTarihi = DateTime.Parse(personelGelen.DogumTarihi.ToShortDateString());
                     if (personelGelen.Resim != null)
                     {
                         var extension = Path.GetExtension(personelGelen.Resim.FileName);
@@ -139,6 +151,7 @@ namespace EmployeesTracking.Controllers
                     personel.GenderId = personelGelen.GenderId;
                     personel.MaritalStatusId = personelGelen.MaritalStatusId;
                     personel.CityId = personelGelen.CityId;
+                    personel.DogumTarihi = DateTime.Parse(personelGelen.DogumTarihi.ToShortDateString());
                     if (personelGelen.Resim != null)
                     {
                         var extension = Path.GetExtension(personelGelen.Resim.FileName);
@@ -208,11 +221,6 @@ namespace EmployeesTracking.Controllers
 
             var yazarlar = query.FirstOrDefault(x=>x.Id==id);
             return PartialView("_PersonelDetayCardPartial", yazarlar);
-        }
-        public IActionResult Deneme(IFormFile Resim)
-        {
-            ViewBag.Cities = new SelectList(_context.Cities.ToList(), "CityId", "CityName");
-            return View();
         }
 
         public IActionResult ExportDynamicExcelBlogList()

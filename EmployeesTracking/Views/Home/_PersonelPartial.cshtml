@@ -33,10 +33,10 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Erkek</label>
-                            <input  type="radio" value="1" asp-for="GenderId" />
+                            <input type="radio" value="1" asp-for="GenderId" />
                             <br />
                             <label>Kadın</label>
-                            <input  type="radio" value="2" asp-for="GenderId" />
+                            <input type="radio" value="2" asp-for="GenderId" />
                             <span asp-validation-for="GenderId" class="text-danger"></span>
                         </div>
                     </div>
@@ -64,6 +64,12 @@
                         <div class="form-group">
                             <label>Profil Resmi</label>
                             <input id="Resim" type="file" asp-for="Resim" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Doğum Tarihi</label>
+                            <input class="form-control me-2" id="DogumTarihi" asp-for="DogumTarihi" max="@DateTime.Now.ToString("yyyy-MM-ddThh:mm")" min="@DateTime.Now.AddYears(-120).ToString("yyyy-MM-ddThh:mm")" />
                         </div>
                     </div>
                     <div class="col-12">
@@ -100,6 +106,7 @@
         formData.append('BabaAdi', document.getElementById("BabaAdi").value);
         formData.append('AnaAdi', document.getElementById("AnaAdi").value);
         formData.append('CityId', document.getElementById("CityId").value);
+        formData.append('DogumTarihi', document.getElementById("DogumTarihi").value);
         formData.append('GenderId', $("input[name='GenderId']:checked").val());
         formData.append('MaritalStatusId', $("input[name='MaritalStatusId']:checked").val());
 
