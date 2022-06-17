@@ -24,6 +24,8 @@ namespace EmployeesTracking.Models
         public string CityName { get; set; }
         public int MaritalStatusId { get; set; }
         public int CityId { get; set; }
+        public int DistrictId { get; set; }
+        public string DistrictName { get; set; }
         public DateTime DogumTarihi { get; set; }
         public IFormFile Resim { get; set; }
     }

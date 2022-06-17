@@ -55,7 +55,8 @@ namespace EmployeesTracking.Controllers
                          from s in _context.Genders.Where(x => x.GenderId == p.GenderId).DefaultIfEmpty()
                          from c in _context.Cities.Where(x => x.CityId == p.CityId).DefaultIfEmpty()
                          from m in _context.MaritalStatus.Where(x => x.MaritalStatusId == p.MaritalStatusId).DefaultIfEmpty()
-                         //where p.GenderId==gendernumber || p.MaritalStatusId==maritalnumber
+                         from d in _context.Districts.Where(x => x.DistrictId == p.DistrictId).DefaultIfEmpty()
+                             //where p.GenderId==gendernumber || p.MaritalStatusId==maritalnumber
                          select new PersonelViewModel
                          {
                              Id = p.Id,
@@ -69,7 +70,8 @@ namespace EmployeesTracking.Controllers
                              MaritalStatusId = p.MaritalStatusId,
                              MaritalStatusName = m.MaritalStatusName,
                              CityId = p.CityId,
-                             CityName = c.CityName
+                             CityName = c.CityName,
+                             DistrictName=d.DistrictName
                          }).ToList();
 
             return View(query);
@@ -77,6 +79,7 @@ namespace EmployeesTracking.Controllers
         public IActionResult PersonelPartial(int? id)
         {
             ViewBag.Cities = new SelectList(_context.Cities.ToList(), "CityId", "CityName");
+            ViewBag.Ilce = new SelectList(_context.Districts.Where(x => x.CityID == id).ToList(), "DistrictId", "DistrictName");
             PersonelViewModel model;
             Personel personel;
             if (id > 0)
@@ -271,6 +274,16 @@ namespace EmployeesTracking.Controllers
                 }).ToList();
 
             return bm;
+        }
+
+        public IActionResult PersonelIlcePartial(int? id)
+        {
+            if (id>0)
+            {
+                ViewBag.Ilce = new SelectList(_context.Districts.Where(x => x.CityID == id).ToList(), "DistrictId", "DistrictName");
+                return PartialView("_PersonelIlcePartial", ViewBag.Ilce);
+            }
+            return PartialView("_PersonelIlcePartial");
         }
     }
 }
