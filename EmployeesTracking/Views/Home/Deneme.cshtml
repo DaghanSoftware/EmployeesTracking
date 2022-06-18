@@ -1,0 +1,71 @@
+﻿@model EmployeesTracking.Models.PersonelViewModel
+    <head>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    </head>
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <form method="post">
+            <select asp-items="@ViewBag.Cities" id="sehir2" name="sehir" onchange="IlceleriListele(this.value)" class="form-control">
+                <option selected disabled>Doğum Yeri</option>
+
+            </select>
+            <div class="form-group">
+                <label asp-for="DistrictId" class="control-label"></label>
+                <select asp-for="DistrictId" id="Ilceler" class="form-control"></select>
+            </div>
+            @*@Html.DropDownListFor(m => m.DistrictId, new SelectList(""), "-- İlçe Seçiniz--", new { @class = "form-control" })*@
+        </form>
+    </div>
+</div>
+<script>
+    function IlceleriListele(id) {
+        $("#Ilceler").empty();
+        $.ajax({
+            url: '/Home/PersonelIlcePartial',
+            dataType: 'json',
+            data: {
+                id: id
+            },
+            type: 'GET',
+            success: function (response) {
+                $("#Ilceler").append('<option value="' + -1 + '">' +
+                    "Select İlçe"+'</option>');
+
+                $.each(response, function (i, city) {
+                    $("#Ilceler").append('<option value="' + city.value + '">'+ city.text + '</option>');
+                });
+            },
+            error: function (err) {
+
+                swal("Bilgi! ", err.status + "-" + err.statusText, "error");
+            }
+        });
+    }
+</script>
+@*<script type="text/javascript">
+
+    function IlceleriListele(id) {
+        $.ajax({
+            url: '/Home/GetCitiesAsync',
+            data: {
+                id: id
+            },
+            type: 'GET',
+            success: function (response) {
+                debugger;
+                $("#Ilceler").append('<option value="0">(Select a city...)</option>');
+                $.each(response, function (i, city) {
+                    $("#Ilceler").append('<option value="'
+                            + city.DistrictId +'">'
+                            + city.DistrictName +'</option>');
+                    });
+            },
+            error: function (err) {
+
+                swal("Bilgi! ", err.status + "-" + err.statusText, "error");
+            }
+        });
+    }
+</script>*@

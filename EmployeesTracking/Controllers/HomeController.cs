@@ -278,12 +278,31 @@ namespace EmployeesTracking.Controllers
 
         public IActionResult PersonelIlcePartial(int? id)
         {
-            if (id>0)
+            //if (id>0)
+            //{
+            //    ViewBag.Ilce = new SelectList(_context.Districts.Where(x => x.CityID == id).ToList(), "DistrictId", "DistrictName");
+            //    return PartialView("_PersonelIlcePartial", ViewBag.Ilce);
+            //}
+            //return PartialView("_PersonelIlcePartial");
+
+            if (id > 0)
             {
-                ViewBag.Ilce = new SelectList(_context.Districts.Where(x => x.CityID == id).ToList(), "DistrictId", "DistrictName");
-                return PartialView("_PersonelIlcePartial", ViewBag.Ilce);
+                //ViewBag.Ilce = new SelectList(_context.Districts.Where(x => x.CityID == id).ToList(), "DistrictId", "DistrictName");
+
+                var result =_context.Districts.Where(x => x.CityID == id).ToList();
+                return Json(new SelectList(result, "DistrictId", "DistrictName"));
             }
-            return PartialView("_PersonelIlcePartial");
+            return View();
+        }
+
+        public IActionResult Deneme()
+        {
+            ViewBag.Cities = new SelectList(_context.Cities.ToList(), "CityId", "CityName");
+            return View();
+        }
+        public IActionResult GetCitiesAsync(int? id)
+        {
+            return Json(_context.Districts.Where(x => x.CityID == id).ToList());
         }
     }
 }
