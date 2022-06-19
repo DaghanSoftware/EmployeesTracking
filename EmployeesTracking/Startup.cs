@@ -29,7 +29,11 @@ namespace EmployeesTracking
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<EmployeesContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DatabaseEmployees")));
-        
+
+            //Session iþlemi için eklenen servicesler baþlangýç
+            services.AddSession();
+            services.AddDistributedMemoryCache();
+            //Session iþlemi için eklenen servicesler son
 
             var mvcBuilder = services.AddControllersWithViews().AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<Startup>());
 
@@ -46,7 +50,7 @@ namespace EmployeesTracking
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseSession();
             app.UseRouting();
             app.UseStaticFiles();
             app.UseEndpoints(endpoints =>

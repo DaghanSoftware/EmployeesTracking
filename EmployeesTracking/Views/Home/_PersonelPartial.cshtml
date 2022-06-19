@@ -43,13 +43,24 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label asp="Doğum Yeri">Doğum Yeri</label>
-                            <select id="CityId" asp-for="CityId" asp-items="@ViewBag.Cities" class="form-control">
+                            <select id="CityId" asp-for="CityId" asp-items="@ViewBag.Cities" onchange="IlceEklemeIcıniListele(this.value)" class="form-control">
                                 <option selected disabled>Şehir Seçiniz</option>
 
                             </select>
                             <span asp-validation-for="CityId" class="text-danger"></span>
                         </div>
                     </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp="Doğum Yeri">İlçe</label>
+                            <select id="DistrictId" asp-items="@ViewBag.Ilceler" asp-for="DistrictId" class="form-control">
+                                <option selected disabled>Şehir seçiniz...</option>
+                            </select>
+                            <span asp-validation-for="DistrictId" class="text-danger"></span>
+                        </div>
+                    </div>
+
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Evli</label>
@@ -58,16 +69,6 @@
                             <label>Bekar</label>
                             <input id="MaritalStatusId" type="radio" value="2" asp-for="MaritalStatusId" />
                             <span asp-validation-for="MaritalStatusId" class="text-danger"></span>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label asp="Doğum Yeri">İlçe</label>
-                            <select id="IlceId" asp-for="DistrictId" asp-items="@ViewBag.Cities" class="form-control">
-                                <option selected disabled>Şehir Seçiniz</option>
-
-                            </select>
-                            <span asp-validation-for="DistrictId" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -117,9 +118,11 @@
         formData.append('BabaAdi', document.getElementById("BabaAdi").value);
         formData.append('AnaAdi', document.getElementById("AnaAdi").value);
         formData.append('CityId', document.getElementById("CityId").value);
+        formData.append('DistrictId', document.getElementById("DistrictId").value);
         formData.append('DogumTarihi', document.getElementById("DogumTarihi").value);
         formData.append('GenderId', $("input[name='GenderId']:checked").val());
         formData.append('MaritalStatusId', $("input[name='MaritalStatusId']:checked").val());
+        
 
 
         
@@ -151,6 +154,29 @@
         });
     });
 
+    function IlceEklemeIcıniListele(id) {
+        $("#DistrictId").empty();
+        $.ajax({
+            url: '/Home/PersonelIlcePartial',
+            dataType: 'json',
+            data: {
+                id: id
+            },
+            type: 'GET',
+            success: function (response) {
+                $("#DistrictId").append('<option value="' + -1 + '">' +
+                    "İlçe Seçin" + '</option>');
+
+                $.each(response, function (i, city) {
+                    $("#DistrictId").append('<option value="' + city.value + '">' + city.text + '</option>');
+                });
+            },
+            error: function (err) {
+
+                swal("Bilgi! ", err.status + "-" + err.statusText, "error");
+            }
+        });
+    }
 
 </script>
 

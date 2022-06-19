@@ -23,5 +23,6 @@ namespace EmployeesTracking
         public DbSet<Gender> Genders { get; set; }
         public DbSet<MaritalStatu> MaritalStatus { get; set; }
         public DbSet<District> Districts { get; set; }
+        public DbSet<Admin> Admins { get; set; }
     }
 }

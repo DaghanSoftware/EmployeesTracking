@@ -1,5 +1,6 @@
 ﻿using ClosedXML.Excel;
 using EmployeesTracking.Entities;
+using EmployeesTracking.Filter;
 using EmployeesTracking.Models;
 using EmployeesTracking.ValidationRules;
 using FluentValidation.Results;
@@ -16,6 +17,7 @@ using System.Threading.Tasks;
 
 namespace EmployeesTracking.Controllers
 {
+    [UserFilter]
     public class HomeController : Controller
     {
         private readonly EmployeesContext _context;
@@ -31,7 +33,7 @@ namespace EmployeesTracking.Controllers
             return View();
         }
 
-        public IActionResult PersonelListesiPartial(string q, int gendernumber, int maritalnumber, int sehir,DateTime baslangictarih,DateTime bitistarih, int page = 1)
+        public IActionResult PersonelListesiPartial(string q, int gendernumber, int maritalnumber, int sehir,DateTime baslangictarih,DateTime bitistarih,int Districtid, int page = 1)
         {
             var predicate = PredicateBuilder.New<Personel>();
             predicate = predicate.And(te => te.Id > 0);
@@ -42,6 +44,8 @@ namespace EmployeesTracking.Controllers
                 predicate = predicate.And(te => te.MaritalStatusId == maritalnumber);
             if (sehir > 0)
                 predicate = predicate.And(te => te.CityId == sehir);
+            if (Districtid > 0)
+                predicate = predicate.And(te => te.DistrictId == Districtid);
             if (baslangictarih != DateTime.MinValue && bitistarih != DateTime.MinValue)
             {
                 predicate = predicate.And(te => te.DogumTarihi >= baslangictarih && te.DogumTarihi <= bitistarih);
@@ -79,7 +83,7 @@ namespace EmployeesTracking.Controllers
         public IActionResult PersonelPartial(int? id)
         {
             ViewBag.Cities = new SelectList(_context.Cities.ToList(), "CityId", "CityName");
-            ViewBag.Ilce = new SelectList(_context.Districts.Where(x => x.CityID == id).ToList(), "DistrictId", "DistrictName");
+            ViewBag.Ilceler = new SelectList(_context.Districts.ToList(), "DistrictId", "DistrictName");
             PersonelViewModel model;
             Personel personel;
             if (id > 0)
@@ -96,6 +100,7 @@ namespace EmployeesTracking.Controllers
                     GenderId = personel.GenderId,
                     MaritalStatusId = personel.MaritalStatusId,
                     CityId = personel.CityId,
+                    DistrictId = personel.DistrictId,
                     DogumTarihi = DateTime.Parse(personel.DogumTarihi.ToShortDateString())
             };
             }
@@ -132,6 +137,7 @@ namespace EmployeesTracking.Controllers
                     personel.GenderId = personelGelen.GenderId;
                     personel.MaritalStatusId = personelGelen.MaritalStatusId;
                     personel.CityId = personelGelen.CityId;
+                    personel.DistrictId = personelGelen.DistrictId;
                     personel.DogumTarihi = DateTime.Parse(personelGelen.DogumTarihi.ToShortDateString());
                     if (personelGelen.Resim != null)
                     {
@@ -154,6 +160,7 @@ namespace EmployeesTracking.Controllers
                     personel.GenderId = personelGelen.GenderId;
                     personel.MaritalStatusId = personelGelen.MaritalStatusId;
                     personel.CityId = personelGelen.CityId;
+                    personel.DistrictId = personelGelen.DistrictId;
                     personel.DogumTarihi = DateTime.Parse(personelGelen.DogumTarihi.ToShortDateString());
                     if (personelGelen.Resim != null)
                     {
@@ -278,17 +285,9 @@ namespace EmployeesTracking.Controllers
 
         public IActionResult PersonelIlcePartial(int? id)
         {
-            //if (id>0)
-            //{
-            //    ViewBag.Ilce = new SelectList(_context.Districts.Where(x => x.CityID == id).ToList(), "DistrictId", "DistrictName");
-            //    return PartialView("_PersonelIlcePartial", ViewBag.Ilce);
-            //}
-            //return PartialView("_PersonelIlcePartial");
 
             if (id > 0)
             {
-                //ViewBag.Ilce = new SelectList(_context.Districts.Where(x => x.CityID == id).ToList(), "DistrictId", "DistrictName");
-
                 var result =_context.Districts.Where(x => x.CityID == id).ToList();
                 return Json(new SelectList(result, "DistrictId", "DistrictName"));
             }
@@ -299,10 +298,6 @@ namespace EmployeesTracking.Controllers
         {
             ViewBag.Cities = new SelectList(_context.Cities.ToList(), "CityId", "CityName");
             return View();
-        }
-        public IActionResult GetCitiesAsync(int? id)
-        {
-            return Json(_context.Districts.Where(x => x.CityID == id).ToList());
         }
     }
 }
