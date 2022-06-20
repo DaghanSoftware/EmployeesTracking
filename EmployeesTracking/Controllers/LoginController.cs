@@ -1,4 +1,7 @@
 ﻿using EmployeesTracking.Entities;
+using EmployeesTracking.Models;
+using EmployeesTracking.ValidationRules;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -45,6 +48,26 @@ namespace EmployeesTracking.Controllers
         [HttpPost]
         public IActionResult KayitOl(Admin p)
         {
+            AdminLoginValidator validationRules = new AdminLoginValidator();
+            ValidationResult result = validationRules.Validate(p);
+            var response = new ReturnModel();
+            List<string> ValidationMessages = new List<string>();
+            if (!result.IsValid)
+            {
+                //foreach (var item in result.Errors)
+                //{
+                //    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                //}
+                foreach (ValidationFailure failure in result.Errors)
+                {
+                    ValidationMessages.Add(failure.ErrorMessage);
+                }
+                response.Message2 = ValidationMessages;
+                return Json(new ReturnModel() { Success = false, Message2 = response.Message2 });
+
+            }
+            //if (!result.IsValid)
+            //    return Json(new ReturnModel() { Success = false, Message = "Tüm Alanları Doldurunuz" });
             _context.Admins.Add(p);
             _context.SaveChanges();
             return View();

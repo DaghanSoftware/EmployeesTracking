@@ -83,12 +83,13 @@ namespace EmployeesTracking.Controllers
         public IActionResult PersonelPartial(int? id)
         {
             ViewBag.Cities = new SelectList(_context.Cities.ToList(), "CityId", "CityName");
-            ViewBag.Ilceler = new SelectList(_context.Districts.ToList(), "DistrictId", "DistrictName");
+            
             PersonelViewModel model;
             Personel personel;
             if (id > 0)
             {
                 personel = _context.Personels.FirstOrDefault(m => m.Id == id);
+               // ViewBag.Ilceler = new SelectList(_context.Districts.Where(x => x.CityID == personel.CityId).ToList(), "DistrictId", "DistrictName");
                 model = new PersonelViewModel
                 {
                     Id = personel.Id,
@@ -120,14 +121,26 @@ namespace EmployeesTracking.Controllers
             {
                 PersonelValidator validationRules = new PersonelValidator();
                 ValidationResult result = validationRules.Validate(personelGelen);
+                //var response = new ReturnModel();
+                //List<string> ValidationMessages = new List<string>();
+                //if (!result.IsValid)
+                //{
+                //    foreach (ValidationFailure failure in result.Errors)
+                //    {
+                //        ValidationMessages.Add(failure.ErrorMessage);
+                //    }
+                //    response.Message2 = ValidationMessages;
+                //    return Json(new ReturnModel() { Success = false, Message2 = response.Message2 });
+
+                //}
                 var sonucMesaji = "";
                 if (!result.IsValid)
-                    throw new Exception("validasyon hatası");
+                    return Json(new ReturnModel() { Success = false, Message = "Tüm Alanları Doldurunuz" });
 
-                
+
                 if (personelGelen.Id > 0)
                 {
-
+                    sonucMesaji = "Güncelleme işlemi başarıyla yapıldı";
                     var personel = _context.Personels.SingleOrDefault(p => p.Id == personelGelen.Id);
                     personel.Adi = personelGelen.Adi;
                     personel.Soyadi = personelGelen.Soyadi;
@@ -151,6 +164,7 @@ namespace EmployeesTracking.Controllers
                 }
                 else
                 {
+                    sonucMesaji = "Ekleme işlemi başarıyla yapıldı";
                     Personel personel = new Personel();
                     personel.Adi = personelGelen.Adi;
                     personel.Soyadi = personelGelen.Soyadi;
@@ -176,7 +190,7 @@ namespace EmployeesTracking.Controllers
                 }
                 _context.SaveChanges();
 
-                return Json(new ReturnModel() { Success = true });
+                return Json(new ReturnModel() { Success = true,Message=sonucMesaji });
             }
             catch (Exception ex)
             {
@@ -285,13 +299,13 @@ namespace EmployeesTracking.Controllers
 
         public IActionResult PersonelIlcePartial(int? id)
         {
-
+            var result = _context.Districts.Where(x => x.CityID == id).ToList();
             if (id > 0)
             {
-                var result =_context.Districts.Where(x => x.CityID == id).ToList();
+                
                 return Json(new SelectList(result, "DistrictId", "DistrictName"));
             }
-            return View();
+            return Json(new SelectList(_context.Districts.Where(x => x.CityID == 0).ToList(), "DistrictId", "DistrictName"));
         }
 
         public IActionResult Deneme()

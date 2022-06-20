@@ -43,7 +43,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label asp="Doğum Yeri">Doğum Yeri</label>
-                            <select id="CityId" asp-for="CityId" asp-items="@ViewBag.Cities" onchange="IlceEklemeIcıniListele(this.value)" class="form-control">
+                            <select id="CityId" asp-for="CityId" asp-items="@ViewBag.Cities" onchange="IlceEklemeIcıniListele()" class="form-control">
                                 <option selected disabled>Şehir Seçiniz</option>
 
                             </select>
@@ -54,7 +54,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label asp="Doğum Yeri">İlçe</label>
-                            <select id="DistrictId" asp-items="@ViewBag.Ilceler" asp-for="DistrictId" class="form-control">
+                            <select id="DistrictId" asp-for="DistrictId" class="form-control">
                                 <option selected disabled>Şehir seçiniz...</option>
                             </select>
                             <span asp-validation-for="DistrictId" class="text-danger"></span>
@@ -96,6 +96,11 @@
 
 
 <script>
+
+    $(document).ready(function () {
+
+        IlceEklemeIcıniListele();
+    });
 
     $("#formPersonelDetay").submit(function (e) {
         e.preventDefault();
@@ -140,7 +145,7 @@
 
                     PersonelleriListele();
 
-                    swal("Bilgi! ", " İşlem Başarılı", "success");
+                    swal("Bilgi! ", result.message, "success");
 
                 }
                 else {
@@ -154,13 +159,15 @@
         });
     });
 
+    var ilceId = '@Model.DistrictId';
+
     function IlceEklemeIcıniListele(id) {
         $("#DistrictId").empty();
         $.ajax({
             url: '/Home/PersonelIlcePartial',
             dataType: 'json',
             data: {
-                id: id
+                id: $('#CityId').val()
             },
             type: 'GET',
             success: function (response) {
@@ -170,6 +177,10 @@
                 $.each(response, function (i, city) {
                     $("#DistrictId").append('<option value="' + city.value + '">' + city.text + '</option>');
                 });
+                if (ilceId>0) {
+                    $("#DistrictId").val(ilceId).change();
+                }
+                
             },
             error: function (err) {
 
