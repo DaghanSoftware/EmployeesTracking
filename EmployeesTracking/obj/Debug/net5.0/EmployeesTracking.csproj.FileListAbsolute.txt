@@ -460,3 +460,4 @@ C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Trackin
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\LinqKit.Core.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\obj\Debug\net5.0\Razor\Views\Login\Index.cshtml.g.cs
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\obj\Debug\net5.0\Razor\Views\Login\KayitOl.cshtml.g.cs
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\obj\Debug\net5.0\Razor\Views\Deneme\Index.cshtml.g.cs

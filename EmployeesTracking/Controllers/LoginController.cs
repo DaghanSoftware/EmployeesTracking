@@ -37,7 +37,7 @@ namespace EmployeesTracking.Controllers
                 HttpContext.Session.SetString("fullname", user.Name+""+user.Surname);
                 return RedirectToAction("Index","Home");
             }
-            return View();
+            return RedirectToAction("Index", "Login");
         }
 
 
@@ -54,10 +54,10 @@ namespace EmployeesTracking.Controllers
             List<string> ValidationMessages = new List<string>();
             if (!result.IsValid)
             {
-                //foreach (var item in result.Errors)
-                //{
-                //    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
-                //}
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
                 foreach (ValidationFailure failure in result.Errors)
                 {
                     ValidationMessages.Add(failure.ErrorMessage);
@@ -70,7 +70,7 @@ namespace EmployeesTracking.Controllers
             //    return Json(new ReturnModel() { Success = false, Message = "Tüm Alanları Doldurunuz" });
             _context.Admins.Add(p);
             _context.SaveChanges();
-            return View();
+            return View(p);
         }
 
         public IActionResult Logout()

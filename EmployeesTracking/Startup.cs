@@ -30,6 +30,8 @@ namespace EmployeesTracking
         {
             services.AddDbContext<EmployeesContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DatabaseEmployees")));
 
+            //Fluent Validation için eklemiþ olduðumuz service
+            services.AddControllersWithViews().AddFluentValidation(x=>x.RegisterValidatorsFromAssemblyContaining<Startup>());
             //Session iþlemi için eklenen servicesler baþlangýç
             services.AddSession();
             services.AddDistributedMemoryCache();
