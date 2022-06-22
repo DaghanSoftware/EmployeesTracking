@@ -25,6 +25,18 @@
       "provider": "filesystem",
       "library": "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js",
       "destination": "lib/bootstrap.min/"
+    },
+    {
+      "library": "jquery@3.6.0",
+      "destination": "wwwroot/js"
+    },
+    {
+      "library": "jquery-validate@1.19.4",
+      "destination": "wwwroot/js/"
+    },
+    {
+      "library": "jquery-validation-unobtrusive@3.2.12",
+      "destination": "wwwroot/js/jquery-validation-unobtrusive/"
     }
   ]
 }
