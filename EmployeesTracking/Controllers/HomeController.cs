@@ -119,23 +119,23 @@ namespace EmployeesTracking.Controllers
         {
             try
             {
+
+                var sonucMesaji = "";
                 PersonelValidator validationRules = new PersonelValidator();
                 ValidationResult result = validationRules.Validate(personelGelen);
-                //var response = new ReturnModel();
-                //List<string> ValidationMessages = new List<string>();
-                //if (!result.IsValid)
-                //{
-                //    foreach (ValidationFailure failure in result.Errors)
-                //    {
-                //        ValidationMessages.Add(failure.ErrorMessage);
-                //    }
-                //    response.Message2 = ValidationMessages;
-                //    return Json(new ReturnModel() { Success = false, Message2 = response.Message2 });
+                var response = new ReturnModel();
+                List<string> ValidationMessages = new List<string>();
 
-                //}
-                var sonucMesaji = "";
                 if (!result.IsValid)
-                    return Json(new ReturnModel() { Success = false, Message = "Tüm Alanları Doldurunuz" });
+                {
+                    foreach (ValidationFailure failure in result.Errors)
+                    {
+                        ValidationMessages.Add(failure.ErrorMessage);
+                    }
+                    response.Message2 = ValidationMessages;
+                    return Json(new ReturnModel() { Success = false, Message2 = response.Message2 });
+                }
+                
 
 
                 if (personelGelen.Id > 0)

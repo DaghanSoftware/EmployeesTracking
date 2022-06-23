@@ -1,10 +1,11 @@
 ﻿@model EmployeesTracking.Models.PersonelViewModel
-
-<div class="modal fade" id="personelDetayModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <script src="~/js/jquery.validate.min.js"></script>
+    <script src="~/js/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <div class="modal fade" id="personelDetayModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
+            <div class="modal-content">d
                 <form id="formPersonelDetay" asp-action="PersonelKaydet" style="padding:40px 50px;" enctype="multipart/form-data" class="row g-3">
-                    <div asp-validation-summary="All" id="hatalar"> </div>
+                    @*<div asp-validation-summary="All" id="hatalar"> </div>*@
                     <input id="Id" type="hidden" asp-for="Id" class="form-control">
                     <div class="col-md-6">
                         <label asp-for="Adi" class="form-label">İsim</label>
@@ -29,6 +30,7 @@
                     <div class="col-md-6">
                         <label asp-for="AnaAdi" class="form-label">Anne Adı</label>
                         <input id="AnaAdi" asp-for="AnaAdi" class="form-control">
+                        <span asp-validation-for="AnaAdi" class="text-danger"></span>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
@@ -95,7 +97,7 @@
     </div>
 
 
-<script>
+    <script>
 
     $(document).ready(function () {
 
@@ -127,11 +129,11 @@
         formData.append('DogumTarihi', document.getElementById("DogumTarihi").value);
         formData.append('GenderId', $("input[name='GenderId']:checked").val());
         formData.append('MaritalStatusId', $("input[name='MaritalStatusId']:checked").val());
-        
 
 
-        
 
+
+        var Hatalar = "";
         $.ajax({
             type: "POST",
             url: url,
@@ -149,7 +151,11 @@
 
                 }
                 else {
-                    swal("Bilgi! ", result.message, "error");
+                    for (var i = 0; i != result.message2.length; i++) {
+                        Hatalar += result.message2[i] + "\n";
+
+                    }
+                    swal("Bilgi! ", Hatalar, "error");
                 }
             },
             error: function (err) {
@@ -180,7 +186,7 @@
                 if (ilceId>0) {
                     $("#DistrictId").val(ilceId).change();
                 }
-                
+
             },
             error: function (err) {
 
@@ -189,79 +195,79 @@
         });
     }
 
-</script>
+    </script>
 
-<script>
-    //Eski Kodlar
-    //Resim Upload Etmek İçin Kodlarda değişikliğe gittim
-    //$("#formPersonelDetay").submit(function (e) {
-    //    e.preventDefault();
+    <script>
+        //Eski Kodlar
+        //Resim Upload Etmek İçin Kodlarda değişikliğe gittim
+        //$("#formPersonelDetay").submit(function (e) {
+        //    e.preventDefault();
 
-    //    var form = $(this);
-    //    var url = form.attr('action');
+        //    var form = $(this);
+        //    var url = form.attr('action');
 
-    //    $.ajax({
-    //        type: "POST",
-    //        url: url,
-    //        data: form.serialize(),
-    //        success: function (result) {
-    //            console.log(result);
-    //            if (result.success) {
-    //                $('#personelDetayModal').modal('hide');
+        //    $.ajax({
+        //        type: "POST",
+        //        url: url,
+        //        data: form.serialize(),
+        //        success: function (result) {
+        //            console.log(result);
+        //            if (result.success) {
+        //                $('#personelDetayModal').modal('hide');
 
-    //                PersonelleriListele();
+        //                PersonelleriListele();
 
-    //                swal("Bilgi! ", " İşlem Başarılı", "success");
+        //                swal("Bilgi! ", " İşlem Başarılı", "success");
 
-    //            }
-    //            else {
-    //                swal("Bilgi! ", result.message, "error");
-    //            }
-    //        },
-    //        error: function (err) {
+        //            }
+        //            else {
+        //                swal("Bilgi! ", result.message, "error");
+        //            }
+        //        },
+        //        error: function (err) {
 
-    //            swal("Bilgi! ", "Kayıt hata", "error");
-    //        }
-    //    });
-    //});
-
-
+        //            swal("Bilgi! ", "Kayıt hata", "error");
+        //        }
+        //    });
+        //});
 
 
-    //Resim mi controllara gönderebiliyorum lakin şehir id gibi bilgiler gitmiyor
-    //$("#formPersonelDetay").submit(function (e) {
-    //    e.preventDefault();
-    //    var input = document.getElementById(resimm);
-    //    var files = input.files;
-    //    var formData = new FormData();
 
-    //    for (var i = 0; i != files.length; i++) {
-    //        formData.append("files", files[i]);
-    //        var form = $(this);
-    //        var url = form.attr('action');
 
-    //        $.ajax({
-    //            type: "POST",
-    //            url: url,
-    //            data: formData,
-    //            success: function (result) {
-    //                console.log(result);
-    //                if (result.success) {
-    //                    $('#personelDetayModal').modal('hide');
+        //Resim mi controllara gönderebiliyorum lakin şehir id gibi bilgiler gitmiyor
+        //$("#formPersonelDetay").submit(function (e) {
+        //    e.preventDefault();
+        //    var input = document.getElementById(resimm);
+        //    var files = input.files;
+        //    var formData = new FormData();
 
-    //                    PersonelleriListele();
+        //    for (var i = 0; i != files.length; i++) {
+        //        formData.append("files", files[i]);
+        //        var form = $(this);
+        //        var url = form.attr('action');
 
-    //                    swal("Bilgi! ", " İşlem Başarılı", "success");
+        //        $.ajax({
+        //            type: "POST",
+        //            url: url,
+        //            data: formData,
+        //            success: function (result) {
+        //                console.log(result);
+        //                if (result.success) {
+        //                    $('#personelDetayModal').modal('hide');
 
-    //                }
-    //                else {
-    //                    swal("Bilgi! ", result.message, "error");
-    //                }
-    //            },
-    //            error: function (err) {
+        //                    PersonelleriListele();
 
-    //                swal("Bilgi! ", "Kayıt hata", "error");
-    //            }
-    //        });
-    //    });
-</script>
+        //                    swal("Bilgi! ", " İşlem Başarılı", "success");
+
+        //                }
+        //                else {
+        //                    swal("Bilgi! ", result.message, "error");
+        //                }
+        //            },
+        //            error: function (err) {
+
+        //                swal("Bilgi! ", "Kayıt hata", "error");
+        //            }
+        //        });
+        //    });
+    </script>
