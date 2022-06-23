@@ -36,7 +36,7 @@
                          class="img-fluid" alt="Sample image">
                 </div>
                 <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-                    <form asp-action="FluentDeneme" asp-controller="Fluent" method="post">
+                    <form name="pForm">
                         <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
                             <p class="lead fw-normal mb-0 me-3">Kayıt Ol</p>
                             <button type="button" class="btn btn-primary btn-floating mx-1">
@@ -94,10 +94,7 @@
                         </div>
 
                         <div class="text-center text-lg-start mt-4 pt-2">
-                            <button id="kayitol" type="submit", class="btn btn-primary btn-lg"
-                                    style="padding-left: 2.5rem; padding-right: 2.5rem;">
-                                Kayıt Ol
-                            </button>
+                            <button type="submit" id="kayitol" class="btn btn-success btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;"> Kayıt Ol  </button>
                             <p class="small fw-bold mt-2 pt-1 mb-0">
                                 Bir hesabın var mı? <a href="/Login/Index"
                                                        class="link-danger">Giriş Yap</a>
@@ -112,7 +109,9 @@
 </body>
 </html>
 <script>
-    $("#kayitol").click(function () {
+
+    $('form[name=pForm]').submit(function (event) {
+        event.preventDefault();
 
         let AdminKayit = {
             Name: $("#Name").val(),
@@ -127,20 +126,16 @@
             url: "/Fluent/FluentDeneme",
             data: AdminKayit,
             success: function (result) {
-                console.log(result);
-                if (result.success) {
 
-                    swal("Bilgi! ", "Kayıt İşlemi Başarılı", "success");
-
-                }
-                else {
+                if (result.success == false) {
                     for (var i = 0; i != result.message2.length; i++) {
                         Hatalar += result.message2[i] + "\n";
 
                     }
-                    //alert(ToplamTakim);
                     swal("Bilgi! ", Hatalar, "error");
                 }
+                else if (result.success == true)
+                    swal("Bilgi! ", result.message, "success");
             },
             error: function (err) {
 

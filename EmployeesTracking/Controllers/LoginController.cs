@@ -70,7 +70,7 @@ namespace EmployeesTracking.Controllers
             //    return Json(new ReturnModel() { Success = false, Message = "Tüm Alanları Doldurunuz" });
             _context.Admins.Add(p);
             _context.SaveChanges();
-            return View(p);
+            return View();
         }
 
         public IActionResult Logout()
