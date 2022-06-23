@@ -25,19 +25,46 @@ namespace EmployeesTracking.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult GirisYap(Admin p)
-        
+        public IActionResult GirisYap(LoginModel p)
         {
-            var user = _context.Admins.FirstOrDefault(x=>x.Email.Equals(p.Email) && x.Password.Equals(p.Password));
-            if (user!=null)
+            try
             {
-                HttpContext.Session.SetInt32("id", user.Id);
-                HttpContext.Session.SetString("email", user.Email);
-                HttpContext.Session.SetString("username", user.UserName);
-                HttpContext.Session.SetString("fullname", user.Name+""+user.Surname);
-                return RedirectToAction("Index","Home");
+                AdminLoginValidator validationRules = new AdminLoginValidator();
+                ValidationResult result = validationRules.Validate(p);
+                var response = new ReturnModel();
+                List<string> ValidationMessages = new List<string>();
+
+                if (!result.IsValid)
+                {
+                    foreach (ValidationFailure failure in result.Errors)
+                    {
+                        ValidationMessages.Add(failure.ErrorMessage);
+                    }
+                    response.Message2 = ValidationMessages;
+                    return Json(new ReturnModel() { Success = false, Message2 = response.Message2 });
+                }
+                else
+                {
+                    var user = _context.Admins.FirstOrDefault(x => x.Email.Equals(p.Email) && x.Password.Equals(p.Password));
+                    if (user != null)
+                    {
+                        HttpContext.Session.SetInt32("id", user.Id);
+                        HttpContext.Session.SetString("email", user.Email);
+                        HttpContext.Session.SetString("username", user.UserName);
+                        HttpContext.Session.SetString("fullname", user.Name + "" + user.Surname);
+                        return Json(new ReturnModel() { Success = true, Message = "Giriş Yapma İşlemi Başarılı" });
+                    }
+                    else
+                    {
+                        return Json(new ReturnModel() { Success = false, Message = "Böyle bir kullanıcı yok"  });
+                    }
+                }
+                
             }
-            return RedirectToAction("Index", "Login");
+            catch (Exception ex)
+            {
+                return Json(new ReturnModel() { Success = false, Message = "hatalı işlem" });
+            }
         }
 
 
@@ -48,29 +75,33 @@ namespace EmployeesTracking.Controllers
         [HttpPost]
         public IActionResult KayitOl(Admin p)
         {
-            AdminLoginValidator validationRules = new AdminLoginValidator();
-            ValidationResult result = validationRules.Validate(p);
-            var response = new ReturnModel();
-            List<string> ValidationMessages = new List<string>();
-            if (!result.IsValid)
+            try
             {
-                foreach (var item in result.Errors)
-                {
-                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
-                }
-                foreach (ValidationFailure failure in result.Errors)
-                {
-                    ValidationMessages.Add(failure.ErrorMessage);
-                }
-                response.Message2 = ValidationMessages;
-                return Json(new ReturnModel() { Success = false, Message2 = response.Message2 });
+                AdminRegisterValidator validationRules = new AdminRegisterValidator();
+                ValidationResult result = validationRules.Validate(p);
+                var response = new ReturnModel();
+                List<string> ValidationMessages = new List<string>();
 
+                if (!result.IsValid)
+                {
+                    foreach (ValidationFailure failure in result.Errors)
+                    {
+                        ValidationMessages.Add(failure.ErrorMessage);
+                    }
+                    response.Message2 = ValidationMessages;
+                    return Json(new ReturnModel() { Success = false, Message2 = response.Message2 });
+                }
+                else
+                {
+                    _context.Admins.Add(p);
+                }
+                _context.SaveChanges();
+                return Json(new ReturnModel() { Success = true, Message = "Kayıt Olma İşlemi Başarılı" });
             }
-            //if (!result.IsValid)
-            //    return Json(new ReturnModel() { Success = false, Message = "Tüm Alanları Doldurunuz" });
-            _context.Admins.Add(p);
-            _context.SaveChanges();
-            return View();
+            catch (Exception ex)
+            {
+                return Json(new ReturnModel() { Success = false, Message = "hatalı işlem" });
+            }
         }
 
         public IActionResult Logout()

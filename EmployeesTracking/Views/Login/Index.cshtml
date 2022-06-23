@@ -1,4 +1,4 @@
-﻿@model EmployeesTracking.Entities.Admin
+﻿@model EmployeesTracking.Models.LoginModel
 @using Microsoft.AspNetCore.Http;
 @{
     ViewData["Title"] = "Giriş Yap";
@@ -25,7 +25,7 @@
                          class="img-fluid" alt="Sample image">
                 </div>
                 <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-                    <form asp-action="GirisYap" method="post">
+                    <form asp-action="GirisYap" name="girisForm">
                         <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
                             <p class="lead fw-normal mb-0 me-3">Giriş Yap</p>
                             <button type="button" class="btn btn-primary btn-floating mx-1">
@@ -47,14 +47,14 @@
 
                         <!-- Email input -->
                         <div class="form-outline mb-4">
-                            <input asp-for="Email" type="email" id="form3Example3" class="form-control form-control-lg"
-                                   placeholder="Email Adresinizi Giriniz" />
+                            <input asp-for="Email" type="text" id="Email" class="form-control form-control-lg" placeholder="Kullanıcı Adınızı Girin" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
                         </div>
 
                         <!-- Password input -->
                         <div class="form-outline mb-3">
-                            <input asp-for="Password" type="password" id="form3Example4" class="form-control form-control-lg"
-                                   placeholder="Şifrenizi Girin" />
+                            <input asp-for="Password" type="password" id="Password" class="form-control form-control-lg" placeholder="Şifrenizi Girin" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
                         </div>
 
                         <div class="d-flex justify-content-between align-items-center">
@@ -103,3 +103,43 @@
     </section>
 </body>
 </html>
+<script>
+
+    $('form[name=girisForm]').submit(function (event) {
+        event.preventDefault();
+
+        let AdminKayit = {
+            Email: $('#Email').val(),
+            Password: $('#Password').val(),
+        };
+        var Hatalar = "";
+        $.ajax({
+            type: "Post",
+            url: "/Login/GirisYap",
+            data: AdminKayit,
+            success: function (result) {
+
+                if (result.success == false) {
+                    for (var i = 0; i != result.message2.length; i++) {
+                        Hatalar += result.message2[i] + "\n";
+
+                    }
+                    swal("Bilgi! ", Hatalar, "error");
+
+                }
+                else if (result.success == true) {
+                    swal("Bilgi! ", result.message, "success");
+                    setTimeout(function () {
+                        window.location.href = "/Home/Index";
+                    }, 2000);
+                }
+            },
+            error: function (err) {
+
+                swal("Bilgi! ", "Girişte hata", "error");
+            }
+        });
+
+    });
+
+</script>
