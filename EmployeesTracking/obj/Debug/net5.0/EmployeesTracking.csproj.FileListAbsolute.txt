@@ -460,3 +460,13 @@ C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Trackin
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\LinqKit.Core.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\obj\Debug\net5.0\Razor\Views\Login\Index.cshtml.g.cs
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\obj\Debug\net5.0\Razor\Views\Login\KayitOl.cshtml.g.cs
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\obj\Debug\net5.0\Razor\Views\TemplatePartial\Index.cshtml.g.cs
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\obj\Debug\net5.0\Razor\Views\Shared\_Layout2.cshtml.g.cs
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\obj\Debug\net5.0\Razor\Views\Shared\_AudioModalPartial.cshtml.g.cs
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\obj\Debug\net5.0\Razor\Views\Shared\_FooterPartial.cshtml.g.cs
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\obj\Debug\net5.0\Razor\Views\Shared\_MainHeaderPartial.cshtml.g.cs
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\obj\Debug\net5.0\Razor\Views\Shared\_MainSidebar.cshtml.g.cs
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\obj\Debug\net5.0\Razor\Views\Shared\_MessageModalPartial.cshtml.g.cs
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\obj\Debug\net5.0\Razor\Views\Shared\_SidebarRight.cshtml.g.cs
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\obj\Debug\net5.0\Razor\Views\Shared\_VideoModalPartial.cshtml.g.cs
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\obj\Debug\net5.0\Razor\Views\Home\PersonelListele.cshtml.g.cs

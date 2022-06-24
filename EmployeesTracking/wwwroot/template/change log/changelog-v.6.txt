@@ -1,0 +1,93 @@
+
+Project Name: Valex - Bootstrap 5 Admin & Dashboard HTML5 Template
+
+Version : V.6
+
+Updated-date:  09-May-2022 
+
+ 
+ Updates :- 
+
+		1) ui issues fixed.
+		2) Updated some js files.
+		3) Some Html pages are Improved
+
+
+***********************************************************************************************************************************************************************************************
+
+
+----------------------------------------------------------------------
+1) ui issues fixed.
+----------------------------------------------------------------------
+	
+	Please replace scss and css Folders in assets folder.
+
+----------------------------------------------------------------------
+2) Updated some js files.
+----------------------------------------------------------------------
+	
+	please add andd replace below files in js (root:-assets/js/..)
+
+	1)index.js
+	3)theme-color.js
+
+----------------------------------------------------------------------
+3) Added some Html Pages.
+----------------------------------------------------------------------
+New Html pages are added in Valex .please follow below
+
+index.html
+file-attachments.html
+icons.html
+icons-2.html
+icons-3.html
+icons-4.html
+icons-5.html
+icons-6.html
+icons-7.html
+icons-8.html
+icons-9.html
+icons-10.html
+icons-11.html
+icons-12.Html
+mail-read.html
+mail-settings.html
+
+
+Thanking you,
+@spruko.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

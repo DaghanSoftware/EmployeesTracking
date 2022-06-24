@@ -32,6 +32,11 @@ namespace EmployeesTracking.Controllers
             ViewBag.Cities = new SelectList(_context.Cities.ToList(), "CityId", "CityName");
             return View();
         }
+        public IActionResult PersonelListele()
+        {
+            ViewBag.Cities = new SelectList(_context.Cities.ToList(), "CityId", "CityName");
+            return View();
+        }
 
         public IActionResult PersonelListesiPartial(string q, int gendernumber, int maritalnumber, int sehir,DateTime baslangictarih,DateTime bitistarih,int Districtid, int page = 1)
         {
