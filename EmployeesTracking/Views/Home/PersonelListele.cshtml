@@ -9,6 +9,7 @@
     <!-- container -->
     <div class="main-container container-fluid">
         <form asp-controller="Home" asp-action="PersonelListele" method="get">
+
             <div class="breadcrumb-header justify-content-between">
                 <div class="my-auto">
                     <div class="d-flex">
@@ -33,145 +34,318 @@
                 </div>
             </div>
 
-            <div class="col-md-12 col-xl-12 col-xs-12 col-sm-12">
+            <div id="Tablo">
+                <!--<div class="col-md-12 col-xl-12 col-xs-12 col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="main-content-label mg-b-5">
+                        <center>
+                            Filtreleme İşlemleri
+                        </center>
+                    </div>
+                    <div class="row row-sm">
+                        <div class="col-lg-3">
+                            <div class="input-group">
+                                <div class="input-group-text">
+                                    İsim:
+                                </div>
+                                <input class="form-control" id="personeladi" name="q" placeholder="Personelin Adını Giriniz" type="text">
+                            </div>-->
+                <!-- input-group -->
+                <!--</div>--><!-- col-4 -->
+                <!--<div class="col-lg-3 mg-t-20 mg-lg-t-0">
+            <div class="input-group">
+                <div class="input-group-text">
+                    Soy İsim:
+                </div>
+                <input class="form-control" id="phoneMask" placeholder="Personelin Soyadını Giriniz" type="text">
+            </div>-->
+                <!-- input-group -->
+                <!--</div>
+        <div class="col-lg-3 mg-t-20 mg-lg-t-0">
+            <div class="input-group">
+                <div class="input-group-text">
+                    TC Kimlik:
+                </div>
+                <input class="form-control" id="phoneExtMask" placeholder="Personelin Kimlik Numarasını Giriniz" type="text">
+            </div>-->
+                <!-- input-group -->
+                <!--</div>
+        <div class="col-lg-3 mg-t-20 mg-lg-t-0">
+            <div class="input-group">
+                <div class="input-group-text">
+                    Telefon Numarası:
+                </div>-->
+                <!-- input-group-text -->
+                <!--<input class="form-control" id="Telefon Numarası" placeholder="Örn: 530-270-75-78" type="text">
+                </div>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="row row-sm">
+            <div class="col-lg-4">
                 <div class="card">
                     <div class="card-body">
                         <div class="main-content-label mg-b-5">
+                            Doğum Yeri
+                        </div>
+                        <div class="input-group">
+                            <div class="input-group">
+                                <div class="input-group-text">
+                                    Şehir:
+                                </div>-->
+                <!-- input-group-text -->
+                <!--<select asp-items="@ViewBag.Cities" id="sehir2" name="sehir" onchange="IlceleriListele(this.value)" class="form-control">
+                    <option selected disabled>Şehir seçiniz...</option>
+
+                </select>
+            </div>
+        </div>
+        <div class="input-group">
+            <div class="input-group">
+                <div class="input-group-text">
+                    İlçe:&nbsp&nbsp&nbsp
+                </div>-->
+                <!-- input-group-text -->
+                <!--<select asp-for="DistrictId" id="Ilceler" class="form-control">
+                                <option selected disabled>İlçe seçiniz...</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+                <!-- col-4 -->
+                <!--<div class="col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="main-content-label mg-b-5">
+                        Doğum Tarihi
+                    </div>
+                    <div class="input-group">
+                        <div class="input-group-text">
+                            Başlangıç Tarihi:
+                        </div>
+                        <input class="form-control me-2" id="baslangictarih" asp-for="DogumTarihi" max="@DateTime.Now.ToString("yyyy-MM-ddThh:mm")" min="@DateTime.Now.AddYears(-120).ToString("yyyy-MM-ddThh:mm")" />
+                    </div>
+                    <div class="input-group">
+                        <div class="input-group-text">
+                            Bitiş Tarihi:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        </div>
+                        <input class="form-control me-2" id="bitistarih" asp-for="DogumTarihi" max="@DateTime.Now.ToString("yyyy-MM-ddThh:mm")" min="@DateTime.Now.AddYears(-120).ToString("yyyy-MM-ddThh:mm")" />
+                    </div>
+                </div>
+            </div>
+        </div>-->
+                <!-- col-4 -->
+                <!--<div class="col-lg-4">
+                            <div class="card">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="main-content-label">
+                                            Medeni Hal
+                                        </div>
+                                        <div class="card">
+                                            <input type="radio" class="btn-check" name="maritalnumber" id="vbtn-radio1" value="1" autocomplete="off">
+                                            <label class="btn btn-outline-danger" for="vbtn-radio1">Evli</label>
+
+                                            <input type="radio" class="btn-check" name="maritalnumber" id="vbtn-radio2" value="2" autocomplete="off">
+                                            <label class="btn btn-outline-danger" for="vbtn-radio2">Bekar</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="main-content-label">
+                                            Cinsiyet
+                                        </div>
+                                        <div class="card">
+                                            <input type="radio" class="btn-check" name="gendernumber" id="btnradio1" value="1" autocomplete="off">
+                                            <label class="btn btn-outline-primary" for="btnradio1">Erkek</label>
+
+                                            <input type="radio" class="btn-check" name="gendernumber" id="btnradio2" value="2" autocomplete="off">
+                                            <label class="btn btn-outline-primary" for="btnradio2">Kadın</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row row-sm">
+                        <div class="col-lg-4"></div>
+                        <div class="col-lg-4">
                             <center>
-                                Filtreleme İşlemleri
+                                <button style="height: 50px; width: 200px; " type="button" id="btnPersonelleriGetir" class="btn btn-outline-primary"> Filtrele </button>
                             </center>
                         </div>
-                        <div class="row row-sm">
-                            <div class="col-lg-3">
-                                <div class="input-group">
-                                    <div class="input-group-text">
-                                        İsim:
+                        <div class="col-lg-4"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>-->
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="card overflow-hidden">
+                        <div class="card-body">
+                            <div class="panel-group1" id="accordion11">
+                                <div class="panel panel-default  mb-4">
+                                    <div class="panel-heading1 bg-primary ">
+                                        <h4 class="panel-title1">
+                                            <a class="accordion-toggle collapsed" data-bs-toggle="collapse"
+                                               data-bs-parent="#accordion11" href="#collapseFour1"
+                                               aria-expanded="false">
+                                                <i class="fe fe-arrow-right me-2"></i> Filtreleme
+                                            </a>
+                                        </h4>
                                     </div>
-                                    <input class="form-control" id="personeladi" name="q" placeholder="Personelin Adını Giriniz" type="text">
-                                </div><!-- input-group -->
-                            </div><!-- col-4 -->
-                            <div class="col-lg-3 mg-t-20 mg-lg-t-0">
-                                <div class="input-group">
-                                    <div class="input-group-text">
-                                        Soy İsim:
+                                    <div id="collapseFour1" class="panel-collapse collapse" role="tabpanel" aria-expanded="false">
+                                        <div class="panel-body border">
+
+                                            <div class="main-content-label mg-b-5">
+                                                <center>
+                                                    Filtreleme İşlemleri
+                                                </center>
+                                            </div>
+                                            <div class="row row-sm">
+                                                <div class="col-lg-3">
+                                                    <div class="input-group">
+                                                        <div class="input-group-text">
+                                                            İsim:
+                                                        </div>
+                                                        <input class="form-control" id="personeladi" name="q" placeholder="Personelin Adını Giriniz" type="text">
+                                                    </div><!-- input-group -->
+                                                </div><!-- col-4 -->
+                                                <div class="col-lg-3 mg-t-20 mg-lg-t-0">
+                                                    <div class="input-group">
+                                                        <div class="input-group-text">
+                                                            Soy İsim:
+                                                        </div>
+                                                        <input class="form-control" id="phoneMask" placeholder="Personelin Soyadını Giriniz" type="text">
+                                                    </div><!-- input-group -->
+                                                </div>
+                                                <div class="col-lg-3 mg-t-20 mg-lg-t-0">
+                                                    <div class="input-group">
+                                                        <div class="input-group-text">
+                                                            TC Kimlik:
+                                                        </div>
+                                                        <input class="form-control" id="phoneExtMask" placeholder="Personelin Kimlik Numarasını Giriniz" type="text">
+                                                    </div><!-- input-group -->
+                                                </div>
+                                                <div class="col-lg-3 mg-t-20 mg-lg-t-0">
+                                                    <div class="input-group">
+                                                        <div class="input-group-text">
+                                                            Telefon Numarası:
+                                                        </div><!-- input-group-text -->
+                                                        <input class="form-control" id="Telefon Numarası" placeholder="Örn: 530-270-75-78" type="text">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <hr />
+
+                                            <div class="row row-sm">
+                                                <div class="col-lg-4">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <div class="main-content-label mg-b-5">
+                                                                Doğum Yeri
+                                                            </div>
+                                                            <div class="input-group">
+                                                                <div class="input-group">
+                                                                    <div class="input-group-text">
+                                                                        Şehir:
+                                                                    </div><!-- input-group-text -->
+                                                                    <select asp-items="@ViewBag.Cities" id="sehir2" name="sehir" onchange="IlceleriListele(this.value)" class="form-control">
+                                                                        <option selected disabled>Şehir seçiniz...</option>
+
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="input-group">
+                                                                <div class="input-group">
+                                                                    <div class="input-group-text">
+                                                                        İlçe:&nbsp&nbsp&nbsp
+                                                                    </div><!-- input-group-text -->
+                                                                    <select asp-for="DistrictId" id="Ilceler" class="form-control">
+                                                                        <option selected disabled>İlçe seçiniz...</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div><!-- col-4 -->
+                                                <div class="col-lg-4">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <div class="main-content-label mg-b-5">
+                                                                Doğum Tarihi
+                                                            </div>
+                                                            <div class="input-group">
+                                                                <div class="input-group-text">
+                                                                    Başlangıç Tarihi:
+                                                                </div>
+                                                                <input class="form-control me-2" id="baslangictarih" asp-for="DogumTarihi" max="@DateTime.Now.ToString("yyyy-MM-ddThh:mm")" min="@DateTime.Now.AddYears(-120).ToString("yyyy-MM-ddThh:mm")" />
+                                                            </div>
+                                                            <div class="input-group">
+                                                                <div class="input-group-text">
+                                                                    Bitiş Tarihi:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                                                </div>
+                                                                <input class="form-control me-2" id="bitistarih" asp-for="DogumTarihi" max="@DateTime.Now.ToString("yyyy-MM-ddThh:mm")" min="@DateTime.Now.AddYears(-120).ToString("yyyy-MM-ddThh:mm")" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div><!-- col-4 -->
+                                                <div class="col-lg-4">
+                                                    <div class="card">
+                                                        <div class="row">
+                                                            <div class="col-lg-6">
+                                                                <div class="main-content-label">
+                                                                    Medeni Hal
+                                                                </div>
+                                                                <div class="card">
+                                                                    <input type="radio" class="btn-check" name="maritalnumber" id="vbtn-radio1" value="1" autocomplete="off">
+                                                                    <label class="btn btn-outline-danger" for="vbtn-radio1">Evli</label>
+
+                                                                    <input type="radio" class="btn-check" name="maritalnumber" id="vbtn-radio2" value="2" autocomplete="off">
+                                                                    <label class="btn btn-outline-danger" for="vbtn-radio2">Bekar</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <div class="main-content-label">
+                                                                    Cinsiyet
+                                                                </div>
+                                                                <div class="card">
+                                                                    <input type="radio" class="btn-check" name="gendernumber" id="btnradio1" value="1" autocomplete="off">
+                                                                    <label class="btn btn-outline-primary" for="btnradio1">Erkek</label>
+
+                                                                    <input type="radio" class="btn-check" name="gendernumber" id="btnradio2" value="2" autocomplete="off">
+                                                                    <label class="btn btn-outline-primary" for="btnradio2">Kadın</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row row-sm">
+                                                <div class="col-lg-4"></div>
+                                                <div class="col-lg-4">
+                                                    <center>
+                                                        <button style="height: 50px; width: 200px; " type="button" id="btnPersonelleriGetir" class="btn btn-outline-primary"> Filtrele </button>
+                                                    </center>
+                                                </div>
+                                                <div class="col-lg-4"></div>
+                                            </div>
+
+                                        </div>
                                     </div>
-                                    <input class="form-control" id="phoneMask" placeholder="Personelin Soyadını Giriniz" type="text">
-                                </div><!-- input-group -->
-                            </div>
-                            <div class="col-lg-3 mg-t-20 mg-lg-t-0">
-                                <div class="input-group">
-                                    <div class="input-group-text">
-                                        TC Kimlik:
-                                    </div>
-                                    <input class="form-control" id="phoneExtMask" placeholder="Personelin Kimlik Numarasını Giriniz" type="text">
-                                </div><!-- input-group -->
-                            </div>
-                            <div class="col-lg-3 mg-t-20 mg-lg-t-0">
-                                <div class="input-group">
-                                    <div class="input-group-text">
-                                        Telefon Numarası:
-                                    </div><!-- input-group-text -->
-                                    <input class="form-control" id="Telefon Numarası" placeholder="Örn: 530-270-75-78" type="text">
                                 </div>
                             </div>
                         </div>
-
-                        <hr />
-
-                        <div class="row row-sm">
-                            <div class="col-lg-4">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="main-content-label mg-b-5">
-                                            Doğum Yeri
-                                        </div>
-                                        <div class="input-group">
-                                            <div class="input-group">
-                                                <div class="input-group-text">
-                                                    Şehir:
-                                                </div><!-- input-group-text -->
-                                                <select asp-items="@ViewBag.Cities" id="sehir2" name="sehir" onchange="IlceleriListele(this.value)" class="form-control">
-                                                    <option selected disabled>Şehir seçiniz...</option>
-
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="input-group">
-                                            <div class="input-group">
-                                                <div class="input-group-text">
-                                                    İlçe:&nbsp&nbsp&nbsp
-                                                </div><!-- input-group-text -->
-                                                <select asp-for="DistrictId" id="Ilceler" class="form-control">
-                                                    <option selected disabled>İlçe seçiniz...</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><!-- col-4 -->
-                            <div class="col-lg-4">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="main-content-label mg-b-5">
-                                            Doğum Tarihi
-                                        </div>
-                                        <div class="input-group">
-                                            <div class="input-group-text">
-                                                Başlangıç Tarihi:
-                                            </div>
-                                            <input class="form-control me-2" id="baslangictarih" asp-for="DogumTarihi" max="@DateTime.Now.ToString("yyyy-MM-ddThh:mm")" min="@DateTime.Now.AddYears(-120).ToString("yyyy-MM-ddThh:mm")" />
-                                        </div>
-                                        <div class="input-group">
-                                            <div class="input-group-text">
-                                                Bitiş Tarihi:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                            </div>
-                                            <input class="form-control me-2" id="bitistarih" asp-for="DogumTarihi" max="@DateTime.Now.ToString("yyyy-MM-ddThh:mm")" min="@DateTime.Now.AddYears(-120).ToString("yyyy-MM-ddThh:mm")" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><!-- col-4 -->
-                            <div class="col-lg-4">
-                                <div class="card">
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <div class="main-content-label">
-                                                    Medeni Hal
-                                                </div>
-                                                <div class="card">
-                                                    <input type="radio" class="btn-check" name="maritalnumber" id="vbtn-radio1" value="1" autocomplete="off">
-                                                    <label class="btn btn-outline-danger" for="vbtn-radio1">Evli</label>
-
-                                                    <input type="radio" class="btn-check" name="maritalnumber" id="vbtn-radio2" value="2" autocomplete="off">
-                                                    <label class="btn btn-outline-danger" for="vbtn-radio2">Bekar</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="main-content-label">
-                                                    Cinsiyet
-                                                </div>
-                                                <div class="card">
-                                                    <input type="radio" class="btn-check" name="gendernumber" id="btnradio1" value="1" autocomplete="off">
-                                                    <label class="btn btn-outline-primary" for="btnradio1">Erkek</label>
-
-                                                    <input type="radio" class="btn-check" name="gendernumber" id="btnradio2" value="2" autocomplete="off">
-                                                    <label class="btn btn-outline-primary" for="btnradio2">Kadın</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row row-sm">
-                            <div class="col-lg-4"></div>
-                            <div class="col-lg-4">
-                                <center>
-                                    <button style="height: 50px; width: 200px; " type="button" id="btnPersonelleriGetir" class="btn btn-outline-primary"> Filtrele </button>
-                                </center>
-                            </div>
-                            <div class="col-lg-4"></div>
-                        </div>
-
                     </div>
                 </div>
             </div>
