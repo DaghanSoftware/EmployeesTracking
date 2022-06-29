@@ -19,7 +19,7 @@ namespace EmployeesTracking.ValidationRules
 
             RuleFor(x => x.BabaAdi).NotEmpty().WithMessage("Baba adını boş geçemezsiniz");
 
-            RuleFor(x => x.TcNo).NotEmpty().WithMessage("Tc kimlik numarasını boş geçemezsiniz");
+            //RuleFor(x => x.TcNo).NotEmpty().WithMessage("Tc kimlik numarasını boş geçemezsiniz");
             //RuleFor(x => x.TcNo).GreaterThan(11111111111).WithMessage("Tc kimlik numarası 11 haneli olmalıdır");
             RuleFor(x => x.TcNo).Must(x => x.ToString().Length == 11).WithMessage("Tc kimlik numarası 11 haneli olmalıdır");
             //RuleFor(x => x.TcNo).Must(x =>x ==11).WithMessage("Tc Kimlik Numarası 11 haneli olmalıdır");

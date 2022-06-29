@@ -35,16 +35,20 @@
       "destination": "wwwroot/js/"
     },
     {
-      "library": "jquery-validation-unobtrusive@3.2.12",
-      "destination": "wwwroot/js/jquery-validation-unobtrusive/"
-    },
-    {
       "library": "sweetalert@2.1.2",
       "destination": "wwwroot/sweetalert/"
     },
     {
       "library": "bootstrap@5.1.3",
       "destination": "wwwroot/lib/bootstrap/"
+    },
+    {
+      "library": "jquery-validation-unobtrusive@3.2.12",
+      "destination": "wwwroot/lib/jquery-validation-unobtrusive/"
+    },
+    {
+      "library": "limonte-sweetalert2@11.4.19",
+      "destination": "wwwroot/sweetalert2/limonte-sweetalert2/"
     }
   ]
 }

@@ -1,0 +1,476 @@
+﻿@model EmployeesTracking.Models.PersonelViewModel
+    <script src="~/js/jquery.validate.min.js"></script>
+    <script src="~/js/jquery.validate.unobtrusive.js"></script>
+    <script src="~/js/jquery.validate.unobtrusive.min.js"></script>
+
+    <div class="modal fade" id="personelDetayModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div id="PersonelEkleGuncelleSweetAlert2ÖnPlanaCikart" class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="row row-sm">
+                    <!-- Güncelleme Ekranı Sol Taraf Başlangıç -->
+                    <div class="col-lg-4">
+                        <div class="card mg-b-20">
+                            <div class="card-body">
+                                <div class="ps-0">
+                                    <div class="main-profile-overview">
+                                        <div class="main-img-user profile-user">
+                                            @if (Model.Id > 0)
+                                            {
+                                                <img alt="" src="/images/@Model.Resim"><a class="fas fa-camera profile-edit" href="JavaScript:void(0);"></a>
+                                            }
+                                            else
+                                            {
+                                                <img alt="" src="/images/PersonelEkleResim.jpg">
+                                            }
+                                        </div>
+                                        <div class="d-flex justify-content-between mg-b-20">
+                                            <div>
+                                                <h5 class="main-profile-name">@Model.Adi @Model.Soyadi</h5>
+                                                <p class="main-profile-name-text">@(Model.Id>0?Model.TcNo:"Yeni Personel Ekle")</p>
+                                            </div>
+                                        </div>
+                                        @if (Model.Id > 0)
+                                        {
+                                            <h6>Bio</h6>
+                                            <div class="main-profile-bio">
+                                                pleasure rationally encounter but because pursue consequences that are extremely painful.occur in which toil and pain can procure him some great pleasure.. <a href="">More</a>
+                                            </div><!-- main-profile-bio -->
+                                            <div class="row">
+                                                <div class="col-md-4 col mb20">
+                                                    <h5>947</h5>
+                                                    <h6 class="text-small text-muted mb-0">Followers</h6>
+                                                </div>
+                                                <div class="col-md-4 col mb20">
+                                                    <h5>583</h5>
+                                                    <h6 class="text-small text-muted mb-0">Tweets</h6>
+                                                </div>
+                                                <div class="col-md-4 col mb20">
+                                                    <h5>48</h5>
+                                                    <h6 class="text-small text-muted mb-0">Posts</h6>
+                                                </div>
+                                            </div>
+                                        }
+
+                                        <!--skill bar-->
+                                    </div><!-- main-profile-overview -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card mg-b-20">
+                            <div class="card-body">
+                                <div class="main-content-label tx-13 mg-b-25">
+                                    contact
+                                </div>
+                                <div class="main-profile-contact-list">
+                                    <div class="media">
+                                        <div class="media-icon bg-primary-transparent text-primary">
+                                            <i class="icon ion-md-phone-portrait"></i>
+                                        </div>
+                                        <div class="media-body">
+                                            <span>Mobile</span>
+                                            <div>
+                                                +245 354 654
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="media">
+                                        <div class="media-icon bg-success-transparent text-success">
+                                            <i class="icon ion-logo-slack"></i>
+                                        </div>
+                                        <div class="media-body">
+                                            <span>Slack</span>
+                                            <div>
+                                                spruko.w
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="media">
+                                        <div class="media-icon bg-info-transparent text-info">
+                                            <i class="icon ion-md-locate"></i>
+                                        </div>
+                                        <div class="media-body">
+                                            <span>Current Address</span>
+                                            <div>
+                                                San Francisco, CA
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- main-profile-contact-list -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Güncelleme Ekranı Sol Taraf Son  -->
+                    <div class="col-lg-8">
+                        <div class="card">
+                            <div class="card-body">
+                                @if (Model.Id > 0)
+                                {
+                                    <center><div class="mb-4 main-content-label">Personel Güncelleme Ekranı</div></center>
+                                }
+                                else
+                                {
+                                    <center><div class="mb-4 main-content-label">Personel Ekleme Ekranı</div></center>
+                                }
+
+
+                                <form id="formPersonelDetay" asp-action="PersonelKaydet" style="padding:40px 50px;" enctype="multipart/form-data" class="row g-3" novalidate>
+
+                                    <div class="form-group ">
+                                        <div class="row">
+                                            <input id="Id" type="hidden" asp-for="Id" class="form-control">
+                                            <div class="col-md-2">
+                                                <label asp-for="Adi" class="form-label">İsim</label>
+                                            </div>
+                                            <div class="col-md-10">
+                                                <div class="form-outline">
+                                                    @*<input type="text" class="form-control" id="validationCustom01" required />*@
+                                                    <input id="Adi" asp-for="Adi" class="form-control">
+                                                    <span asp-validation-for="Adi" class="text-danger"></span>
+                                                    @*<div class="valid-feedback">İyi görünüyor!</div>
+                            <div class="invalid-feedback"><span asp-validation-for="Adi" class="text-danger"></span></div>*@
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <label asp-for="Soyadi" class="form-label">Soyisim</label>
+                                            </div>
+                                            <div class="col-md-10">
+                                                <div class="form-outline">
+                                                    <input id="Soyadi" asp-for="Soyadi" class="form-control">
+                                                    <span asp-validation-for="Soyadi" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <label asp-for="TcNo" class="form-label">Tc Kimlik Numarası</label>
+                                            </div>
+                                            <div class="col-md-10">
+                                                <div class="form-outline">
+                                                    <input id="TcNo" asp-for="TcNo" maxlength="11" class="form-control" />
+                                                    <span asp-validation-for="TcNo" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <label asp-for="BabaAdi" class="form-label">Baba Adı</label>
+                                            </div>
+                                            <div class="col-md-10">
+                                                <div class="form-outline">
+                                                    <input id="BabaAdi" asp-for="BabaAdi" class="form-control" />
+                                                    <span asp-validation-for="BabaAdi" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <label asp-for="AnaAdi" class="form-label">Anne Adı</label>
+                                            </div>
+                                            <div class="col-md-10">
+                                                <input id="AnaAdi" asp-for="AnaAdi" class="form-control">
+                                                <span asp-validation-for="AnaAdi" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <label class="form-label">Cinsiyet</label>
+                                            </div>
+                                            <div class="col-md-10">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Erkek</label>
+                                                        <input type="radio" value="1" asp-for="GenderId" />
+                                                        <br />
+                                                        <label>Kadın</label>
+                                                        <input type="radio" value="2" asp-for="GenderId" />
+                                                        <span asp-validation-for="GenderId" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="mb-4 main-content-label">İletişim Bilgileri</div>
+
+                                    <div class="form-group ">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <label asp="Doğum Yeri">Doğum Yeri</label>
+                                            </div>
+                                            <div class="col-md-10">
+                                                <select id="CityId" asp-for="CityId" asp-items="@ViewBag.Cities" onchange="IlceEklemeIcıniListele()" class="form-control">
+                                                    <option selected disabled>Şehir Seçiniz</option>
+
+                                                </select>
+                                                <span asp-validation-for="CityId" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <label asp="Doğum Yeri">İlçe</label>
+                                            </div>
+                                            <div class="col-md-10">
+                                                <select id="DistrictId" asp-for="DistrictId" class="form-control">
+                                                    <option selected disabled>Şehir seçiniz...</option>
+                                                </select>
+                                                <span asp-validation-for="DistrictId" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <label class="form-label">Medeni Durum</label>
+                                            </div>
+                                            <div class="col-md-10">
+                                                <label>Evli</label>
+                                                <input id="MaritalStatusId" type="radio" value="1" asp-for="MaritalStatusId" />
+                                                <br />
+                                                <label>Bekar</label>
+                                                <input id="MaritalStatusId" type="radio" value="2" asp-for="MaritalStatusId" />
+                                                <span asp-validation-for="MaritalStatusId" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <label>Doğum Tarihi</label>
+                                            </div>
+                                            <div class="col-md-10">
+                                                <input class="form-control me-2" id="DogumTarihi" asp-for="DogumTarihi" max="@DateTime.Now.ToString("yyyy-MM-ddThh:mm")" min="@DateTime.Now.AddYears(-120).ToString("yyyy-MM-ddThh:mm")" />
+                                                <span asp-validation-for="DogumTarihi" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-4 main-content-label">About Yourself</div>
+                                    <div class="form-group ">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <label>Profil Resmi</label>
+                                            </div>
+                                            <div class="col-md-10">
+                                                <input id="Resim" type="file" asp-for="Resim" class="form-control">
+                                                <span asp-validation-for="Resim" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                            <button type="submit" id="btnPersonelKaydet" class="btn btn-primary waves-effect waves-light">@(Model.Id>0 ? "Güncelle" : "Ekle") </button>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- /Col -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+
+    $(document).ready(function () {
+
+        IlceEklemeIcıniListele();
+    });
+
+    $("#formPersonelDetay").submit(function (e) {
+        e.preventDefault();
+
+        var form = $(this);
+        var url = form.attr('action');
+
+        //Resim Yükleme işlemleri başlangıç
+        var input = document.getElementById("Resim");
+        var files = input.files;
+        var formData = new FormData();
+        for (var i = 0; i != files.length; i++) {
+            formData.append("Resim", files[i]);
+        }
+        //Resim Yükleme işlemleri son
+        formData.append('Adi', document.getElementById("Adi").value);
+        formData.append('Id', document.getElementById("Id").value);
+        formData.append('TcNo', document.getElementById("TcNo").value);
+        formData.append('Soyadi', document.getElementById("Soyadi").value);
+        formData.append('BabaAdi', document.getElementById("BabaAdi").value);
+        formData.append('AnaAdi', document.getElementById("AnaAdi").value);
+        formData.append('CityId', document.getElementById("CityId").value);
+        formData.append('DistrictId', document.getElementById("DistrictId").value);
+        formData.append('DogumTarihi', document.getElementById("DogumTarihi").value);
+        formData.append('GenderId', $("input[name='GenderId']:checked").val());
+        formData.append('MaritalStatusId', $("input[name='MaritalStatusId']:checked").val());
+
+
+        const Toast = Swal.mixin({
+            toast: true,
+            showLoaderOnConfirm: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            target: document.getElementById('PersonelEkleGuncelleSweetAlert2ÖnPlanaCikart'),
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        });
+        Toast.fire({
+            icon: 'success',
+            title: 'Signed in successfully'
+        });
+        var Hatalar = "";
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (result) {
+                console.log(result);
+                    if (result.success) {
+                        $('#personelDetayModal').modal('hide');
+
+                        PersonelleriListele();
+
+                        Toast.fire({ icon: 'success', title: result.message, showConfirmButton: true });
+
+                    }
+                    else {
+                        for (var i = 0; i != result.message2.length; i++) {
+                            Hatalar += result.message2[i] + "\n";
+
+                        }
+                        Toast.fire({ icon: 'error', title: Hatalar, showConfirmButton: true });
+                    }
+            },
+            error: function (err) {
+
+                Toast.fire({ icon: 'error', title: 'Hatalı İşlem', showConfirmButton: true });
+            }
+        });
+    });
+
+    var ilceId = '@Model.DistrictId';
+
+    function IlceEklemeIcıniListele(id) {
+        $("#DistrictId").empty();
+        $.ajax({
+            url: '/Home/PersonelIlcePartial',
+            dataType: 'json',
+            data: {
+                id: $('#CityId').val()
+            },
+            type: 'GET',
+            success: function (response) {
+                $("#DistrictId").append('<option value="' + -1 + '">' +
+                    "İlçe Seçin" + '</option>');
+
+                $.each(response, function (i, city) {
+                    $("#DistrictId").append('<option value="' + city.value + '">' + city.text + '</option>');
+                });
+                if (ilceId>0) {
+                    $("#DistrictId").val(ilceId).change();
+                }
+
+            },
+            error: function (err) {
+
+                swal("Bilgi! ", err.status + "-" + err.statusText, "error");
+            }
+        });
+    }
+
+    </script>
+
+    <script>
+            //Eski Kodlar
+            //Resim Upload Etmek İçin Kodlarda değişikliğe gittim
+            //$("#formPersonelDetay").submit(function (e) {
+            //    e.preventDefault();
+
+            //    var form = $(this);
+            //    var url = form.attr('action');
+
+            //    $.ajax({
+            //        type: "POST",
+            //        url: url,
+            //        data: form.serialize(),
+            //        success: function (result) {
+            //            console.log(result);
+            //            if (result.success) {
+            //                $('#personelDetayModal').modal('hide');
+
+            //                PersonelleriListele();
+
+            //                swal("Bilgi! ", " İşlem Başarılı", "success");
+
+            //            }
+            //            else {
+            //                swal("Bilgi! ", result.message, "error");
+            //            }
+            //        },
+            //        error: function (err) {
+
+            //            swal("Bilgi! ", "Kayıt hata", "error");
+            //        }
+            //    });
+            //});
+
+
+
+
+            //Resim mi controllara gönderebiliyorum lakin şehir id gibi bilgiler gitmiyor
+            //$("#formPersonelDetay").submit(function (e) {
+            //    e.preventDefault();
+            //    var input = document.getElementById(resimm);
+            //    var files = input.files;
+            //    var formData = new FormData();
+
+            //    for (var i = 0; i != files.length; i++) {
+            //        formData.append("files", files[i]);
+            //        var form = $(this);
+            //        var url = form.attr('action');
+
+            //        $.ajax({
+            //            type: "POST",
+            //            url: url,
+            //            data: formData,
+            //            success: function (result) {
+            //                console.log(result);
+            //                if (result.success) {
+            //                    $('#personelDetayModal').modal('hide');
+
+            //                    PersonelleriListele();
+
+            //                    swal("Bilgi! ", " İşlem Başarılı", "success");
+
+            //                }
+            //                else {
+            //                    swal("Bilgi! ", result.message, "error");
+            //                }
+            //            },
+            //            error: function (err) {
+
+            //                swal("Bilgi! ", "Kayıt hata", "error");
+            //            }
+            //        });
+            //    });
+    </script>

@@ -313,10 +313,74 @@ namespace EmployeesTracking.Controllers
             return Json(new SelectList(_context.Districts.Where(x => x.CityID == 0).ToList(), "DistrictId", "DistrictName"));
         }
 
-        public IActionResult Deneme()
+        public IActionResult Deneme(int? id)
         {
             ViewBag.Cities = new SelectList(_context.Cities.ToList(), "CityId", "CityName");
-            return View();
+
+            PersonelViewModel model;
+            Personel personel;
+            if (id > 0)
+            {
+                personel = _context.Personels.FirstOrDefault(m => m.Id == id);
+                // ViewBag.Ilceler = new SelectList(_context.Districts.Where(x => x.CityID == personel.CityId).ToList(), "DistrictId", "DistrictName");
+                model = new PersonelViewModel
+                {
+                    Id = personel.Id,
+                    Adi = personel.Adi,
+                    Soyadi = personel.Soyadi,
+                    TcNo = personel.TcNo,
+                    BabaAdi = personel.BabaAdi,
+                    AnaAdi = personel.AnaAdi,
+                    GenderId = personel.GenderId,
+                    MaritalStatusId = personel.MaritalStatusId,
+                    CityId = personel.CityId,
+                    DistrictId = personel.DistrictId,
+                    DogumTarihi = DateTime.Parse(personel.DogumTarihi.ToShortDateString())
+                };
+            }
+            else
+            {
+                model = new PersonelViewModel
+                {
+                    DogumTarihi = DateTime.Parse(DateTime.Now.ToShortDateString())
+                };
+            }
+            return PartialView("Deneme", model);
+        }
+
+        public IActionResult Test(int? id)
+        {
+            ViewBag.Cities = new SelectList(_context.Cities.ToList(), "CityId", "CityName");
+
+            PersonelViewModel model;
+            Personel personel;
+            if (id > 0)
+            {
+                personel = _context.Personels.FirstOrDefault(m => m.Id == id);
+                // ViewBag.Ilceler = new SelectList(_context.Districts.Where(x => x.CityID == personel.CityId).ToList(), "DistrictId", "DistrictName");
+                model = new PersonelViewModel
+                {
+                    Id = personel.Id,
+                    Adi = personel.Adi,
+                    Soyadi = personel.Soyadi,
+                    TcNo = personel.TcNo,
+                    BabaAdi = personel.BabaAdi,
+                    AnaAdi = personel.AnaAdi,
+                    GenderId = personel.GenderId,
+                    MaritalStatusId = personel.MaritalStatusId,
+                    CityId = personel.CityId,
+                    DistrictId = personel.DistrictId,
+                    DogumTarihi = DateTime.Parse(personel.DogumTarihi.ToShortDateString())
+                };
+            }
+            else
+            {
+                model = new PersonelViewModel
+                {
+                    DogumTarihi = DateTime.Parse(DateTime.Now.ToShortDateString())
+                };
+            }
+            return PartialView("Test", model);
         }
     }
 }

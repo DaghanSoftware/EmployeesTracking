@@ -37,7 +37,7 @@ namespace EmployeesTracking
             services.AddDistributedMemoryCache();
             //Session iþlemi için eklenen servicesler son
 
-            var mvcBuilder = services.AddControllersWithViews().AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<Startup>());
+            var mvcBuilder = services.AddControllersWithViews();
 
             if (Env.IsDevelopment())
             {

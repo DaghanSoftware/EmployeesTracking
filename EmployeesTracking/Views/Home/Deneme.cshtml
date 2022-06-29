@@ -1,413 +1,308 @@
-﻿@{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout2.cshtml";
-}
+﻿@model EmployeesTracking.Models.PersonelViewModel
+<script src="~/js/jquery.validate.min.js"></script>
+<script src="~/js/jquery.validate.unobtrusive.js"></script>
+<script src="~/js/jquery.validate.unobtrusive.min.js"></script>
+<div class="modal fade" id="personelDetayModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <form id="formPersonelDetay" asp-action="PersonelKaydet" style="padding:40px 50px;" enctype="multipart/form-data" class="row g-3" novalidate>
+                <div class="col-lg-12 col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <center>
+                                <h3 class="card-title">Personel Ekle</h3>
+                            </center>
 
-    <!-- /Loader -->
-    <!-- Page -->
-    <div class="page">
-
-        <!-- main-content -->
-        <div class="main-content app-content">
-
-            <!-- container -->
-            <div class="main-container container-fluid">
-
-                <!-- breadcrumb -->
-                <div class="breadcrumb-header justify-content-between">
-                    <div class="my-auto">
-                        <div class="d-flex">
-                            <h4 class="content-title mb-0 my-auto">Advanced ui</h4><span class="text-muted mt-1 tx-13 ms-2 mb-0">/ Accordion</span>
                         </div>
-                    </div>
-                    <div class="d-flex my-xl-auto right-content">
-                        <div class="pe-1 mb-xl-0">
-                            <button type="button" class="btn btn-info btn-icon me-2 btn-b">
-                                <i class="mdi mdi-filter-variant"></i>
-                            </button>
-                        </div>
-                        <div class="pe-1 mb-xl-0">
-                            <button type="button" class="btn btn-danger btn-icon me-2">
-                                <i class="mdi mdi-star"></i>
-                            </button>
-                        </div>
-                        <div class="pe-1 mb-xl-0">
-                            <button type="button" class="btn btn-warning  btn-icon me-2">
-                                <i class="mdi mdi-refresh"></i>
-                            </button>
-                        </div>
-                        <div class="mb-xl-0">
-                            <div class="btn-group dropdown">
-                                <button type="button" class="btn btn-primary">14 Aug 2019</button>
-                                <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
-                                        id="dropdownMenuDate" data-bs-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">
-                                    <span class="sr-only">Toggle Dropdown</span>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuDate"
-                                     x-placement="bottom-end">
-                                    <a class="dropdown-item" href="javascript:void(0);">2015</a>
-                                    <a class="dropdown-item" href="javascript:void(0);">2016</a>
-                                    <a class="dropdown-item" href="javascript:void(0);">2017</a>
-                                    <a class="dropdown-item" href="javascript:void(0);">2018</a>
+                        <div class="card-body">
+                            <div class="row">
+                                <input id="Id" type="hidden" asp-for="Id" class="form-control">
+                                <div class="col-md-6">
+                                    <label asp-for="Adi" class="form-label">İsim</label>
+                                    <input id="Adi" asp-for="Adi" type="text" class="form-control">
+                                    <div class="valid-feedback">
+                                        <span asp-validation-for="Adi" class="text-danger"></span>
+                                    </div>
                                 </div>
+                                <div class="col-md-6">
+                                    <label asp-for="Soyadi" class="form-label">Soyadi</label>
+                                    <input id="Soyadi" asp-for="Soyadi" type="text" class="form-control">
+                                    <div class="valid-feedback">
+                                        <span asp-validation-for="Soyadi" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label asp-for="TcNo" class="form-label">TcNo</label>
+                                    <div class="input-group has-validation">
+                                        <input id="TcNo" asp-for="TcNo" maxlength="11" type="text" class="form-control">
+                                        <div class="invalid-feedback">
+                                            <span asp-validation-for="TcNo" class="text-danger"></span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6">
+                                    <label asp-for="BabaAdi" class="form-label">BabaAdi</label>
+                                    <input id="BabaAdi" asp-for="BabaAdi" type="text" class="form-control">
+                                    <div class="invalid-feedback">
+                                        <span asp-validation-for="BabaAdi" class="text-danger"></span>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label asp-for="AnaAdi" class="form-label">AnaAdi</label>
+                                    <input id="AnaAdi" asp-for="AnaAdi" type="text" class="form-control">
+                                    <div class="invalid-feedback">
+                                        <span asp-validation-for="AnaAdi" class="text-danger"></span>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label asp-for="CityId" class="form-label">Şehir</label>
+                                    <select id="CityId" asp-for="CityId" asp-items="@ViewBag.Cities" onchange="IlceEklemeIcıniListele()" class="form-select">
+                                        <option selected disabled>Şehir Seçiniz</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        <span asp-validation-for="CityId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label asp-for="DistrictId" class="form-label">İlçe</label>
+                                    <select id="DistrictId" asp-for="DistrictId" class="form-select">
+                                        <option selected disabled>Şehir Seçiniz</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        <span asp-validation-for="DistrictId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Erkek</label>
+                                        <input type="radio" value="1" asp-for="GenderId" />
+                                        <br />
+                                        <label>Kadın</label>
+                                        <input type="radio" value="2" asp-for="GenderId" />
+                                        <span asp-validation-for="GenderId" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Evli</label>
+                                        <input id="MaritalStatusId" type="radio" value="1" asp-for="MaritalStatusId" />
+                                        <br />
+                                        <label>Bekar</label>
+                                        <input id="MaritalStatusId" type="radio" value="2" asp-for="MaritalStatusId" />
+                                        <span asp-validation-for="MaritalStatusId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Doğum Tarihi</label>
+                                        <input class="form-control me-2" id="DogumTarihi" asp-for="DogumTarihi" max="@DateTime.Now.ToString("yyyy-MM-ddThh:mm")" min="@DateTime.Now.AddYears(-120).ToString("yyyy-MM-ddThh:mm")" />
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label>Profil Resmi</label>
+                                    <input id="Resim" type="file" asp-for="Resim" class="form-control">
+                                </div>
+
+                                <div class="col-12">
+                                    <button type="submit" id="btnPersonelKaydet" class="btn btn-success"> Personel Kaydet  </button>
+                                </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- breadcrumb -->
-                <!-- row opened-->
-                <div class="row">
-                    <div class="col-lg-12 col-md-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div>
-                                    <h6 class="card-title mb-1">Basic Style Accordion</h6>
-                                    <p class="text-muted card-sub-title">
-                                        The default collapse behavior to create an
-                                        accordion.
-                                    </p>
-                                </div>
-                                <div aria-multiselectable="true" class="accordion accordion-dark" id="accordion2"
-                                     role="tablist">
-                                    <div class="card mb-0">
-                                        <div class="card-header" id="headingOne2" role="tab">
-                                            <a aria-controls="collapseOne2" aria-expanded="false"
-                                               data-bs-toggle="collapse" href="#collapseOne2">
-                                                Making a Beautiful CSS3
-                                                Button Set
-                                            </a>
-                                        </div>
-                                        <div aria-labelledby="headingOne2" class="collapse show"
-                                             data-bs-parent="#accordion2" id="collapseOne2" role="tabpanel">
-                                            <div class="card-body">
-                                                A concisely coded CSS3 button set increases usability across the board,
-                                                gives you a ton of options, and keeps all the code involved to an
-                                                absolute minimum. Anim pariatur cliche reprehenderit, enim eiusmod high
-                                                life accusamus terry richardson ad squid. 3 wolf moon officia aute, non
-                                                cupidatat skateboard dolor brunch.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card mb-0">
-                                        <div class="card-header" id="headingTwo22" role="tab">
-                                            <a aria-controls="collapseTwo22" aria-expanded="true" class="collapsed"
-                                               data-bs-toggle="collapse" href="#collapseTwo22">
-                                                Horizontal Navigation
-                                                Menu Fold Animation
-                                            </a>
-                                        </div>
-                                        <div aria-labelledby="headingTwo22" class="collapse"
-                                             data-bs-parent="#accordion2" id="collapseTwo22" role="tabpanel">
-                                            <div class="card-body">
-                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
-                                                terry richardson ad squid. 3 wolf moon officia aute, non cupidatat
-                                                skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                                                Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid
-                                                single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh
-                                                helvetica, craft beer labore.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card mb-0">
-                                        <div class="card-header" id="headingThree23" role="tab">
-                                            <a aria-controls="collapseThree2" aria-expanded="false" class="collapsed"
-                                               data-bs-toggle="collapse" href="#collapseThree23">
-                                                Creating CSS3 Button
-                                                with Rounded Corners
-                                            </a>
-                                        </div>
-                                        <div aria-labelledby="headingThree23" class="collapse"
-                                             data-bs-parent="#accordion2" id="collapseThree23" role="tabpanel">
-                                            <div class="card-body">
-                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
-                                                terry richardson ad squid. 3 wolf moon officia aute, non cupidatat
-                                                skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                                                Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid
-                                                single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh
-                                                helvetica, craft beer labore.
-                                            </div>
-                                        </div><!-- collapse -->
-                                    </div>
-                                </div><!-- accordion -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--row closed-->
-                <!--row opened-->
-                <div class="row">
-                    <div class="col-lg-12 col-md-12">
-                        <div class="card overflow-hidden">
-                            <div class="card-header pb-0">
-                                <h3 class="card-title">Accordion Style01</h3>
-                                <p class="text-muted card-sub-title mb-0">
-                                    The default collapse behavior to create an
-                                    accordion.
-                                </p>
-                            </div>
-                            <div class="card-body">
-                                <div class="panel-group1" id="accordion11">
-                                    <div class="panel panel-default  mb-4">
-                                        <div class="panel-heading1 bg-primary ">
-                                            <h4 class="panel-title1">
-                                                <a class="accordion-toggle collapsed" data-bs-toggle="collapse"
-                                                   data-bs-parent="#accordion11" href="#collapseFour1"
-                                                   aria-expanded="false">
-                                                    <i class="fe fe-arrow-right me-2"></i>Section
-                                                    1
-                                                </a>
-                                            </h4>
-                                        </div>
-                                        <div id="collapseFour1" class="panel-collapse collapse" role="tabpanel"
-                                             aria-expanded="false">
-                                            <div class="panel-body border">
-                                                <p>
-                                                    All the Lorem Ipsum generators on the Internet tend to repeat
-                                                    predefined chunks as necessary, making this the first true generator
-                                                    on the Internet. It uses a dictionary of over 200 Latin words
-                                                </p>
-                                                <p>
-                                                    Lorem Ipsum is simply dummy text of the printing and typesetting
-                                                    industry. Lorem Ipsum has been the industry's standard dummy text
-                                                    ever since the 1500s, when an unknown printer took a galley of type
-                                                    and scrambled.Nor again is there anyone who loves or pursues or
-                                                    desires to obtain pain of itself, because it is pain, but because
-                                                    occasionally circumstances occur in which toil and pain can procure
-                                                    him some great pleasure. To take a trivial example, which of us ever
-                                                    undertakes laborious physical exercise
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="panel panel-default mb-0">
-                                        <div class="panel-heading1  bg-primary">
-                                            <h4 class="panel-title1">
-                                                <a class="accordion-toggle mb-0 collapsed" data-bs-toggle="collapse"
-                                                   data-bs-parent="#accordion11" href="#collapseFive2"
-                                                   aria-expanded="false">
-                                                    <i class="fe fe-arrow-right me-2"></i>Section
-                                                    2
-                                                </a>
-                                            </h4>
-                                        </div>
-                                        <div id="collapseFive2" class="panel-collapse collapse" role="tabpanel"
-                                             aria-expanded="false">
-                                            <div class="panel-body border">
-                                                <p>
-                                                    All the Lorem Ipsum generators on the Internet tend to repeat
-                                                    predefined chunks as necessary, making this the first true generator
-                                                    on the Internet. It uses a dictionary of over 200 Latin words
-                                                </p>
-                                                <p>
-                                                    Lorem Ipsum is simply dummy text of the printing and typesetting
-                                                    industry. Lorem Ipsum has been the industry's standard dummy text
-                                                    ever since the 1500s, when an unknown printer took a galley of type
-                                                    and scrambled.Nor again is there anyone who loves or pursues or
-                                                    desires to obtain pain of itself, because it is pain, but because
-                                                    occasionally circumstances occur in which toil and pain can procure
-                                                    him some great pleasure. To take a trivial example, which of us ever
-                                                    undertakes laborious physical exercise
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- row closed -->
-                <!-- row opened -->
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">Accordion Style02</h3>
-                            </div>
-                            <div class="card-body h-100">
-                                <div id="accordion" class="w-100 br-2 overflow-hidden">
-                                    <div class="">
-                                        <div class="accor bg-primary" id="headingOne1">
-                                            <h4 class="m-0">
-                                                <a href="#collapseOne1" class="" data-bs-toggle="collapse"
-                                                   aria-expanded="true" aria-controls="collapseOne">
-                                                    <i class="si si-cursor-move me-2"></i>Accordions With Text
-                                                </a>
-                                            </h4>
-                                        </div>
-                                        <div id="collapseOne1" class="collapse show" aria-labelledby="headingOne"
-                                             data-bs-parent="#accordion">
-                                            <div class="border p-3">
-                                                I must explain to you how all this mistaken idea of denouncing pleasure
-                                                and praising pain was born and I will give you a complete account of the
-                                                system, and expound the actual teachings of the great explorer of the
-                                                truth, the master-builder of human happiness. No one rejects, dislikes,
-                                                or avoids pleasure itself, because it is pleasure, but because those who
-                                                do not know how to pursue pleasure rationally encounter consequences
-                                                that are extremely painful
-                                                sint occaecati cupiditate non provident, similique sunt in culpa qui
-                                                officia deserunt mollitia animi, id est laborum et dolorum fuga. Et
-                                                harum quidem rerum facilis est et expedita distinctio. Nam libero
-                                                tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo
-                                                minus id quod maxime placeat facere possimus, omnis voluptas assumenda
-                                                est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis
-                                                debitis aut rerum necessitatibus saepe eveniet ut et voluptates
-                                                repudiandae sint et molestiae
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="">
-                                        <div class="accor  bg-primary" id="headingTwo2">
-                                            <h4 class="m-0">
-                                                <a href="#collapseTwo2" class="collapsed" data-bs-toggle="collapse"
-                                                   aria-expanded="false" aria-controls="collapseTwo">
-                                                    <i class="si si-cursor-move me-2"></i>Accordions with images
-                                                </a>
-                                            </h4>
-                                        </div>
+            </form>
 
-                                    </div>
-                                    <div class="">
-                                        <div class="accor  bg-primary" id="headingThree3">
-                                            <h4 class="m-0">
-                                                <a href="#collapseThree1" class="collapsed" data-bs-toggle="collapse"
-                                                   aria-expanded="false" aria-controls="collapseThree">
-                                                    <i class="si si-cursor-move me-2"></i>Accordions with tables
-                                                </a>
-                                            </h4>
-                                        </div>
-                                        <div id="collapseThree1" class="collapse b-b0" aria-labelledby="headingThree"
-                                             data-bs-parent="#accordion">
-                                            <div class="border p-3">
-                                                <table class="table mb-0 table-bordered border-top mb-0">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>#</th>
-                                                            <th>First Name</th>
-                                                            <th>Last Name</th>
-                                                            <th>Username</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <th scope="row">1</th>
-                                                            <td>Mark</td>
-                                                            <td>Otto</td>
-                                                            <td>mdo</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">2</th>
-                                                            <td>Jacob</td>
-                                                            <td>Thornton</td>
-                                                            <td>fat</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">3</th>
-                                                            <td>Larry</td>
-                                                            <td>the Bird</td>
-                                                            <td>twitter</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- row closed -->
-                <!-- row opened -->
-                <div class="row">
-                    <div class="col-lg-12 col-md-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div>
-                                    <h6 class="card-title mb-1">Colored Style Accordion</h6>
-                                    <p class="text-muted card-sub-title">
-                                        The default collapse behavior to create an
-                                        accordion.
-                                    </p>
-                                </div>
-                                <div aria-multiselectable="true" class="accordion accordion-dark" id="accordion2"
-                                     role="tablist">
-                                    <div class="card mb-0">
-                                        <div class="card-header" id="headingOne2" role="tab">
-                                            <a aria-controls="collapseOne2" aria-expanded="false"
-                                               data-bs-toggle="collapse" href="#collapseOne2">
-                                                Making a Beautiful CSS3
-                                                Button Set
-                                            </a>
-                                        </div>
-                                        <div aria-labelledby="headingOne2" class="collapse show"
-                                             data-bs-parent="#accordion2" id="collapseOne2" role="tabpanel">
-                                            <div class="card-body">
-                                                A concisely coded CSS3 button set increases usability across the board,
-                                                gives you a ton of options, and keeps all the code involved to an
-                                                absolute minimum. Anim pariatur cliche reprehenderit, enim eiusmod high
-                                                life accusamus terry richardson ad squid. 3 wolf moon officia aute, non
-                                                cupidatat skateboard dolor brunch.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card mb-0">
-                                        <div class="card-header" id="headingTwo22" role="tab">
-                                            <a aria-controls="collapseTwo22" aria-expanded="true" class="collapsed"
-                                               data-bs-toggle="collapse" href="#collapseTwo22">
-                                                Horizontal Navigation
-                                                Menu Fold Animation
-                                            </a>
-                                        </div>
-                                        <div aria-labelledby="headingTwo22" class="collapse"
-                                             data-bs-parent="#accordion2" id="collapseTwo22" role="tabpanel">
-                                            <div class="card-body">
-                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
-                                                terry richardson ad squid. 3 wolf moon officia aute, non cupidatat
-                                                skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                                                Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid
-                                                single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh
-                                                helvetica, craft beer labore.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card mb-0">
-                                        <div class="card-header" id="headingThree23" role="tab">
-                                            <a aria-controls="collapseThree2" aria-expanded="false" class="collapsed"
-                                               data-bs-toggle="collapse" href="#collapseThree23">
-                                                Creating CSS3 Button
-                                                with Rounded Corners
-                                            </a>
-                                        </div>
-                                        <div aria-labelledby="headingThree23" class="collapse"
-                                             data-bs-parent="#accordion2" id="collapseThree23" role="tabpanel">
-                                            <div class="card-body">
-                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
-                                                terry richardson ad squid. 3 wolf moon officia aute, non cupidatat
-                                                skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                                                Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid
-                                                single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh
-                                                helvetica, craft beer labore.
-                                            </div>
-                                        </div><!-- collapse -->
-                                    </div>
-                                </div><!-- accordion -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- row closed -->
-            </div>
-            <!-- Container closed -->
         </div>
-        <!-- main-content closed -->
-
     </div>
-    <!-- End Page -->
-    <a href="#top" id="back-to-top"><i class="las la-angle-double-up"></i></a>
-    <!-- Back-to-top -->
-    <script src="/template/Html/valex/assets/plugins/jquery/jquery.min.js"></script>
+</div>
 
-    <!-- Bootstrap Bundle js -->
-    @*<script src="/template/Html/valex/assets/plugins/bootstrap/js/popper.min.js"></script>*@
+
+<script>
+
+    $("#btnPersonelKaydet").click(function (e) {
+        var data = $("#formPersonelDetay").serialize();
+        if (!$("formPersonelDetay").valid()) {
+            return false;
+        }
+    });
+
+    $(document).ready(function () {
+
+        IlceEklemeIcıniListele();
+    });
+
+    $("#formPersonelDetay").submit(function (e) {
+        e.preventDefault();
+
+        var form = $(this);
+        var url = form.attr('action');
+
+        //Resim Yükleme işlemleri başlangıç
+        var input = document.getElementById("Resim");
+        var files = input.files;
+        var formData = new FormData();
+        for (var i = 0; i != files.length; i++) {
+            formData.append("Resim", files[i]);
+        }
+        //Resim Yükleme işlemleri son
+        formData.append('Adi', document.getElementById("Adi").value);
+        formData.append('Id', document.getElementById("Id").value);
+        formData.append('TcNo', document.getElementById("TcNo").value);
+        formData.append('Soyadi', document.getElementById("Soyadi").value);
+        formData.append('BabaAdi', document.getElementById("BabaAdi").value);
+        formData.append('AnaAdi', document.getElementById("AnaAdi").value);
+        formData.append('CityId', document.getElementById("CityId").value);
+        formData.append('DistrictId', document.getElementById("DistrictId").value);
+        formData.append('DogumTarihi', document.getElementById("DogumTarihi").value);
+        formData.append('GenderId', $("input[name='GenderId']:checked").val());
+        formData.append('MaritalStatusId', $("input[name='MaritalStatusId']:checked").val());
+
+
+
+
+        var Hatalar = "";
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (result) {
+                console.log(result);
+                if (result.success) {
+                    $('#personelDetayModal').modal('hide');
+
+                    PersonelleriListele();
+
+                    swal("Bilgi! ", result.message, "success");
+
+                }
+                else {
+                    for (var i = 0; i != result.message2.length; i++) {
+                        Hatalar += result.message2[i] + "\n";
+
+                    }
+                    swal("Bilgi! ", Hatalar, "error");
+                }
+            },
+            error: function (err) {
+
+                swal("Bilgi! ", "Kayıt hata", "error");
+            }
+        });
+    });
+
+    var ilceId = '@Model.DistrictId';
+
+    function IlceEklemeIcıniListele(id) {
+        $("#DistrictId").empty();
+        $.ajax({
+            url: '/Home/PersonelIlcePartial',
+            dataType: 'json',
+            data: {
+                id: $('#CityId').val()
+            },
+            type: 'GET',
+            success: function (response) {
+                $("#DistrictId").append('<option value="' + -1 + '">' +
+                    "İlçe Seçin" + '</option>');
+
+                $.each(response, function (i, city) {
+                    $("#DistrictId").append('<option value="' + city.value + '">' + city.text + '</option>');
+                });
+                if (ilceId>0) {
+                    $("#DistrictId").val(ilceId).change();
+                }
+
+            },
+            error: function (err) {
+
+                swal("Bilgi! ", err.status + "-" + err.statusText, "error");
+            }
+        });
+    }
+
+</script>
+
+<script>
+        //Eski Kodlar
+        //Resim Upload Etmek İçin Kodlarda değişikliğe gittim
+        //$("#formPersonelDetay").submit(function (e) {
+        //    e.preventDefault();
+
+        //    var form = $(this);
+        //    var url = form.attr('action');
+
+        //    $.ajax({
+        //        type: "POST",
+        //        url: url,
+        //        data: form.serialize(),
+        //        success: function (result) {
+        //            console.log(result);
+        //            if (result.success) {
+        //                $('#personelDetayModal').modal('hide');
+
+        //                PersonelleriListele();
+
+        //                swal("Bilgi! ", " İşlem Başarılı", "success");
+
+        //            }
+        //            else {
+        //                swal("Bilgi! ", result.message, "error");
+        //            }
+        //        },
+        //        error: function (err) {
+
+        //            swal("Bilgi! ", "Kayıt hata", "error");
+        //        }
+        //    });
+        //});
+
+
+
+
+        //Resim mi controllara gönderebiliyorum lakin şehir id gibi bilgiler gitmiyor
+        //$("#formPersonelDetay").submit(function (e) {
+        //    e.preventDefault();
+        //    var input = document.getElementById(resimm);
+        //    var files = input.files;
+        //    var formData = new FormData();
+
+        //    for (var i = 0; i != files.length; i++) {
+        //        formData.append("files", files[i]);
+        //        var form = $(this);
+        //        var url = form.attr('action');
+
+        //        $.ajax({
+        //            type: "POST",
+        //            url: url,
+        //            data: formData,
+        //            success: function (result) {
+        //                console.log(result);
+        //                if (result.success) {
+        //                    $('#personelDetayModal').modal('hide');
+
+        //                    PersonelleriListele();
+
+        //                    swal("Bilgi! ", " İşlem Başarılı", "success");
+
+        //                }
+        //                else {
+        //                    swal("Bilgi! ", result.message, "error");
+        //                }
+        //            },
+        //            error: function (err) {
+
+        //                swal("Bilgi! ", "Kayıt hata", "error");
+        //            }
+        //        });
+        //    });
+</script>
