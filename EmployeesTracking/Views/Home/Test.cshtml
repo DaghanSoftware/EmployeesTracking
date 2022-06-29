@@ -183,20 +183,32 @@
                                         </div>
                                     </div>
                                     <div class="form-group ">
+
                                         <div class="row">
-                                            <div class="col-md-2">
-                                                <label class="form-label">Cinsiyet</label>
+                                            <div class="col-lg-6">
+                                                <div class="main-content-label">
+                                                    Medeni Hal
+                                                </div>
+                                                <div class="card">
+                                                    <input class="btn-check" id="PersonelMedeniDurumEkleGuncelle1" type="radio" value="1" asp-for="MaritalStatusId">
+                                                    <label class="btn btn-outline-danger" for="PersonelMedeniDurumEkleGuncelle1">Evli</label>
+
+                                                    <input class="btn-check" id="PersonelMedeniDurumEkleGuncelle2" type="radio" value="2" asp-for="MaritalStatusId">
+                                                    <label class="btn btn-outline-danger" for="PersonelMedeniDurumEkleGuncelle2">Bekar</label>
+                                                    <span asp-validation-for="MaritalStatusId" class="text-danger"></span>
+                                                </div>
                                             </div>
-                                            <div class="col-md-10">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label>Erkek</label>
-                                                        <input type="radio" value="1" asp-for="GenderId" />
-                                                        <br />
-                                                        <label>Kadın</label>
-                                                        <input type="radio" value="2" asp-for="GenderId" />
-                                                        <span asp-validation-for="GenderId" class="text-danger"></span>
-                                                    </div>
+                                            <div class="col-lg-6">
+                                                <div class="main-content-label">
+                                                    Cinsiyet
+                                                </div>
+                                                <div class="card">
+                                                    <input class="btn-check" id="PersonelCinsiyetEkleGuncelle1" type="radio" value="1" asp-for="GenderId">
+                                                    <label class="btn btn-outline-primary" for="PersonelCinsiyetEkleGuncelle1">Erkek</label>
+
+                                                    <input class="btn-check" id="PersonelCinsiyetEkleGuncelle2" type="radio" value="2" asp-for="GenderId">
+                                                    <label class="btn btn-outline-primary" for="PersonelCinsiyetEkleGuncelle2">Kadın</label>
+                                                    <span asp-validation-for="GenderId" class="text-danger"></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -235,21 +247,6 @@
                                     <div class="form-group ">
                                         <div class="row">
                                             <div class="col-md-2">
-                                                <label class="form-label">Medeni Durum</label>
-                                            </div>
-                                            <div class="col-md-10">
-                                                <label>Evli</label>
-                                                <input id="MaritalStatusId" type="radio" value="1" asp-for="MaritalStatusId" />
-                                                <br />
-                                                <label>Bekar</label>
-                                                <input id="MaritalStatusId" type="radio" value="2" asp-for="MaritalStatusId" />
-                                                <span asp-validation-for="MaritalStatusId" class="text-danger"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <div class="row">
-                                            <div class="col-md-2">
                                                 <label>Doğum Tarihi</label>
                                             </div>
                                             <div class="col-md-10">
@@ -258,7 +255,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="mb-4 main-content-label">About Yourself</div>
+                                    @*<div class="mb-4 main-content-label">About Yourself</div>
                                     <div class="form-group ">
                                         <div class="row">
                                             <div class="col-md-2">
@@ -269,7 +266,7 @@
                                                 <span asp-validation-for="Resim" class="text-danger"></span>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>*@
 
                                             <button type="submit" id="btnPersonelKaydet" class="btn btn-primary waves-effect waves-light">@(Model.Id>0 ? "Güncelle" : "Ekle") </button>
                                 </form>
@@ -299,12 +296,12 @@
         var url = form.attr('action');
 
         //Resim Yükleme işlemleri başlangıç
-        var input = document.getElementById("Resim");
-        var files = input.files;
+        //var input = document.getElementById("Resim");
+        //var files = input.files;
         var formData = new FormData();
-        for (var i = 0; i != files.length; i++) {
-            formData.append("Resim", files[i]);
-        }
+        //for (var i = 0; i != files.length; i++) {
+        //    formData.append("Resim", files[i]);
+        //}
         //Resim Yükleme işlemleri son
         formData.append('Adi', document.getElementById("Adi").value);
         formData.append('Id', document.getElementById("Id").value);
@@ -350,7 +347,7 @@
 
                         PersonelleriListele();
 
-                        Toast.fire({ icon: 'success', title: result.message, showConfirmButton: true });
+                        Toast.fire({ icon: 'success', title: result.message, showConfirmButton: true, target: document.getElementById('divPartial')  });
 
                     }
                     else {
