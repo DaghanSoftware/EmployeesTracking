@@ -485,21 +485,49 @@
 
 
     function PersonelSil(personelId) {
-        $.ajax({
-            url: '/Home/PersonelSil',
-            data: {
-                id: personelId
-            },
-            type: 'GET',
-            success: function (result) {
-                swal("Bilgi! ", result.message, "success");
-                PersonelleriListele();
-            },
-            error: function (err) {
 
-                swal("Bilgi! ", result.message, "error");
-            }
-        });
+            Swal.fire({
+                title: "Silmek istediğine emin misin?",
+                text: "Bunu geri alamazsın!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Sil!",
+                cancelButtonText: "İptal!",
+                reverseButtons: true
+            }).then(function (result) {
+                if (result.value) {
+                    $.ajax({
+                        url: '/Home/PersonelSil',
+                        data: {
+                            id: personelId
+                        },
+                        type: 'GET',
+                        success: function (result) {
+                            PersonelleriListele();
+                            Swal.fire(
+                                "Bilgilendirme!",
+                                "Silme İşlemi Başarıyla Gerçekleşti.",
+                                "success"
+                            )
+                        },
+                        error: function (err) {
+
+                            swal("Bilgi! ", result.message, "error");
+                        }
+                    });
+
+                    // result.dismiss can be "cancel", "overlay",
+                    // "close", and "timer"
+                } else if (result.dismiss === "cancel") {
+                    Swal.fire(
+                        "Silme işlemi  gerçekleşitirlemedi",
+                        "Silmekten vazgeçtiniz :)",
+                        "error"
+                    )
+                }
+            });
+
+
     }
 
 
