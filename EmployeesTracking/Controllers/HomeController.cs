@@ -88,7 +88,7 @@ namespace EmployeesTracking.Controllers
         public IActionResult PersonelEkleGuncellePartial(int? id)
         {
             ViewBag.Cities = new SelectList(_context.Cities.ToList(), "CityId", "CityName");
-            
+
             PersonelViewModel model;
             Personel personel;
             if (id > 0)
@@ -107,8 +107,9 @@ namespace EmployeesTracking.Controllers
                     MaritalStatusId = personel.MaritalStatusId,
                     CityId = personel.CityId,
                     DistrictId = personel.DistrictId,
-                    DogumTarihi = DateTime.Parse(personel.DogumTarihi.ToShortDateString())
-            };
+                    DogumTarihi = DateTime.Parse(personel.DogumTarihi.ToShortDateString()),
+                    Resim = personel.Resim
+                };
             }
             else
             {
@@ -157,15 +158,15 @@ namespace EmployeesTracking.Controllers
                     personel.CityId = personelGelen.CityId;
                     personel.DistrictId = personelGelen.DistrictId;
                     personel.DogumTarihi = DateTime.Parse(personelGelen.DogumTarihi.ToShortDateString());
-                    if (personelGelen.Resim != null)
-                    {
-                        var extension = Path.GetExtension(personelGelen.Resim.FileName);
-                        var newimagename = Guid.NewGuid() + extension;
-                        var location = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", newimagename);
-                        var stream = new FileStream(location, FileMode.Create);
-                        personelGelen.Resim.CopyTo(stream);
-                        personel.Resim = newimagename;
-                    }
+                    //if (personelGelen.Resim != null)
+                    //{
+                    //    var extension = Path.GetExtension(personelGelen.Resim.FileName);
+                    //    var newimagename = Guid.NewGuid() + extension;
+                    //    var location = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", newimagename);
+                    //    var stream = new FileStream(location, FileMode.Create);
+                    //    personelGelen.Resim.CopyTo(stream);
+                    //    personel.Resim = newimagename;
+                    //}
                 }
                 else
                 {
@@ -181,15 +182,15 @@ namespace EmployeesTracking.Controllers
                     personel.CityId = personelGelen.CityId;
                     personel.DistrictId = personelGelen.DistrictId;
                     personel.DogumTarihi = DateTime.Parse(personelGelen.DogumTarihi.ToShortDateString());
-                    if (personelGelen.Resim != null)
-                    {
-                        var extension = Path.GetExtension(personelGelen.Resim.FileName);
-                        var newimagename = Guid.NewGuid() + extension;
-                        var location = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", newimagename);
-                        var stream = new FileStream(location, FileMode.Create);
-                        personelGelen.Resim.CopyTo(stream);
-                        personel.Resim = newimagename;
-                    }
+                    //if (personelGelen.Resim != null)
+                    //{
+                    //    var extension = Path.GetExtension(personelGelen.Resim.FileName);
+                    //    var newimagename = Guid.NewGuid() + extension;
+                    //    var location = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", newimagename);
+                    //    var stream = new FileStream(location, FileMode.Create);
+                    //    personelGelen.Resim.CopyTo(stream);
+                    //    personel.Resim = newimagename;
+                    //}
                     _context.Personels.Add(personel);
 
                 }

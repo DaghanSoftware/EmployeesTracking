@@ -214,7 +214,7 @@
                                         <div class="input-group-text">
                                             Soyad:
                                         </div>
-                                        <input class="form-control" id="phoneMask" placeholder="Personelin Soyadını Giriniz" type="text">
+                                        <input class="form-control" id="personelsoyadi" placeholder="Personelin Soyadını Giriniz" type="text">
                                     </div><!-- input-group -->
                                 </div>
                                 <div class="col-lg-3 mg-t-20 mg-lg-t-0">
@@ -222,7 +222,7 @@
                                         <div class="input-group-text">
                                             TC Kimlik:
                                         </div>
-                                        <input class="form-control" id="phoneExtMask" placeholder="Personelin Kimlik Numarasını Giriniz" type="text">
+                                        <input class="form-control" id="tcKimlikNo" placeholder="Personelin Kimlik Numarasını Giriniz" type="text">
                                     </div><!-- input-group -->
                                 </div>
                                 <div class="col-lg-3 mg-t-20 mg-lg-t-0">
@@ -230,7 +230,7 @@
                                         <div class="input-group-text">
                                             Telefon Numarası:
                                         </div><!-- input-group-text -->
-                                        <input class="form-control" id="Telefon Numarası" placeholder="Örn: 530-270-75-78" type="text">
+                                        <input class="form-control" id="telefonNumarasi" placeholder="Örn: 530-270-75-78" type="text">
                                     </div>
                                 </div>
                             </div>
@@ -264,7 +264,7 @@
                                                                         Şehir:
                                                                     </div><!-- input-group-text -->
                                                                     <select asp-items="@ViewBag.Cities" id="sehir2" name="sehir" onchange="IlceleriListele(this.value)" class="form-control">
-                                                                        <option selected disabled>Şehir seçiniz...</option>
+                                                                        <option value="-1" selected disabled>Şehir seçiniz...</option>
 
                                                                     </select>
                                                                 </div>
@@ -275,7 +275,7 @@
                                                                         İlçe:&nbsp&nbsp&nbsp
                                                                     </div><!-- input-group-text -->
                                                                     <select asp-for="DistrictId" id="Ilceler" class="form-control">
-                                                                        <option selected disabled>İlçe seçiniz...</option>
+                                                                        <option value="-1" selected disabled>İlçe seçiniz...</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -346,7 +346,12 @@
                                 <div class="col-lg-4"></div>
                                 <div class="col-lg-4">
                                     <center>
-                                        <button style="height: 50px; width: 200px; " type="button" id="btnPersonelleriGetir" class="btn btn-outline-primary"> Filtrele </button>
+                                        <div class="butonlar" style="display:inline-flex;">
+                                            <button style="height: 50px; width: 200px; " type="button" id="btnPersonelleriGetir" class="btn btn-primary"> Filtrele </button>
+                                            &nbsp;
+                                            &nbsp;
+                                            <button style="height: 50px; width: 200px; " type="button" id="filtreleriTemizle" class="btn btn-danger"> Filtreleri Temizle </button>
+                                        </div>
                                     </center>
                                 </div>
                                 <div class="col-lg-4"></div>
@@ -417,7 +422,24 @@
         });
     }
     $("#btnPersonelleriGetir").click(function () {
+        const Toast = Swal.mixin({
+            toast: true,
+            showLoaderOnConfirm: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 1200,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        });
+        Toast.fire({
+            icon: 'success',
+            title: 'Signed in successfully'
+        });
         PersonelleriListele();
+        Toast.fire({ icon: 'success', title: 'Filtreleme yapıldı', showConfirmButton: true });
     });
 
     function PersonelleriListele() {
@@ -434,20 +456,47 @@
         };
         $("#divPersoneller").load("/Home/PersonelListesiPartial", filtreler);
     }
-    $("#btnTariheGoreFiltreleme").click(function () {
-        let filtreler = {
-            baslangictarih: $("#baslangictarih").val(),
-            bitistarih: $("#bitistarih").val(),
-        };
-        $("#divPersoneller").load("/Home/PersonelListesiPartial", filtreler);
-    });
 
+    $("#filtreleriTemizle").click(function () {
+        const Toast = Swal.mixin({
+            toast: true,
+            showLoaderOnConfirm: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 1200,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        });
+        Toast.fire({
+            icon: 'success',
+            title: 'Signed in successfully'
+        });
+        
+        document.getElementById('personeladi').value = '';
+        document.getElementById('personelsoyadi').value = '';
+        document.getElementById('tcKimlikNo').value = '';
+        document.getElementById('telefonNumarasi').value = '';
+        document.getElementById('baslangictarih').value = '';
+        document.getElementById('bitistarih').value = '';
+        $("#sehir2").val([-1]);
+        $("#Ilceler").val([-1]);
+        IlceleriListele();
+        $('#vbtn-radio1').prop('checked', false);
+        $('#vbtn-radio2').prop('checked', false);
+        $('#btnradio1').prop('checked', false);
+        $('#btnradio2').prop('checked', false);
+        Toast.fire({ icon: 'info', title: 'Filterler Başarıyla Kaldırıldı', showConfirmButton: true });
+    });
 
     $("#btnPersonelEkle").click(function () {
         PersonelDetay(0);
     });
 
     function PersonelDetay(personelId) {
+
         $.ajax({
             url: '/Home/PersonelEkleGuncellePartial',
             data: {
@@ -512,7 +561,11 @@
                         },
                         error: function (err) {
 
-                            swal("Bilgi! ", result.message, "error");
+                            Swal.fire(
+                                "Bilgilendirme!",
+                                "Silme işleminde hata gerçekleşti",
+                                "error"
+                            )
                         }
                     });
 

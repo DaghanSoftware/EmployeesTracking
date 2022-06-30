@@ -27,6 +27,7 @@ namespace EmployeesTracking.Models
         public int DistrictId { get; set; }
         public string DistrictName { get; set; }
         public DateTime DogumTarihi { get; set; }
-        public IFormFile Resim { get; set; }
+        public string Resim { get; set; }
+        //public IFormFile Resim { get; set; }
     }
 }
