@@ -108,13 +108,21 @@ namespace EmployeesTracking.Controllers
                     CityId = personel.CityId,
                     DistrictId = personel.DistrictId,
                     DogumTarihi = DateTime.Parse(personel.DogumTarihi.ToShortDateString()),
-                    Resim = personel.Resim
+                    Resim = personel.Resim,
+                    Biyografi = personel.Biyografi,
+                    PhoneNumber = personel.PhoneNumber,
+                    Mail = personel.Mail,
+                    Hakkinda = personel.Hakkinda,
+                    Position = personel.Position,
+                    Adres = personel.Adres,
+                    KurumBaslamaTarihi= DateTime.Parse(personel.KurumBaslamaTarihi.ToShortDateString())
                 };
             }
             else
             {
                 model = new PersonelViewModel { 
-                DogumTarihi=  DateTime.Parse(DateTime.Now.ToShortDateString())
+                DogumTarihi=  DateTime.Parse(DateTime.Now.ToShortDateString()),
+                KurumBaslamaTarihi = DateTime.Parse(DateTime.Now.ToShortDateString())
                 };
             }
             return PartialView("_PersonelEkleGuncellePartial", model);
@@ -158,6 +166,14 @@ namespace EmployeesTracking.Controllers
                     personel.CityId = personelGelen.CityId;
                     personel.DistrictId = personelGelen.DistrictId;
                     personel.DogumTarihi = DateTime.Parse(personelGelen.DogumTarihi.ToShortDateString());
+                    //personel.Resim = personelGelen.Resim;
+                    personel.Biyografi = personelGelen.Biyografi;
+                    personel.PhoneNumber = personelGelen.PhoneNumber;
+                    personel.Mail = personelGelen.Mail;
+                    personel.Hakkinda = personelGelen.Hakkinda;
+                    personel.Position = personelGelen.Position;
+                    personel.Adres = personelGelen.Adres;
+                    personel.KurumBaslamaTarihi = DateTime.Parse(personelGelen.KurumBaslamaTarihi.ToShortDateString());
                     //if (personelGelen.Resim != null)
                     //{
                     //    var extension = Path.GetExtension(personelGelen.Resim.FileName);
@@ -182,6 +198,13 @@ namespace EmployeesTracking.Controllers
                     personel.CityId = personelGelen.CityId;
                     personel.DistrictId = personelGelen.DistrictId;
                     personel.DogumTarihi = DateTime.Parse(personelGelen.DogumTarihi.ToShortDateString());
+                    personel.Biyografi = personelGelen.Biyografi;
+                    personel.PhoneNumber = personelGelen.PhoneNumber;
+                    personel.Mail = personelGelen.Mail;
+                    personel.Hakkinda = personelGelen.Hakkinda;
+                    personel.Position = personelGelen.Position;
+                    personel.Adres = personelGelen.Adres;
+                    personel.KurumBaslamaTarihi = DateTime.Parse(personelGelen.KurumBaslamaTarihi.ToShortDateString());
                     //if (personelGelen.Resim != null)
                     //{
                     //    var extension = Path.GetExtension(personelGelen.Resim.FileName);

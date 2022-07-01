@@ -28,6 +28,15 @@ namespace EmployeesTracking.Models
         public string DistrictName { get; set; }
         public DateTime DogumTarihi { get; set; }
         public string Resim { get; set; }
+        public DateTime KurumBaslamaTarihi { get; set; }
+        public string Biyografi { get; set; }
+        public Int64 PhoneNumber { get; set; }
+        public int Puan { get; set; }
+        public string Mail { get; set; }
+        public string Hakkinda { get; set; }
+        public string Position { get; set; }
+        public string Adres { get; set; }
         //public IFormFile Resim { get; set; }
+        public bool y { get; set; }
     }
 }

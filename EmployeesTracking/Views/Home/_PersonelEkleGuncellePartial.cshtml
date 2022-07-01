@@ -9,6 +9,7 @@
         <div class="modal-content">
             <div class="row row-sm">
                 <!-- Güncelleme Ekranı Sol Taraf Başlangıç -->
+
                 @if (Model.Id > 0)
                 {
                     <div class="col-lg-4">
@@ -17,39 +18,40 @@
                                 <div class="ps-0">
                                     <div class="main-profile-overview">
                                         <div class="main-img-user profile-user">
-                                            @if (Model.Id > 0)
+                                            @if (String.IsNullOrEmpty(Model.Resim))
                                             {
-                                                <img alt="@Model.Resim" src="/images/@Model.Resim"><a class="fas fa-camera profile-edit" href="JavaScript:void(0);"></a>
+                                                <img alt="Resim Yok" src="/images/resimYok.jpg"><a class="fas fa-camera profile-edit" href="JavaScript:void(0);"></a>
                                             }
                                             else
                                             {
-                                                <img alt="" src="/images/PersonelEkleResim.jpg">
+                                                <img alt="@Model.Resim" src="/images/@Model.Resim"><a class="fas fa-camera profile-edit" href="JavaScript:void(0);"></a>
+
                                             }
                                         </div>
                                         <div class="d-flex justify-content-between mg-b-20">
                                             <div>
                                                 <h5 class="main-profile-name">@Model.Adi @Model.Soyadi</h5>
-                                                <p class="main-profile-name-text">@(Model.Id>0?Model.TcNo:"Yeni Personel Ekle")</p>
+                                                <p class="main-profile-name-text">@(Model.Id>0?Model.Position:"Yeni Personel Ekle")</p>
                                             </div>
                                         </div>
                                         @if (Model.Id > 0)
                                         {
                                             <h6>Bio</h6>
                                             <div class="main-profile-bio">
-                                                pleasure rationally encounter but because pursue consequences that are extremely painful.occur in which toil and pain can procure him some great pleasure.. <a href="">More</a>
+                                                @Model.Hakkinda <a href="">Daha Fazlasını Gör</a>
                                             </div><!-- main-profile-bio -->
                                             <div class="row">
                                                 <div class="col-md-4 col mb20">
                                                     <h5>947</h5>
-                                                    <h6 class="text-small text-muted mb-0">Followers</h6>
+                                                    <h6 class="text-small text-muted mb-0">Çalışma Saati</h6>
                                                 </div>
                                                 <div class="col-md-4 col mb20">
-                                                    <h5>583</h5>
-                                                    <h6 class="text-small text-muted mb-0">Tweets</h6>
+                                                    <h5>Aktif</h5>
+                                                    <h6 class="text-small text-muted mb-0">Durumu</h6>
                                                 </div>
                                                 <div class="col-md-4 col mb20">
-                                                    <h5>48</h5>
-                                                    <h6 class="text-small text-muted mb-0">Posts</h6>
+                                                    <h5>150</h5>
+                                                    <h6 class="text-small text-muted mb-0">Puanı</h6>
                                                 </div>
                                             </div>
                                         }
@@ -70,9 +72,9 @@
                                             <i class="icon ion-md-phone-portrait"></i>
                                         </div>
                                         <div class="media-body">
-                                            <span>Mobile</span>
+                                            <span>Telefon</span>
                                             <div>
-                                                +245 354 654
+                                                @Model.PhoneNumber
                                             </div>
                                         </div>
                                     </div>
@@ -81,9 +83,9 @@
                                             <i class="icon ion-logo-slack"></i>
                                         </div>
                                         <div class="media-body">
-                                            <span>Slack</span>
+                                            <span>Yakınının İletişim Numarası</span>
                                             <div>
-                                                spruko.w
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -92,9 +94,9 @@
                                             <i class="icon ion-md-locate"></i>
                                         </div>
                                         <div class="media-body">
-                                            <span>Current Address</span>
+                                            <span>Adres</span>
                                             <div>
-                                                San Francisco, CA
+                                                @Model.Adres
                                             </div>
                                         </div>
                                     </div>
@@ -118,163 +120,193 @@
                             }
 
 
-                            <form id="formPersonelDetay" asp-action="PersonelKaydet" style="padding:40px 50px;" enctype="multipart/form-data" class="row g-3" novalidate>
+                        <form id="formPersonelDetay" asp-action="PersonelKaydet" style="padding:40px 50px;" enctype="multipart/form-data" class="row g-3" novalidate>
 
-                                <div class="form-group ">
-                                    <div class="row">
-                                        <input id="Id" type="hidden" asp-for="Id" class="form-control">
-                                        <div class="col-md-2">
+                            <div class="form-group ">
+                                <div class="row">
+                                    <input id="Id" type="hidden" asp-for="Id" class="form-control">
+                                    <div class="col-md-6">
+                                        <div class="form-outline">
                                             <label asp-for="Adi" class="form-label">İsim</label>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <div class="form-outline">
-                                                @*<input type="text" class="form-control" id="validationCustom01" required />*@
-                                                <input id="Adi" asp-for="Adi" class="form-control">
-                                                <span asp-validation-for="Adi" class="text-danger"></span>
-                                                @*<div class="valid-feedback">İyi görünüyor!</div>
-                                                    <div class="invalid-feedback"><span asp-validation-for="Adi" class="text-danger"></span></div>*@
-                                            </div>
+                                            @*<input type="text" class="form-control" id="validationCustom01" required />*@
+                                            <input id="Adi" asp-for="Adi" class="form-control">
+                                            <span asp-validation-for="Adi" class="text-danger"></span>
+                                            @*<div class="valid-feedback">İyi görünüyor!</div>
+                        <div class="invalid-feedback"><span asp-validation-for="Adi" class="text-danger"></span></div>*@
                                         </div>
                                     </div>
-                                </div>
-                                <div class="form-group ">
-                                    <div class="row">
-                                        <div class="col-md-2">
+                                    <div class="col-md-6">
+                                        <div class="form-outline">
                                             <label asp-for="Soyadi" class="form-label">Soyisim</label>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <div class="form-outline">
-                                                <input id="Soyadi" asp-for="Soyadi" class="form-control">
-                                                <span asp-validation-for="Soyadi" class="text-danger"></span>
-                                            </div>
+                                            <input id="Soyadi" asp-for="Soyadi" class="form-control">
+                                            <span asp-validation-for="Soyadi" class="text-danger"></span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group ">
-                                    <div class="row">
-                                        <div class="col-md-2">
+                            </div>
+
+                            <div class="form-group ">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-outline">
                                             <label asp-for="TcNo" class="form-label">Tc Kimlik Numarası</label>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <div class="form-outline">
-                                                <input id="TcNo" asp-for="TcNo" maxlength="11" class="form-control" />
-                                                <span asp-validation-for="TcNo" class="text-danger"></span>
-                                            </div>
+                                            <input id="TcNo" asp-for="TcNo" maxlength="11" class="form-control" />
+                                            <span asp-validation-for="TcNo" class="text-danger"></span>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="form-group ">
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <label asp-for="BabaAdi" class="form-label">Baba Adı</label>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <div class="form-outline">
-                                                <input id="BabaAdi" asp-for="BabaAdi" class="form-control" />
-                                                <span asp-validation-for="BabaAdi" class="text-danger"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group ">
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <label asp-for="AnaAdi" class="form-label">Anne Adı</label>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <input id="AnaAdi" asp-for="AnaAdi" class="form-control">
-                                            <span asp-validation-for="AnaAdi" class="text-danger"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group ">
-
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="main-content-label">
-                                                Medeni Hal
-                                            </div>
-                                            <div class="card">
-                                                <input class="btn-check" id="PersonelMedeniDurumEkleGuncelle1" type="radio" value="1" asp-for="MaritalStatusId">
-                                                <label class="btn btn-outline-danger" for="PersonelMedeniDurumEkleGuncelle1">Evli</label>
-
-                                                <input class="btn-check" id="PersonelMedeniDurumEkleGuncelle2" type="radio" value="2" asp-for="MaritalStatusId">
-                                                <label class="btn btn-outline-danger" for="PersonelMedeniDurumEkleGuncelle2">Bekar</label>
-                                                <span asp-validation-for="MaritalStatusId" class="text-danger"></span>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="main-content-label">
-                                                Cinsiyet
-                                            </div>
-                                            <div class="card">
-                                                <input class="btn-check" id="PersonelCinsiyetEkleGuncelle1" type="radio" value="1" asp-for="GenderId">
-                                                <label class="btn btn-outline-primary" for="PersonelCinsiyetEkleGuncelle1">Erkek</label>
-
-                                                <input class="btn-check" id="PersonelCinsiyetEkleGuncelle2" type="radio" value="2" asp-for="GenderId">
-                                                <label class="btn btn-outline-primary" for="PersonelCinsiyetEkleGuncelle2">Kadın</label>
-                                                <span asp-validation-for="GenderId" class="text-danger"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="mb-4 main-content-label">İletişim Bilgileri</div>
-
-                                <div class="form-group ">
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <label asp="Doğum Yeri">Doğum Yeri</label>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <select id="CityId" asp-for="CityId" asp-items="@ViewBag.Cities" onchange="IlceEklemeIcıniListele()" class="form-control">
-                                                <option selected disabled>Şehir Seçiniz</option>
-
-                                            </select>
-                                            <span asp-validation-for="CityId" class="text-danger"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group ">
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <label asp="Doğum Yeri">İlçe</label>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <select id="DistrictId" asp-for="DistrictId" class="form-control">
-                                                <option selected disabled>Şehir seçiniz...</option>
-                                            </select>
-                                            <span asp-validation-for="DistrictId" class="text-danger"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group ">
-                                    <div class="row">
-                                        <div class="col-md-2">
+                                    <div class="col-md-6">
+                                        <div class="form-outline">
                                             <label>Doğum Tarihi</label>
-                                        </div>
-                                        <div class="col-md-10">
                                             <input class="form-control me-2" id="DogumTarihi" asp-for="DogumTarihi" max="@DateTime.Now.ToString("yyyy-MM-ddThh:mm")" min="@DateTime.Now.AddYears(-120).ToString("yyyy-MM-ddThh:mm")" />
                                             <span asp-validation-for="DogumTarihi" class="text-danger"></span>
                                         </div>
                                     </div>
                                 </div>
-                                @*<div class="mb-4 main-content-label">About Yourself</div>
-                                    <div class="form-group ">
-                                        <div class="row">
-                                            <div class="col-md-2">
-                                                <label>Profil Resmi</label>
-                                            </div>
-                                            <div class="col-md-10">
-                                                <input id="Resim" type="file" asp-for="Resim" class="form-control">
-                                                <span asp-validation-for="Resim" class="text-danger"></span>
-                                            </div>
+                            </div>
+                            <div class="form-group ">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-outline">
+                                            <label asp-for="BabaAdi" class="form-label">Baba Adı</label>
+                                            <input id="BabaAdi" asp-for="BabaAdi" class="form-control" />
+                                            <span asp-validation-for="BabaAdi" class="text-danger"></span>
                                         </div>
-                                    </div>*@
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-outline">
+                                            <label asp-for="AnaAdi" class="form-label">Anne Adı</label>
+                                            <input id="AnaAdi" asp-for="AnaAdi" class="form-control">
+                                            <span asp-validation-for="AnaAdi" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-                                <button type="submit" id="btnPersonelKaydet" class="btn btn-primary waves-effect waves-light">@(Model.Id>0 ? "Güncelle" : "Ekle") </button>
-                            </form>
+                            <div class="form-group ">
+
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="main-content-label">
+                                            Medeni Hal
+                                        </div>
+                                        <div class="card">
+                                            <input class="btn-check" id="PersonelMedeniDurumEkleGuncelle1" type="radio" value="1" asp-for="MaritalStatusId">
+                                            <label class="btn btn-outline-danger" for="PersonelMedeniDurumEkleGuncelle1">Evli</label>
+
+                                            <input class="btn-check" id="PersonelMedeniDurumEkleGuncelle2" type="radio" value="2" asp-for="MaritalStatusId">
+                                            <label class="btn btn-outline-danger" for="PersonelMedeniDurumEkleGuncelle2">Bekar</label>
+                                            <span asp-validation-for="MaritalStatusId" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="main-content-label">
+                                            Cinsiyet
+                                        </div>
+                                        <div class="card">
+                                            <input class="btn-check" id="PersonelCinsiyetEkleGuncelle1" type="radio" value="1" asp-for="GenderId">
+                                            <label class="btn btn-outline-primary" for="PersonelCinsiyetEkleGuncelle1">Erkek</label>
+
+                                            <input class="btn-check" id="PersonelCinsiyetEkleGuncelle2" type="radio" value="2" asp-for="GenderId">
+                                            <label class="btn btn-outline-primary" for="PersonelCinsiyetEkleGuncelle2">Kadın</label>
+                                            <span asp-validation-for="GenderId" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group ">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-outline">
+                                            <label>Doğduğu Şehir</label>
+                                            <select id="CityId" asp-for="CityId" asp-items="@ViewBag.Cities" onchange="IlceEklemeIcıniListele()" class="form-control">
+                                                <option selected disabled>Şehir Seçiniz</option>
+
+                                            </select>
+                                            <span asp-validation-for="CityId" class="text-danger"></span>
+                                            <br />
+                                            <label>İlçe</label>
+                                            <select id="DistrictId" asp-for="DistrictId" class="form-control">
+                                                <option selected disabled>Şehir seçiniz...</option>
+                                            </select>
+                                            <span asp-validation-for="DistrictId" class="text-danger"></span>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-outline">
+                                            <label asp-for="Position" class="form-label">Çalışacağı Pozisyon</label>
+                                            <input id="Position" asp-for="Position" class="form-control">
+                                            <span asp-validation-for="Position" class="text-danger"></span>
+                                        </div>
+                                        <br />
+                                        <div class="form-outline">
+                                            <label>Kuruma Başlama Tarihi</label>
+                                            <input class="form-control me-2" id="KurumBaslamaTarihi" asp-for="KurumBaslamaTarihi" max="@DateTime.Now.ToString("yyyy-MM-ddThh:mm")" min="@DateTime.Now.AddYears(-120).ToString("yyyy-MM-ddThh:mm")" />
+                                            <span asp-validation-for="KurumBaslamaTarihi" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-4 main-content-label">İletişim Bilgileri</div>
+
+                            <div class="form-group ">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-outline">
+
+                                            <label asp-for="Adres" class="form-label">Adres</label>
+                                            <input id="Adres" asp-for="Adres" class="form-control">
+                                            <span asp-validation-for="Adres" class="text-danger"></span>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-outline">
+                                            <label asp-for="PhoneNumber" class="form-label">Telefon Numarası</label>
+                                            <input id="PhoneNumber" asp-for="PhoneNumber" class="form-control">
+                                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-outline">
+
+                                            <label asp-for="Hakkinda" class="form-label">Hakkinda</label>
+                                            <input id="Hakkinda" asp-for="Hakkinda" class="form-control">
+                                            <span asp-validation-for="Hakkinda" class="text-danger"></span>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-outline">
+                                            <label asp-for="Mail" class="form-label">Mail</label>
+                                            <input id="Mail" asp-for="Mail" class="form-control">
+                                            <span asp-validation-for="Mail" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            @*<div class="mb-4 main-content-label">About Yourself</div>
+        <div class="form-group ">
+            <div class="row">
+                <div class="col-md-2">
+                    <label>Profil Resmi</label>
+                </div>
+                <div class="col-md-10">
+                    <input id="Resim" type="file" asp-for="Resim" class="form-control">
+                    <span asp-validation-for="Resim" class="text-danger"></span>
+                </div>
+            </div>
+        </div>*@
+
+                            <button type="submit" id="btnPersonelKaydet" class="btn btn-primary waves-effect waves-light">@(Model.Id>0 ? "Güncelle" : "Ekle") </button>
+                        </form>
                         </div>
 
                     </div>
@@ -319,6 +351,13 @@
         formData.append('DogumTarihi', document.getElementById("DogumTarihi").value);
         formData.append('GenderId', $("input[name='GenderId']:checked").val());
         formData.append('MaritalStatusId', $("input[name='MaritalStatusId']:checked").val());
+        formData.append('Position', document.getElementById("Position").value);
+        formData.append('KurumBaslamaTarihi', document.getElementById("KurumBaslamaTarihi").value);
+        formData.append('Adres', document.getElementById("Adres").value);
+        formData.append('PhoneNumber', document.getElementById("PhoneNumber").value);
+        formData.append('Hakkinda', document.getElementById("Hakkinda").value);
+        formData.append('Mail', document.getElementById("Mail").value);
+
 
 
         const Toast = Swal.mixin({
