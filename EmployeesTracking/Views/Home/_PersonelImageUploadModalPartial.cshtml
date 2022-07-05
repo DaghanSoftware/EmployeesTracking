@@ -112,7 +112,23 @@
         }
         //Resim Yükleme işlemleri son
         formData.append('Id', document.getElementById("Id").value);
-
+        const Toast = Swal.mixin({
+            toast: true,
+            showLoaderOnConfirm: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            target: document.getElementById('PersonelEkleGuncelleSweetAlert2ÖnPlanaCikart'),
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        });
+        Toast.fire({
+            icon: 'success',
+            title: 'İşlem başarıyla tamamlandı'
+        });
 
 
 
@@ -128,20 +144,30 @@
                 if (result.success) {
                     $('#personelImageUploadModal').modal('hide');
 
-                    swal("Bilgi! ", result.message, "success");
+                    Toast.fire({ icon: 'success', title: result.message, showConfirmButton: true });
+                    var file = $("input[type=file]").get(0).files[0];
 
+                    if (file) {
+                        var reader = new FileReader();
+
+                        reader.onload = function () {
+                            $("#GuncellenenResmiGosterme").attr("src", reader.result);
+                        }
+
+                        reader.readAsDataURL(file);
+                    }
                 }
                 else {
                     for (var i = 0; i != result.message2.length; i++) {
                         Hatalar += result.message2[i] + "\n";
 
                     }
-                    swal("Bilgi! ", Hatalar, "error");
+                    Toast.fire({ icon: 'error', title: Hatalar, showConfirmButton: true });
                 }
             },
             error: function (err) {
 
-                swal("Bilgi! ", "Kayıt hata", "error");
+                Toast.fire({ icon: 'error', title: 'Hatalı İşlem', showConfirmButton: true });
             }
         });
     });

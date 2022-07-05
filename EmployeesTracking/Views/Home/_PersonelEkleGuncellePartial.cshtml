@@ -23,11 +23,11 @@
                                             <input id="Resim" type="file" asp-for="Resim" class="form-control" hidden>
                                             @if (String.IsNullOrEmpty(Model.Resim))
                                             {
-                                                <img alt="Resim Yok" src="/images/resimYok.jpg"><a class="fas fa-camera profile-edit" href="JavaScript:ImageSelectClick(@Model.Id);"></a>
+                                                <img id="GuncellenenResmiGosterme" alt="Resim Yok" src="/images/resimYok.jpg"><a class="fas fa-camera profile-edit" href="JavaScript:ImageSelectClick(@Model.Id);"></a>
                                             }
                                             else
                                             {
-                                                <img alt="@Model.Resim" src="/images/@Model.Resim"><a class="fas fa-camera profile-edit" href="JavaScript:ImageSelectClick(@Model.Id);"></a>
+                                                <img id="GuncellenenResmiGosterme" alt="@Model.Resim" src="/images/@Model.Resim"><a class="fas fa-camera profile-edit" href="JavaScript:ImageSelectClick(@Model.Id);"></a>
 
                                             }
                                         </div>

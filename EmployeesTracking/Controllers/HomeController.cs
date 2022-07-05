@@ -322,7 +322,7 @@ namespace EmployeesTracking.Controllers
 
                 if (personelGelen.Resim != null)
                 {
-                    sonucMesaji = "Güncelleme işlemi başarıyla yapıldı";
+                    sonucMesaji = "Resim Güncelleme işlemi başarıyla yapıldı";
                     var personel = _context.Personels.SingleOrDefault(p => p.Id == personelGelen.Id);
 
                         var extension = Path.GetExtension(personelGelen.Resim.FileName);
@@ -331,16 +331,18 @@ namespace EmployeesTracking.Controllers
                         var stream = new FileStream(location, FileMode.Create);
                         personelGelen.Resim.CopyTo(stream);
                         personel.Resim = newimagename;
+                    _context.SaveChanges();
+
+                    return Json(new ReturnModel() { Success = true, Message = sonucMesaji });
 
                 }
                 else
                 {
                     sonucMesaji = "Lütfen resim seçiniz";
+                    return Json(new ReturnModel() { Success = false, Message = sonucMesaji });
 
                 }
-                _context.SaveChanges();
-
-                return Json(new ReturnModel() { Success = true, Message = sonucMesaji });
+                
             }
             catch (Exception ex)
             {
