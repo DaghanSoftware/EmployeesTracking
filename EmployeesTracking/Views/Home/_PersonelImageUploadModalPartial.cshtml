@@ -1,0 +1,151 @@
+﻿@model EmployeesTracking.Models.PersonelDetayCardViewModel
+<script src="~/js/jquery.validate.min.js"></script>
+<script src="~/js/jquery.validate.unobtrusive.js"></script>
+<script src="~/js/jquery.validate.unobtrusive.min.js"></script>
+
+<style>
+    .modal-header {
+        padding: 9px 15px;
+        border-bottom: 1px solid #eee;
+        background-color: #0480be;
+    }
+
+    .modal-body {
+        padding: 9px 15px;
+        border-bottom: 1px solid #eee;
+        background-color: #f6bf98;
+    }
+
+    .modal-footer {
+        padding: 9px 15px;
+        border-bottom: 1px solid #eee;
+        background-color: #366374;
+    }
+
+    .modal-header .close {
+        margin-top: 2px
+    }
+
+    .modal-header h3 {
+        margin: 0;
+        line-height: 30px
+    }
+</style>
+<div class="modal fade" id="personelImageUploadModal" role="dialog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div id="PersonelImageUploadSweetAlert2Goster" class="modal-dialog modal-dialog-centered" role="document">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Resim güncelleme alanı</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="formPersonelResimGuncelle" asp-action="PersonelImageUpload" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <h5>Yeni bir resim seçin</h5>
+                    <p>
+
+
+                        <input id="Id" type="hidden" asp-for="Id" class="form-control">
+                        Değiştireceğiniz resmi seçmek için dosya seç butonuna tıklayınız.
+                        <input id="Resim" type="file" asp-for="Resim" onchange="previewFile(this);"  class="form-control">
+
+
+                    </p>
+                    <hr>
+                    <center>
+                        <div class="main-img-user profile-user" style="width:300px;height:300px;">
+
+                            @if (String.IsNullOrEmpty(Model.Resim))
+                            {
+                                <img id="resimOnIzleme" alt="Resim Yok" src="/images/resimYok.jpg">
+                            }
+                            else
+                            {
+                                <img id="resimOnIzleme" alt="@Model.Resim" src="/images/@Model.Resim">
+
+                            }
+                        </div>
+                    </center>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+
+                    <button type="submit" id="btnPersonelResimGuncelle" class="btn btn-primary">Resmi Güncelle</button>
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+</div>
+<script>
+    function previewFile(input) {
+        var file = $("input[type=file]").get(0).files[0];
+
+        if (file) {
+            var reader = new FileReader();
+
+            reader.onload = function () {
+                $("#resimOnIzleme").attr("src", reader.result);
+            }
+
+            reader.readAsDataURL(file);
+        }
+    }
+
+
+    $("#formPersonelResimGuncelle").submit(function (e) {
+        e.preventDefault();
+        debugger;
+        var form = $(this);
+        var url = form.attr('action');
+
+        //Resim Yükleme işlemleri başlangıç
+        var input = document.getElementById("Resim");
+        var files = input.files;
+        var formData = new FormData();
+        for (var i = 0; i != files.length; i++) {
+            formData.append("Resim", files[i]);
+        }
+        //Resim Yükleme işlemleri son
+        formData.append('Id', document.getElementById("Id").value);
+
+
+
+
+        var Hatalar = "";
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (result) {
+                console.log(result);
+                if (result.success) {
+                    $('#personelImageUploadModal').modal('hide');
+
+                    swal("Bilgi! ", result.message, "success");
+
+                }
+                else {
+                    for (var i = 0; i != result.message2.length; i++) {
+                        Hatalar += result.message2[i] + "\n";
+
+                    }
+                    swal("Bilgi! ", Hatalar, "error");
+                }
+            },
+            error: function (err) {
+
+                swal("Bilgi! ", "Kayıt hata", "error");
+            }
+        });
+    });
+</script>
+
+
+

@@ -276,6 +276,78 @@ namespace EmployeesTracking.Controllers
             return PartialView("_PersonelDetayCardPartial", yazarlar);
         }
 
+        public IActionResult PersonelImageUploadCardModel(int id)
+        {
+
+            var query = (from p in _context.Personels
+                         from s in _context.Genders.Where(x => x.GenderId == p.GenderId).DefaultIfEmpty()
+                         from c in _context.Cities.Where(x => x.CityId == p.CityId).DefaultIfEmpty()
+                         from m in _context.MaritalStatus.Where(x => x.MaritalStatusId == p.MaritalStatusId).DefaultIfEmpty()
+                             //where p.GenderId==gendernumber || p.MaritalStatusId==maritalnumber
+                         select new PersonelDetayCardViewModel
+                         {
+                             Id = p.Id,
+                             Adi = p.Adi,
+                             Soyadi = p.Soyadi,
+                             Resim = p.Resim
+                         });
+
+            var yazarlar = query.FirstOrDefault(x => x.Id == id);
+            return PartialView("_PersonelImageUploadModalPartial", yazarlar);
+        }
+        [HttpPost]
+        public IActionResult PersonelImageUpload(PersonelImageUpdateModel personelGelen)
+        {
+
+            try
+            {
+
+                var sonucMesaji = "";
+                PersonelImageUpdateValidator validationRules = new PersonelImageUpdateValidator();
+                ValidationResult result = validationRules.Validate(personelGelen);
+                var response = new ReturnModel();
+                List<string> ValidationMessages = new List<string>();
+
+                if (!result.IsValid)
+                {
+                    foreach (ValidationFailure failure in result.Errors)
+                    {
+                        ValidationMessages.Add(failure.ErrorMessage);
+                    }
+                    response.Message2 = ValidationMessages;
+                    return Json(new ReturnModel() { Success = false, Message2 = response.Message2 });
+                }
+
+
+
+                if (personelGelen.Resim != null)
+                {
+                    sonucMesaji = "Güncelleme işlemi başarıyla yapıldı";
+                    var personel = _context.Personels.SingleOrDefault(p => p.Id == personelGelen.Id);
+
+                        var extension = Path.GetExtension(personelGelen.Resim.FileName);
+                        var newimagename = Guid.NewGuid() + extension;
+                        var location = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", newimagename);
+                        var stream = new FileStream(location, FileMode.Create);
+                        personelGelen.Resim.CopyTo(stream);
+                        personel.Resim = newimagename;
+
+                }
+                else
+                {
+                    sonucMesaji = "Lütfen resim seçiniz";
+
+                }
+                _context.SaveChanges();
+
+                return Json(new ReturnModel() { Success = true, Message = sonucMesaji });
+            }
+            catch (Exception ex)
+            {
+                return Json(new ReturnModel() { Success = false, Message = "hatalı işlem" });
+            }
+        }
+
         public IActionResult ExportDynamicExcelBlogList()
         {
             using (var workbook = new XLWorkbook())
