@@ -75,6 +75,7 @@
 
                     <button type="submit" id="btnPersonelResimGuncelle" class="btn btn-primary">Resmi Güncelle</button>
                 </div>
+
             </form>
         </div>
 
@@ -162,12 +163,12 @@
                         Hatalar += result.message2[i] + "\n";
 
                     }
-                    Toast.fire({ icon: 'error', title: Hatalar, showConfirmButton: true });
+                    Toast.fire({ icon: 'error', title: Hatalar, showConfirmButton: true, target: document.getElementById('PersonelImageUploadSweetAlert2Goster') });
                 }
             },
             error: function (err) {
 
-                Toast.fire({ icon: 'error', title: 'Hatalı İşlem', showConfirmButton: true });
+                Toast.fire({ icon: 'error', title: 'Hatalı İşlem', showConfirmButton: true, target: document.getElementById('PersonelImageUploadSweetAlert2Goster') });
             }
         });
     });
