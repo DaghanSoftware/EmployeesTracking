@@ -1,4 +1,4 @@
-﻿using EmployeesTracking.Entities;
+﻿using EmployeesTracking.Models;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EmployeesTracking.ValidationRules
 {
-    public class AdminRegisterValidator : AbstractValidator<Admin>
+    public class AdminRegisterValidator : AbstractValidator<RegisterModel>
     {
         public AdminRegisterValidator()
         {

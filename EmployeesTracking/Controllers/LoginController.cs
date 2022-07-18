@@ -73,7 +73,7 @@ namespace EmployeesTracking.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult KayitOl(Admin p)
+        public IActionResult KayitOl(RegisterModel p)
         {
             try
             {

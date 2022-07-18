@@ -37,7 +37,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalCenterTitle">Resim güncelleme alanı</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" id="btnPersonelResimModalKapat" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -71,7 +71,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                    <button type="button" id="btnPersonelResimModalKapat"  class="btn btn-secondary" data-dismiss="modal">Kapat</button>
 
                     <button type="submit" id="btnPersonelResimGuncelle" class="btn btn-primary">Resmi Güncelle</button>
                 </div>
@@ -171,6 +171,19 @@
                 Toast.fire({ icon: 'error', title: 'Hatalı İşlem', showConfirmButton: true, target: document.getElementById('PersonelImageUploadSweetAlert2Goster') });
             }
         });
+    });
+    $("#btnPersonelResimModalKapat").click(function (e) {
+        //$('#personelImageUploadModal').modal("toggle")
+        $("#personelImageUploadModal").modal('hide');
+        //$('#personelImageUploadModal').modal({ backdrop: 'static', keyboard: false })
+        //$(".ResimGuncelleModalOpen").html("");
+        //$("#ResimGuncelleModalOpen").remove();
+        //$('#ResimGuncelleModalOpen').empty();
+
+        //$("#personelImageUploadModal").modal("hide");
+        //e.stopPropagation(); //This line would take care of it
+
+        
     });
 </script>
 
