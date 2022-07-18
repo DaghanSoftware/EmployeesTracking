@@ -1,8 +1,6 @@
 ﻿using ClosedXML.Excel;
-using EmployeesTracking.Entities;
 using EmployeesTracking.Filter;
 using EmployeesTracking.Models;
-using EmployeesTracking.ValidationRules;
 using FluentValidation.Results;
 using LinqKit;
 using Microsoft.AspNetCore.Http;
@@ -14,18 +12,16 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using DataAccessLayer.EntityFramework;
+using BusinessLayer.Concrete;
 
 namespace EmployeesTracking.Controllers
 {
     [UserFilter]
     public class HomeController : Controller
     {
-        private readonly EmployeesContext _context;
 
-        public HomeController(EmployeesContext context)
-        {
-            _context = context;
-        }
+        PersonelManager bm = new PersonelManager(new EfPersonelRepository());
 
         public IActionResult Index()
         {
@@ -38,7 +34,7 @@ namespace EmployeesTracking.Controllers
             return View();
         }
 
-        public IActionResult PersonelListesiPartial(string q, int gendernumber, int maritalnumber, int sehir,DateTime baslangictarih,DateTime bitistarih,int Districtid, int page = 1)
+        public IActionResult PersonelListesiPartial(string q, int gendernumber, int maritalnumber, int sehir, DateTime baslangictarih, DateTime bitistarih, int Districtid, int page = 1)
         {
             var predicate = PredicateBuilder.New<Personel>();
             predicate = predicate.And(te => te.Id > 0);
@@ -80,7 +76,7 @@ namespace EmployeesTracking.Controllers
                              MaritalStatusName = m.MaritalStatusName,
                              CityId = p.CityId,
                              CityName = c.CityName,
-                             DistrictName=d.DistrictName
+                             DistrictName = d.DistrictName
                          }).ToList();
 
             return View(query);
@@ -94,7 +90,7 @@ namespace EmployeesTracking.Controllers
             if (id > 0)
             {
                 personel = _context.Personels.FirstOrDefault(m => m.Id == id);
-               // ViewBag.Ilceler = new SelectList(_context.Districts.Where(x => x.CityID == personel.CityId).ToList(), "DistrictId", "DistrictName");
+                // ViewBag.Ilceler = new SelectList(_context.Districts.Where(x => x.CityID == personel.CityId).ToList(), "DistrictId", "DistrictName");
                 model = new PersonelViewModel
                 {
                     Id = personel.Id,
@@ -115,14 +111,15 @@ namespace EmployeesTracking.Controllers
                     Hakkinda = personel.Hakkinda,
                     Position = personel.Position,
                     Adres = personel.Adres,
-                    KurumBaslamaTarihi= DateTime.Parse(personel.KurumBaslamaTarihi.ToShortDateString())
+                    KurumBaslamaTarihi = DateTime.Parse(personel.KurumBaslamaTarihi.ToShortDateString())
                 };
             }
             else
             {
-                model = new PersonelViewModel { 
-                DogumTarihi=  DateTime.Parse(DateTime.Now.ToShortDateString()),
-                KurumBaslamaTarihi = DateTime.Parse(DateTime.Now.ToShortDateString())
+                model = new PersonelViewModel
+                {
+                    DogumTarihi = DateTime.Parse(DateTime.Now.ToShortDateString()),
+                    KurumBaslamaTarihi = DateTime.Parse(DateTime.Now.ToShortDateString())
                 };
             }
             return PartialView("_PersonelEkleGuncellePartial", model);
@@ -149,7 +146,7 @@ namespace EmployeesTracking.Controllers
                     response.Message2 = ValidationMessages;
                     return Json(new ReturnModel() { Success = false, Message2 = response.Message2 });
                 }
-                
+
 
 
                 if (personelGelen.Id > 0)
@@ -219,11 +216,11 @@ namespace EmployeesTracking.Controllers
                 }
                 _context.SaveChanges();
 
-                return Json(new ReturnModel() { Success = true,Message=sonucMesaji });
+                return Json(new ReturnModel() { Success = true, Message = sonucMesaji });
             }
             catch (Exception ex)
             {
-                return Json(new ReturnModel() { Success = false,Message="hatalı işlem" });
+                return Json(new ReturnModel() { Success = false, Message = "hatalı işlem" });
             }
         }
         public IActionResult PersonelSil(int id)
@@ -233,7 +230,7 @@ namespace EmployeesTracking.Controllers
                 _context.Personels.Remove(_context.Personels.SingleOrDefault(e => e.Id == id));
                 _context.SaveChanges();
 
-                return Json(new ReturnModel() { Success = true,Message = "Silme İşlemi Başarıyla Gerçekleşti" });
+                return Json(new ReturnModel() { Success = true, Message = "Silme İşlemi Başarıyla Gerçekleşti" });
             }
             catch (Exception ex)
             {
@@ -272,7 +269,7 @@ namespace EmployeesTracking.Controllers
                              Resim = p.Resim
                          });
 
-            var yazarlar = query.FirstOrDefault(x=>x.Id==id);
+            var yazarlar = query.FirstOrDefault(x => x.Id == id);
             return PartialView("_PersonelDetayCardPartial", yazarlar);
         }
 
@@ -325,12 +322,12 @@ namespace EmployeesTracking.Controllers
                     sonucMesaji = "Resim Güncelleme işlemi başarıyla yapıldı";
                     var personel = _context.Personels.SingleOrDefault(p => p.Id == personelGelen.Id);
 
-                        var extension = Path.GetExtension(personelGelen.Resim.FileName);
-                        var newimagename = Guid.NewGuid() + extension;
-                        var location = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", newimagename);
-                        var stream = new FileStream(location, FileMode.Create);
-                        personelGelen.Resim.CopyTo(stream);
-                        personel.Resim = newimagename;
+                    var extension = Path.GetExtension(personelGelen.Resim.FileName);
+                    var newimagename = Guid.NewGuid() + extension;
+                    var location = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", newimagename);
+                    var stream = new FileStream(location, FileMode.Create);
+                    personelGelen.Resim.CopyTo(stream);
+                    personel.Resim = newimagename;
                     _context.SaveChanges();
 
                     return Json(new ReturnModel() { Success = true, Message = sonucMesaji });
@@ -342,7 +339,7 @@ namespace EmployeesTracking.Controllers
                     return Json(new ReturnModel() { Success = false, Message = sonucMesaji });
 
                 }
-                
+
             }
             catch (Exception ex)
             {
@@ -386,16 +383,16 @@ namespace EmployeesTracking.Controllers
         public List<PersonelDetayCardViewModel> BlogTitlelist()
         {
             List<PersonelDetayCardViewModel> bm = new List<PersonelDetayCardViewModel>();
-                bm = _context.Personels.Select(x => new PersonelDetayCardViewModel
-                {
-                    Id = x.Id,
-                    Adi = x.Adi,
-                    Soyadi = x.Soyadi,
-                    BabaAdi = x.BabaAdi,
-                    AnaAdi = x.AnaAdi,
-                    TcNo = x.TcNo
+            bm = _context.Personels.Select(x => new PersonelDetayCardViewModel
+            {
+                Id = x.Id,
+                Adi = x.Adi,
+                Soyadi = x.Soyadi,
+                BabaAdi = x.BabaAdi,
+                AnaAdi = x.AnaAdi,
+                TcNo = x.TcNo
 
-                }).ToList();
+            }).ToList();
 
             return bm;
         }
@@ -405,7 +402,7 @@ namespace EmployeesTracking.Controllers
             var result = _context.Districts.Where(x => x.CityID == id).ToList();
             if (id > 0)
             {
-                
+
                 return Json(new SelectList(result, "DistrictId", "DistrictName"));
             }
             return Json(new SelectList(_context.Districts.Where(x => x.CityID == 0).ToList(), "DistrictId", "DistrictName"));

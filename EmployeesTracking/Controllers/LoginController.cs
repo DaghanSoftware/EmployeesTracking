@@ -1,6 +1,4 @@
-﻿using EmployeesTracking.Entities;
-using EmployeesTracking.Models;
-using EmployeesTracking.ValidationRules;
+﻿using EmployeesTracking.ValidationRules;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -56,10 +54,10 @@ namespace EmployeesTracking.Controllers
                     }
                     else
                     {
-                        return Json(new ReturnModel() { Success = false, Message = "Böyle bir kullanıcı yok"  });
+                        return Json(new ReturnModel() { Success = false, Message = "Böyle bir kullanıcı yok" });
                     }
                 }
-                
+
             }
             catch (Exception ex)
             {

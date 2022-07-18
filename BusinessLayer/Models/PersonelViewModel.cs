@@ -1,12 +1,15 @@
-﻿using System;
+﻿using EmployeesTracking.Models;
+using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EmployeesTracking.Models
+namespace BusinessLayer.Models
 {
-    public class PersonelDetayCardViewModel
+    public class PersonelViewModel
     {
+        //public List<Personel> Personels { get; set; }
 
         public int Id { get; set; }
         public string Adi { get; set; }
@@ -21,8 +24,9 @@ namespace EmployeesTracking.Models
         public int MaritalStatusId { get; set; }
         public int CityId { get; set; }
         public int DistrictId { get; set; }
-        public string Resim { get; set; }
+        public string DistrictName { get; set; }
         public DateTime DogumTarihi { get; set; }
+        public string Resim { get; set; }
         public DateTime KurumBaslamaTarihi { get; set; }
         public string Biyografi { get; set; }
         public Int64 PhoneNumber { get; set; }
@@ -31,5 +35,7 @@ namespace EmployeesTracking.Models
         public string Hakkinda { get; set; }
         public string Position { get; set; }
         public string Adres { get; set; }
+        //public IFormFile Resim { get; set; }
+        public bool y { get; set; }
     }
 }
