@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Abstract;
+using CoreLayer.Models;
 using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
 using System;
@@ -19,12 +20,17 @@ namespace BusinessLayer.Concrete
 
         public Personel GetById(int id)
         {
-            throw new NotImplementedException();
+            return _personelDal.GetById(id);
         }
 
         public List<Personel> GetList()
         {
             throw new NotImplementedException();
+        }
+
+        public List<PersonelViewModel> PersonelleriListele(string q, int gendernumber, int maritalnumber, int sehir, DateTime baslangictarih, DateTime bitistarih, int Districtid, int page = 1)
+        {
+            return _personelDal.GetListAllPersonelOrFilterPersonel(q,gendernumber,maritalnumber,sehir,baslangictarih,bitistarih,Districtid,page);
         }
 
         public void TAdd(Personel t)

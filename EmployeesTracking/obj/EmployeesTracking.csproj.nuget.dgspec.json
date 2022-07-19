@@ -122,6 +122,12 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -171,6 +177,9 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
+              "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\CoreLayer\\CoreLayer.csproj": {
+                "projectPath": "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\CoreLayer\\CoreLayer.csproj"
+              },
               "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\EntityLayer\\EntityLayer.csproj": {
                 "projectPath": "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\EntityLayer\\EntityLayer.csproj"
               }
@@ -187,6 +196,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "LinqKit": {
+              "target": "Package",
+              "version": "[1.2.2, )"
+            },
             "Microsoft.AspNetCore.Identity": {
               "target": "Package",
               "version": "[2.2.0, )"
@@ -304,11 +317,11 @@
             },
             "FluentValidation": {
               "target": "Package",
-              "version": "[11.0.2, )"
+              "version": "[11.1.0, )"
             },
             "FluentValidation.AspNetCore": {
               "target": "Package",
-              "version": "[11.0.2, )"
+              "version": "[11.1.2, )"
             },
             "LinqKit": {
               "target": "Package",

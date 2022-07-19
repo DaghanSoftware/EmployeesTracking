@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BusinessLayer.Models
+namespace CoreLayer.Models
 {
     public class PersonelImageUpdateModel
     {

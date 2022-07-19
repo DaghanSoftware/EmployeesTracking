@@ -14,7 +14,7 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"4d8cedf926eef65579b2c339cdbeee92d6da6c58", @"/Views/Home/_PersonelImageUploadModalPartial.cshtml")]
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"481268970beadb22753b30cdbae22deda2aa5b19", @"/Views/_ViewImports.cshtml")]
-    public class Views_Home__PersonelImageUploadModalPartial : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<EmployeesTracking.Models.PersonelDetayCardViewModel>
+    public class Views_Home__PersonelImageUploadModalPartial : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<CoreLayer.Models.PersonelDetayCardViewModel>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("src", new global::Microsoft.AspNetCore.Html.HtmlString("~/js/jquery.validate.min.js"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_1 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("src", new global::Microsoft.AspNetCore.Html.HtmlString("~/js/jquery.validate.unobtrusive.js"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -390,7 +390,7 @@ WriteAttributeValue("", 2575, Model.Resim, 2575, 12, false);
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
         public global::Microsoft.AspNetCore.Mvc.Rendering.IJsonHelper Json { get; private set; }
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
-        public global::Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper<EmployeesTracking.Models.PersonelDetayCardViewModel> Html { get; private set; }
+        public global::Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper<CoreLayer.Models.PersonelDetayCardViewModel> Html { get; private set; }
     }
 }
 #pragma warning restore 1591

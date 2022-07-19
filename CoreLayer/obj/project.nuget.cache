@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "EIMsqaqcXvl85tuWP78Vh9eJDz8Hn9eIBGS8CNnll9Eb3U5MdS76/Kq5XEkbOfqjUeBkHso51qFsLHlnofFwTg==",
+  "dgSpecHash": "I7O3dLu71Cb7VAldgC/t0fnb3rSBrioXRDw1RE+DEEU4QWSRruWQaPKE636iJ9dnBUO+R7i6tqmUAbvwDY2Wkw==",
   "success": true,
   "projectFilePath": "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\CoreLayer\\CoreLayer.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\STElb\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.17\\microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",
+    "C:\\Users\\STElb\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.1\\microsoft.extensions.primitives.5.0.1.nupkg.sha512",
+    "C:\\Users\\STElb\\.nuget\\packages\\system.io.pipelines\\5.0.2\\system.io.pipelines.5.0.2.nupkg.sha512"
+  ],
   "logs": []
 }

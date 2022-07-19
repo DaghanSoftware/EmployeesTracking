@@ -1,4 +1,6 @@
-﻿using EmployeesTracking.ValidationRules;
+﻿using CoreLayer.Models;
+using EmployeesTracking.ValidationRules;
+using EntityLayer.Concrete;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -11,8 +13,8 @@ namespace EmployeesTracking.Controllers
 {
     public class LoginController : Controller
     {
-        private readonly EmployeesContext _context;
-        public LoginController(EmployeesContext context)
+        private readonly Context _context;
+        public LoginController(Context context)
         {
             _context = context;
         }
@@ -71,28 +73,28 @@ namespace EmployeesTracking.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult KayitOl(RegisterModel p)
+        public IActionResult KayitOl(Admin p)
         {
             try
             {
-                AdminRegisterValidator validationRules = new AdminRegisterValidator();
-                ValidationResult result = validationRules.Validate(p);
-                var response = new ReturnModel();
-                List<string> ValidationMessages = new List<string>();
+                //AdminRegisterValidator validationRules = new AdminRegisterValidator();
+                //ValidationResult result = validationRules.Validate(p);
+                //var response = new ReturnModel();
+                //List<string> ValidationMessages = new List<string>();
 
-                if (!result.IsValid)
-                {
-                    foreach (ValidationFailure failure in result.Errors)
-                    {
-                        ValidationMessages.Add(failure.ErrorMessage);
-                    }
-                    response.Message2 = ValidationMessages;
-                    return Json(new ReturnModel() { Success = false, Message2 = response.Message2 });
-                }
-                else
-                {
+                //if (!result.IsValid)
+                //{
+                //    foreach (ValidationFailure failure in result.Errors)
+                //    {
+                //        ValidationMessages.Add(failure.ErrorMessage);
+                //    }
+                //    response.Message2 = ValidationMessages;
+                //    return Json(new ReturnModel() { Success = false, Message2 = response.Message2 });
+                //}
+                //else
+                //{
                     _context.Admins.Add(p);
-                }
+                //}
                 _context.SaveChanges();
                 return Json(new ReturnModel() { Success = true, Message = "Kayıt Olma İşlemi Başarılı" });
             }

@@ -15,8 +15,14 @@ namespace EmployeesTracking
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\\MSSQLLocalDB;Database=Employees;Trusted_Connection=true");
+            optionsBuilder.UseSqlServer("server=(localdb)\\MSSQLLocalDB;database=Employees; integrated security=true;");
+
+
         }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseSqlServer(@"Server=(localdb)\\MSSQLLocalDB;Database=Employees;Trusted_Connection=true");
+        //}
         public DbSet<Personel> Personels { get; set; }
         public DbSet<City> Cities { get; set; }
         public DbSet<Gender> Genders { get; set; }

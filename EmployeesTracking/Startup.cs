@@ -28,7 +28,9 @@ namespace EmployeesTracking
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<EmployeesContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DatabaseEmployees")));
+            services.AddDbContext<Context>();
+            //Katmanlý mimariye geçerken hata verdiði için database yolunu context içinde oluþturdum.
+            //services.AddDbContext<Context>(options => options.UseSqlServer(Configuration.GetConnectionString("DatabaseEmployees")));
 
             //Fluent Validation için eklemiþ olduðumuz service
             services.AddControllersWithViews().AddFluentValidation(x=>x.RegisterValidatorsFromAssemblyContaining<Startup>());

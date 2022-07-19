@@ -75,7 +75,7 @@
           "lib/netstandard2.0/ExcelNumberFormat.dll": {}
         }
       },
-      "FluentValidation/11.0.2": {
+      "FluentValidation/11.1.0": {
         "type": "package",
         "compile": {
           "lib/net5.0/FluentValidation.dll": {}
@@ -84,11 +84,11 @@
           "lib/net5.0/FluentValidation.dll": {}
         }
       },
-      "FluentValidation.AspNetCore/11.0.2": {
+      "FluentValidation.AspNetCore/11.1.2": {
         "type": "package",
         "dependencies": {
-          "FluentValidation": "11.0.2",
-          "FluentValidation.DependencyInjectionExtensions": "11.0.2"
+          "FluentValidation": "11.1.0",
+          "FluentValidation.DependencyInjectionExtensions": "11.1.0"
         },
         "compile": {
           "lib/net5.0/FluentValidation.AspNetCore.dll": {}
@@ -100,10 +100,10 @@
           "Microsoft.AspNetCore.App"
         ]
       },
-      "FluentValidation.DependencyInjectionExtensions/11.0.2": {
+      "FluentValidation.DependencyInjectionExtensions/11.1.0": {
         "type": "package",
         "dependencies": {
-          "FluentValidation": "11.0.2",
+          "FluentValidation": "11.1.0",
           "Microsoft.Extensions.Dependencyinjection.Abstractions": "2.1.0"
         },
         "compile": {
@@ -395,16 +395,17 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.Http.Extensions.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Http.Features/2.2.0": {
+      "Microsoft.AspNetCore.Http.Features/5.0.17": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Primitives": "2.2.0"
+          "Microsoft.Extensions.Primitives": "5.0.1",
+          "System.IO.Pipelines": "5.0.2"
         },
         "compile": {
-          "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.dll": {}
+          "lib/net5.0/Microsoft.AspNetCore.Http.Features.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.dll": {}
+          "lib/net5.0/Microsoft.AspNetCore.Http.Features.dll": {}
         }
       },
       "Microsoft.AspNetCore.Identity/2.2.0": {
@@ -1329,7 +1330,7 @@
           "lib/net5.0/Microsoft.Extensions.Options.dll": {}
         }
       },
-      "Microsoft.Extensions.Primitives/5.0.0": {
+      "Microsoft.Extensions.Primitives/5.0.1": {
         "type": "package",
         "compile": {
           "lib/netcoreapp3.0/Microsoft.Extensions.Primitives.dll": {}
@@ -2494,6 +2495,15 @@
           "lib/netstandard1.3/System.IO.Packaging.dll": {}
         }
       },
+      "System.IO.Pipelines/5.0.2": {
+        "type": "package",
+        "compile": {
+          "ref/netcoreapp2.0/System.IO.Pipelines.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/System.IO.Pipelines.dll": {}
+        }
+      },
       "System.Linq/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -3589,6 +3599,9 @@
       "CoreLayer/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Features": "5.0.17"
+        },
         "compile": {
           "bin/placeholder/CoreLayer.dll": {}
         },
@@ -3600,7 +3613,9 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
+          "CoreLayer": "1.0.0",
           "EntityLayer": "1.0.0",
+          "LinqKit": "1.2.2",
           "Microsoft.AspNetCore.Identity": "2.2.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.17",
           "Microsoft.EntityFrameworkCore": "5.0.17",
@@ -3754,16 +3769,16 @@
         "lib/netstandard2.0/ExcelNumberFormat.xml"
       ]
     },
-    "FluentValidation/11.0.2": {
-      "sha512": "ik/xogKqBmZWIURMXNEbugJlKka6iV9a4qckmKDp7sHSwIfgkZ/ewzCuAeUTkFdVZujfDW6mCLMjrrR6GG4xLQ==",
+    "FluentValidation/11.1.0": {
+      "sha512": "Ld7w+2jOmnhQqFkngEGuEWTRa5j6u4Xzli7jKxRtbA5PtuHHcpin01qxvxYL0LomeJuzRMGAOURu2rKONdjKQA==",
       "type": "package",
-      "path": "fluentvalidation/11.0.2",
+      "path": "fluentvalidation/11.1.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "README.md",
         "fluent-validation-icon.png",
-        "fluentvalidation.11.0.2.nupkg.sha512",
+        "fluentvalidation.11.1.0.nupkg.sha512",
         "fluentvalidation.nuspec",
         "lib/net5.0/FluentValidation.dll",
         "lib/net5.0/FluentValidation.xml",
@@ -3775,16 +3790,16 @@
         "lib/netstandard2.1/FluentValidation.xml"
       ]
     },
-    "FluentValidation.AspNetCore/11.0.2": {
-      "sha512": "KTxapk15F+NT/nxzu72NonCgDtsiKQP9KALbjqxOvW+DtJGIF45XcIOSzpc4eEBA/I0BoDkmLODsO98DchBq5A==",
+    "FluentValidation.AspNetCore/11.1.2": {
+      "sha512": "Lw/8btATvMYW9QYR75CAw1Wp0AJhr9f7cxs1IyklQo6emvy+JaM27BCUe2MZKDOQTLpP4fmVVppPQHHc7HOEjQ==",
       "type": "package",
-      "path": "fluentvalidation.aspnetcore/11.0.2",
+      "path": "fluentvalidation.aspnetcore/11.1.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "README.md",
         "fluent-validation-icon.png",
-        "fluentvalidation.aspnetcore.11.0.2.nupkg.sha512",
+        "fluentvalidation.aspnetcore.11.1.2.nupkg.sha512",
         "fluentvalidation.aspnetcore.nuspec",
         "lib/net5.0/FluentValidation.AspNetCore.dll",
         "lib/net5.0/FluentValidation.AspNetCore.xml",
@@ -3794,16 +3809,16 @@
         "lib/netcoreapp3.1/FluentValidation.AspNetCore.xml"
       ]
     },
-    "FluentValidation.DependencyInjectionExtensions/11.0.2": {
-      "sha512": "ChfGHFGoLSN97MKZcippJ2qJskWuv6I3E0ngV5OTp3FhaPfFC+KcUMqaE72HtT13B8hkP/XmHlQfgSTzsmsdZw==",
+    "FluentValidation.DependencyInjectionExtensions/11.1.0": {
+      "sha512": "M9U2hLZc8bx0JthQKsN9SVgQSHJeLMcSV/uCmJ23U+/7HCSeOYD4OXoF+p5U3bLGz6Yp7h0/0XbSL+Qv2S38EQ==",
       "type": "package",
-      "path": "fluentvalidation.dependencyinjectionextensions/11.0.2",
+      "path": "fluentvalidation.dependencyinjectionextensions/11.1.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "README.md",
         "fluent-validation-icon.png",
-        "fluentvalidation.dependencyinjectionextensions.11.0.2.nupkg.sha512",
+        "fluentvalidation.dependencyinjectionextensions.11.1.0.nupkg.sha512",
         "fluentvalidation.dependencyinjectionextensions.nuspec",
         "lib/netstandard2.0/FluentValidation.DependencyInjectionExtensions.dll",
         "lib/netstandard2.0/FluentValidation.DependencyInjectionExtensions.xml",
@@ -4140,16 +4155,22 @@
         "microsoft.aspnetcore.http.extensions.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.Http.Features/2.2.0": {
-      "sha512": "ziFz5zH8f33En4dX81LW84I6XrYXKf9jg6aM39cM+LffN9KJahViKZ61dGMSO2gd3e+qe5yBRwsesvyqlZaSMg==",
+    "Microsoft.AspNetCore.Http.Features/5.0.17": {
+      "sha512": "3jG2xS+dx8DDCGV/F+STdPTg89lX3ao3dF/VEPvJaz3wzBIjuadipTtYNEXDIVuOPZwb6jdmhrX9jkzOIBm5cw==",
       "type": "package",
-      "path": "microsoft.aspnetcore.http.features/2.2.0",
+      "path": "microsoft.aspnetcore.http.features/5.0.17",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/Microsoft.AspNetCore.Http.Features.dll",
+        "lib/net461/Microsoft.AspNetCore.Http.Features.xml",
+        "lib/net5.0/Microsoft.AspNetCore.Http.Features.dll",
+        "lib/net5.0/Microsoft.AspNetCore.Http.Features.xml",
         "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.xml",
-        "microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
+        "microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",
         "microsoft.aspnetcore.http.features.nuspec"
       ]
     },
@@ -5303,10 +5324,10 @@
         "version.txt"
       ]
     },
-    "Microsoft.Extensions.Primitives/5.0.0": {
-      "sha512": "cI/VWn9G1fghXrNDagX9nYaaB/nokkZn0HYAawGaELQrl8InSezfe9OnfPZLcJq3esXxygh3hkq2c3qoV3SDyQ==",
+    "Microsoft.Extensions.Primitives/5.0.1": {
+      "sha512": "5WPSmL4YeP7eW+Vc8XZ4DwjYWBAiSwDV9Hm63JJWcz1Ie3Xjv4KuJXzgCstj48LkLfVCYa7mLcx7y+q6yqVvtw==",
       "type": "package",
-      "path": "microsoft.extensions.primitives/5.0.0",
+      "path": "microsoft.extensions.primitives/5.0.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -5319,7 +5340,7 @@
         "lib/netcoreapp3.0/Microsoft.Extensions.Primitives.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Primitives.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Primitives.xml",
-        "microsoft.extensions.primitives.5.0.0.nupkg.sha512",
+        "microsoft.extensions.primitives.5.0.1.nupkg.sha512",
         "microsoft.extensions.primitives.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -7970,6 +7991,32 @@
         "ref/netstandard1.3/System.IO.Packaging.dll",
         "system.io.packaging.4.0.0.nupkg.sha512",
         "system.io.packaging.nuspec"
+      ]
+    },
+    "System.IO.Pipelines/5.0.2": {
+      "sha512": "Iew+dfa6FFiyvWBdRmXApixRY1db+beyutpIck4SOSe0NLM8FD/7AD54MscqVLhvfSMLHO7KadjTRT7fqxOGTA==",
+      "type": "package",
+      "path": "system.io.pipelines/5.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/System.IO.Pipelines.dll",
+        "lib/net461/System.IO.Pipelines.xml",
+        "lib/netcoreapp3.0/System.IO.Pipelines.dll",
+        "lib/netcoreapp3.0/System.IO.Pipelines.xml",
+        "lib/netstandard1.3/System.IO.Pipelines.dll",
+        "lib/netstandard1.3/System.IO.Pipelines.xml",
+        "lib/netstandard2.0/System.IO.Pipelines.dll",
+        "lib/netstandard2.0/System.IO.Pipelines.xml",
+        "ref/netcoreapp2.0/System.IO.Pipelines.dll",
+        "ref/netcoreapp2.0/System.IO.Pipelines.xml",
+        "system.io.pipelines.5.0.2.nupkg.sha512",
+        "system.io.pipelines.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
       ]
     },
     "System.Linq/4.3.0": {
@@ -10989,8 +11036,8 @@
       "DataAccessLayer >= 1.0.0",
       "EntityFramework >= 6.4.4",
       "EntityLayer >= 1.0.0",
-      "FluentValidation >= 11.0.2",
-      "FluentValidation.AspNetCore >= 11.0.2",
+      "FluentValidation >= 11.1.0",
+      "FluentValidation.AspNetCore >= 11.1.2",
       "LinqKit >= 1.2.2",
       "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation >= 5.0.17",
       "Microsoft.AspNetCore.Mvc.TagHelpers >= 2.2.0",
@@ -11076,11 +11123,11 @@
           },
           "FluentValidation": {
             "target": "Package",
-            "version": "[11.0.2, )"
+            "version": "[11.1.0, )"
           },
           "FluentValidation.AspNetCore": {
             "target": "Package",
-            "version": "[11.0.2, )"
+            "version": "[11.1.2, )"
           },
           "LinqKit": {
             "target": "Package",
@@ -11142,25 +11189,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.410\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1605",
-      "level": "Error",
-      "message": "Detected package downgrade: FluentValidation.AspNetCore from 11.1.2 to 11.0.2. Reference the package directly from the project to select a different version. \r\n EmployeesTracking -> BusinessLayer -> FluentValidation.AspNetCore (>= 11.1.2) \r\n EmployeesTracking -> FluentValidation.AspNetCore (>= 11.0.2)",
-      "libraryId": "FluentValidation.AspNetCore",
-      "targetGraphs": [
-        "net5.0"
-      ]
-    },
-    {
-      "code": "NU1605",
-      "level": "Error",
-      "message": "Detected package downgrade: FluentValidation from 11.1.0 to 11.0.2. Reference the package directly from the project to select a different version. \r\n EmployeesTracking -> BusinessLayer -> FluentValidation (>= 11.1.0) \r\n EmployeesTracking -> FluentValidation (>= 11.0.2)",
-      "libraryId": "FluentValidation",
-      "targetGraphs": [
-        "net5.0"
-      ]
-    }
-  ]
+  }
 }

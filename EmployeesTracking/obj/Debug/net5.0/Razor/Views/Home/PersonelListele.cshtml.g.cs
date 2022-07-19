@@ -21,7 +21,7 @@ using Microsoft.AspNetCore.Http;
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"3498a1d36c8fad28a5cd76093598a0c36559f0b2", @"/Views/Home/PersonelListele.cshtml")]
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"481268970beadb22753b30cdbae22deda2aa5b19", @"/Views/_ViewImports.cshtml")]
-    public class Views_Home_PersonelListele : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<EmployeesTracking.Models.PersonelViewModel>
+    public class Views_Home_PersonelListele : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<CoreLayer.Models.PersonelViewModel>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("src", new global::Microsoft.AspNetCore.Html.HtmlString("~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_1 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("src", new global::Microsoft.AspNetCore.Html.HtmlString("~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -1066,7 +1066,7 @@ AddHtmlAttributeValue("", 18763, DateTime.Now.AddYears(-120).ToString("yyyy-MM-d
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
         public global::Microsoft.AspNetCore.Mvc.Rendering.IJsonHelper Json { get; private set; }
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
-        public global::Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper<EmployeesTracking.Models.PersonelViewModel> Html { get; private set; }
+        public global::Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper<CoreLayer.Models.PersonelViewModel> Html { get; private set; }
     }
 }
 #pragma warning restore 1591

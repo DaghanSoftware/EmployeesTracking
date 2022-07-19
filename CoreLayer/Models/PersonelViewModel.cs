@@ -1,11 +1,9 @@
-﻿using EmployeesTracking.Models;
-using Microsoft.AspNetCore.Http;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BusinessLayer.Models
+namespace CoreLayer.Models
 {
     public class PersonelViewModel
     {

@@ -181,8 +181,6 @@ C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Trackin
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Connections.Abstractions.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\Microsoft.AspNetCore.CookiePolicy.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Cors.dll
-C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Cryptography.Internal.dll
-C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\Microsoft.AspNetCore.DataProtection.Abstractions.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\Microsoft.AspNetCore.DataProtection.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\Microsoft.AspNetCore.DataProtection.Extensions.dll
@@ -200,7 +198,6 @@ C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Trackin
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Http.Connections.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Http.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Http.Extensions.dll
-C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Http.Features.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\Microsoft.AspNetCore.HttpOverrides.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\Microsoft.AspNetCore.HttpsPolicy.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Identity.dll
@@ -257,7 +254,6 @@ C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Trackin
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\Microsoft.Extensions.Configuration.UserSecrets.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\Microsoft.Extensions.Configuration.Xml.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\Microsoft.Extensions.DependencyInjection.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\Microsoft.Extensions.Diagnostics.HealthChecks.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\Microsoft.Extensions.FileProviders.Abstractions.dll
@@ -268,8 +264,6 @@ C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Trackin
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\Microsoft.Extensions.Hosting.Abstractions.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\Microsoft.Extensions.Hosting.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\Microsoft.Extensions.Http.dll
-C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\Microsoft.Extensions.Identity.Core.dll
-C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\Microsoft.Extensions.Identity.Stores.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\Microsoft.Extensions.Localization.Abstractions.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\Microsoft.Extensions.Localization.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\Microsoft.Extensions.Logging.Abstractions.dll
@@ -284,7 +278,6 @@ C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Trackin
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\Microsoft.Extensions.Options.ConfigurationExtensions.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\Microsoft.Extensions.Options.DataAnnotations.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\Microsoft.Extensions.Options.dll
-C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\Microsoft.Extensions.Primitives.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\Microsoft.Extensions.WebEncoders.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\Microsoft.JSInterop.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\Microsoft.Net.Http.Headers.dll
@@ -315,7 +308,6 @@ C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Trackin
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\System.Data.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\System.Diagnostics.Contracts.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\System.Diagnostics.Debug.dll
-C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\System.Diagnostics.DiagnosticSource.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\System.Diagnostics.EventLog.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\System.Diagnostics.FileVersionInfo.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\System.Diagnostics.Process.dll
@@ -343,7 +335,6 @@ C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Trackin
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\System.IO.FileSystem.Watcher.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\System.IO.IsolatedStorage.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\System.IO.MemoryMappedFiles.dll
-C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\System.IO.Pipelines.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\System.IO.Pipes.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\System.IO.UnmanagedMemoryStream.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\System.Linq.dll
@@ -472,3 +463,21 @@ C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Trackin
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\obj\Debug\net5.0\Razor\Views\Home\Test.cshtml.g.cs
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\obj\Debug\net5.0\Razor\Views\Home\_PersonelEkleGuncellePartial.cshtml.g.cs
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\obj\Debug\net5.0\Razor\Views\Home\_PersonelImageUploadModalPartial.cshtml.g.cs
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\BusinessLayer.dll
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\CoreLayer.dll
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\DataAccessLayer.dll
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\EntityLayer.dll
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\BusinessLayer.pdb
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\CoreLayer.pdb
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\DataAccessLayer.pdb
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\EntityLayer.pdb
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\Microsoft.AspNetCore.Http.Features.dll
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\System.IO.Pipelines.dll

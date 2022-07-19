@@ -14,7 +14,7 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"784392045368aa574865a2d6d8f209fe0ab54ec1", @"/Views/Home/_PersonelDetayCardPartial.cshtml")]
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"481268970beadb22753b30cdbae22deda2aa5b19", @"/Views/_ViewImports.cshtml")]
-    public class Views_Home__PersonelDetayCardPartial : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<EmployeesTracking.Models.PersonelDetayCardViewModel>
+    public class Views_Home__PersonelDetayCardPartial : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<CoreLayer.Models.PersonelDetayCardViewModel>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("role", new global::Microsoft.AspNetCore.Html.HtmlString("form"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
         #line hidden
@@ -992,7 +992,7 @@ WriteAttributeValue("", 942, Model.Resim, 942, 12, false);
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
         public global::Microsoft.AspNetCore.Mvc.Rendering.IJsonHelper Json { get; private set; }
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
-        public global::Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper<EmployeesTracking.Models.PersonelDetayCardViewModel> Html { get; private set; }
+        public global::Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper<CoreLayer.Models.PersonelDetayCardViewModel> Html { get; private set; }
     }
 }
 #pragma warning restore 1591

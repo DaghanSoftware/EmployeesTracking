@@ -14,7 +14,7 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"4d230484b51543795884ecb27872a80e83d9266e", @"/Views/Home/_PersonelEkleGuncellePartial.cshtml")]
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"481268970beadb22753b30cdbae22deda2aa5b19", @"/Views/_ViewImports.cshtml")]
-    public class Views_Home__PersonelEkleGuncellePartial : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<EmployeesTracking.Models.PersonelViewModel>
+    public class Views_Home__PersonelEkleGuncellePartial : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<CoreLayer.Models.PersonelViewModel>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("src", new global::Microsoft.AspNetCore.Html.HtmlString("~/js/jquery.validate.min.js"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_1 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("src", new global::Microsoft.AspNetCore.Html.HtmlString("~/js/jquery.validate.unobtrusive.js"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -1931,7 +1931,8 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_ValidationMessageTagHelper.For = ModelExpr
             //    var input = document.getElementById(resimm);
             //    var files = input.files;
             //    var formData = new FormData();
-");
+
+");
             WriteLiteral(@"
             //    for (var i = 0; i != files.length; i++) {
             //        formData.append(""files"", files[i]);
@@ -1971,7 +1972,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_ValidationMessageTagHelper.For = ModelExpr
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
         public global::Microsoft.AspNetCore.Mvc.Rendering.IJsonHelper Json { get; private set; }
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
-        public global::Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper<EmployeesTracking.Models.PersonelViewModel> Html { get; private set; }
+        public global::Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper<CoreLayer.Models.PersonelViewModel> Html { get; private set; }
     }
 }
 #pragma warning restore 1591

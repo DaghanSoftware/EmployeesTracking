@@ -1,4 +1,4 @@
-﻿using BusinessLayer.Models;
+﻿using CoreLayer.Models;
 using FluentValidation;
 using System;
 using System.Collections.Generic;

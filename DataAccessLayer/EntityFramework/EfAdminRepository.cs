@@ -1,5 +1,6 @@
 ﻿using DataAccessLayer.Abstract;
 using DataAccessLayer.Repositories;
+using EmployeesTracking;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -11,5 +12,6 @@ namespace DataAccessLayer.EntityFramework
 {
     public class EfAdminRepository : GenericRepository<Admin>, IAdminDal
     {
+
     }
 }

@@ -10,3 +10,10 @@ C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Trackin
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\BusinessLayer\obj\Debug\net5.0\BusinessLayer.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\BusinessLayer\obj\Debug\net5.0\ref\BusinessLayer.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\BusinessLayer\obj\Debug\net5.0\BusinessLayer.pdb
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\BusinessLayer\bin\Debug\net5.0\DataAccessLayer.dll
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\BusinessLayer\bin\Debug\net5.0\EntityLayer.dll
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\BusinessLayer\bin\Debug\net5.0\DataAccessLayer.pdb
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\BusinessLayer\bin\Debug\net5.0\EntityLayer.pdb
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\BusinessLayer\obj\Debug\net5.0\BusinessLayer.csproj.CopyComplete
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\BusinessLayer\bin\Debug\net5.0\CoreLayer.dll
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\BusinessLayer\bin\Debug\net5.0\CoreLayer.pdb
