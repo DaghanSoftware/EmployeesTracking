@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "I7O3dLu71Cb7VAldgC/t0fnb3rSBrioXRDw1RE+DEEU4QWSRruWQaPKE636iJ9dnBUO+R7i6tqmUAbvwDY2Wkw==",
+  "dgSpecHash": "Cn/PYoUv0VtmY0jfA52iCDYWXRpvD7jByqcUyq1QqsNpOEGVLI5iezNez5gPQbJ8qOTcdHRUcYTO4RTzipOWsw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\CoreLayer\\CoreLayer.csproj",
+  "projectFilePath": "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\CoreLayer\\EmployeesTracking.Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\STElb\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.17\\microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",
     "C:\\Users\\STElb\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.1\\microsoft.extensions.primitives.5.0.1.nupkg.sha512",

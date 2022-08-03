@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "G0finek8wdlPQRZ6WI19bprVRiPaqOksau6GGyO0PVs3DY1yiZT/hlmXiEXyP5EGSdeMMxD2qmNSYoSUFyqz6Q==",
+  "dgSpecHash": "Layf4cMpbi2UPUl+ZgXWqVXxbkv5sQTxQ7B4HfOufvekmOQMGHGj96ctbk6GLRgF+CHcmW1ppUBsE+1ie/LIQA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\EmployeesTracking\\EmployeesTracking.csproj",
+  "projectFilePath": "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\EmployeesTracking\\EmployeesTracking.WebUI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\STElb\\.nuget\\packages\\closedxml\\0.95.4\\closedxml.0.95.4.nupkg.sha512",
     "C:\\Users\\STElb\\.nuget\\packages\\closedxml.report\\0.2.4\\closedxml.report.0.2.4.nupkg.sha512",

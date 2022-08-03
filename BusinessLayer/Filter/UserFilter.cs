@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EmployeesTracking.Filter
+namespace Libraries.EmployeesTracking.Services.Filter
 {
     public class UserFilter : ActionFilterAttribute
     {

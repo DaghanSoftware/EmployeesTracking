@@ -1,5 +1,5 @@
-﻿using DataAccessLayer.Abstract;
-using EmployeesTracking;
+﻿using Libraries.EmployeesTracking.Core.Repositories;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,47 +7,56 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccessLayer.Repositories
+namespace Libraries.EmployeesTracking.Data.Repositories
 {
-    public class GenericRepository<T> : IGenericDal<T> where T : class
+    public class GenericRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        public void Delete(T t)
+        protected readonly DbContext Context;
+        public GenericRepository(DbContext context)
         {
-            using var c = new Context();
-            c.Remove(t);
-            c.SaveChanges();
+            this.Context = context;
         }
 
-        public T GetById(int id)
+        public IQueryable<TEntity> Table => throw new NotImplementedException();
+
+        public async Task AddAsync(TEntity entity)
         {
-            using var c = new Context();
-            return c.Set<T>().Find(id);
+            await Context.Set<TEntity>().AddAsync(entity);
         }
 
-        public List<T> GetListAll()
+        public async Task AddRangeAsync(IEnumerable<TEntity> entities)
         {
-            using var c = new Context();
-            return c.Set<T>().ToList();
+            await Context.Set<TEntity>().AddRangeAsync(entities);
         }
 
-        public List<T> GetListAll(Expression<Func<T, bool>> filter)
+        public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
         {
-            using var c = new Context();
-            return c.Set<T>().Where(filter).ToList();
+            return Context.Set<TEntity>().Where(predicate);
         }
 
-        public void Insert(T T)
+        public async Task<IEnumerable<TEntity>> GetAllAsync()
         {
-            using var c = new Context();
-            c.Add(T);
-            c.SaveChanges();
+            return await Context.Set<TEntity>().ToListAsync();
         }
 
-        public void Update(T t)
+        public ValueTask<TEntity> GetByIdAsync(int id)
         {
-            using var c = new Context();
-            c.Update(t);
-            c.SaveChanges();
+            return Context.Set<TEntity>().FindAsync(id);
+        }
+
+        public void Remove(TEntity entity)
+        {
+            Context.Set<TEntity>().Remove(entity);
+        }
+
+        public void RemoveRange(IEnumerable<TEntity> entities)
+        {
+            Context.Set<TEntity>().RemoveRange(entities);
+        }
+
+        public Task<TEntity> SingleOrDefaultAsync(Expression<Func<TEntity, bool>> predicate)
+        {
+            return Context.Set<TEntity>().SingleOrDefaultAsync(predicate);
         }
     }
 }

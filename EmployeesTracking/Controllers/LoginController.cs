@@ -1,6 +1,5 @@
-﻿using CoreLayer.Models;
-using EmployeesTracking.ValidationRules;
-using EntityLayer.Concrete;
+﻿using Libraries.EmployeesTracking.Core.Models.ViewModel;
+using Libraries.EmployeesTracking.Core.Models.Entities;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -8,6 +7,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Libraries.EmployeesTracking.Data;
+using Libraries.EmployeesTracking.Services.ValidationRules;
 
 namespace EmployeesTracking.Controllers
 {

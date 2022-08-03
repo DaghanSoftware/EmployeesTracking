@@ -14,7 +14,7 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"2c4c35c45b9a1397b734077bf5959a748b5e9368", @"/Views/Home/PersonelListesiPartial.cshtml")]
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"481268970beadb22753b30cdbae22deda2aa5b19", @"/Views/_ViewImports.cshtml")]
-    public class Views_Home_PersonelListesiPartial : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<List<CoreLayer.Models.PersonelViewModel>>
+    public class Views_Home_PersonelListesiPartial : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<List<Libraries.EmployeesTracking.Core.Models.ViewModel.PersonelViewModel>>
     {
         #pragma warning disable 1998
         public async override global::System.Threading.Tasks.Task ExecuteAsync()
@@ -208,7 +208,7 @@ WriteAttributeValue("", 1969, employee.Id, 1969, 12, false);
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
         public global::Microsoft.AspNetCore.Mvc.Rendering.IJsonHelper Json { get; private set; }
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
-        public global::Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper<List<CoreLayer.Models.PersonelViewModel>> Html { get; private set; }
+        public global::Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper<List<Libraries.EmployeesTracking.Core.Models.ViewModel.PersonelViewModel>> Html { get; private set; }
     }
 }
 #pragma warning restore 1591

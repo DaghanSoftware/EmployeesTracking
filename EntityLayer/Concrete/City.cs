@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EntityLayer.Concrete
+namespace Libraries.EmployeesTracking.EntityLayer.Concrete
 {
     public class City
     {

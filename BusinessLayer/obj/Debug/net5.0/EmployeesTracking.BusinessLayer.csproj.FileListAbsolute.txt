@@ -1,0 +1,17 @@
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\BusinessLayer\bin\Debug\net5.0\EmployeesTracking.BusinessLayer.deps.json
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\BusinessLayer\bin\Debug\net5.0\EmployeesTracking.BusinessLayer.dll
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\BusinessLayer\bin\Debug\net5.0\ref\EmployeesTracking.BusinessLayer.dll
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\BusinessLayer\bin\Debug\net5.0\EmployeesTracking.BusinessLayer.pdb
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\BusinessLayer\bin\Debug\net5.0\EmployeesTracking.CoreLayer.dll
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\BusinessLayer\bin\Debug\net5.0\EmployeesTracking.DataAccessLayer.dll
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\BusinessLayer\bin\Debug\net5.0\EmployeesTracking.DataAccessLayer.pdb
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\BusinessLayer\bin\Debug\net5.0\EmployeesTracking.CoreLayer.pdb
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\BusinessLayer\obj\Debug\net5.0\EmployeesTracking.BusinessLayer.csproj.AssemblyReference.cache
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\BusinessLayer\obj\Debug\net5.0\EmployeesTracking.BusinessLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\BusinessLayer\obj\Debug\net5.0\EmployeesTracking.BusinessLayer.AssemblyInfoInputs.cache
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\BusinessLayer\obj\Debug\net5.0\EmployeesTracking.BusinessLayer.AssemblyInfo.cs
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\BusinessLayer\obj\Debug\net5.0\EmployeesTracking.BusinessLayer.csproj.CoreCompileInputs.cache
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\BusinessLayer\obj\Debug\net5.0\EmployeesTracking.BusinessLayer.csproj.CopyComplete
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\BusinessLayer\obj\Debug\net5.0\EmployeesTracking.BusinessLayer.dll
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\BusinessLayer\obj\Debug\net5.0\ref\EmployeesTracking.BusinessLayer.dll
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\BusinessLayer\obj\Debug\net5.0\EmployeesTracking.BusinessLayer.pdb

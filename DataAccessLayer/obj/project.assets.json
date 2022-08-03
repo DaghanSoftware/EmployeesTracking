@@ -2014,27 +2014,17 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "CoreLayer/1.0.0": {
+      "EmployeesTracking.Core/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
           "Microsoft.AspNetCore.Http.Features": "5.0.17"
         },
         "compile": {
-          "bin/placeholder/CoreLayer.dll": {}
+          "bin/placeholder/EmployeesTracking.Core.dll": {}
         },
         "runtime": {
-          "bin/placeholder/CoreLayer.dll": {}
-        }
-      },
-      "EntityLayer/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
-        "compile": {
-          "bin/placeholder/EntityLayer.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/EntityLayer.dll": {}
+          "bin/placeholder/EmployeesTracking.Core.dll": {}
         }
       }
     }
@@ -7046,21 +7036,15 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
-    "CoreLayer/1.0.0": {
+    "EmployeesTracking.Core/1.0.0": {
       "type": "project",
-      "path": "../CoreLayer/CoreLayer.csproj",
-      "msbuildProject": "../CoreLayer/CoreLayer.csproj"
-    },
-    "EntityLayer/1.0.0": {
-      "type": "project",
-      "path": "../EntityLayer/EntityLayer.csproj",
-      "msbuildProject": "../EntityLayer/EntityLayer.csproj"
+      "path": "../CoreLayer/EmployeesTracking.Core.csproj",
+      "msbuildProject": "../CoreLayer/EmployeesTracking.Core.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
-      "CoreLayer >= 1.0.0",
-      "EntityLayer >= 1.0.0",
+      "EmployeesTracking.Core >= 1.0.0",
       "LinqKit >= 1.2.2",
       "Microsoft.AspNetCore.Identity >= 2.2.0",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 5.0.17",
@@ -7078,9 +7062,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\DataAccessLayer\\DataAccessLayer.csproj",
-      "projectName": "DataAccessLayer",
-      "projectPath": "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\DataAccessLayer\\DataAccessLayer.csproj",
+      "projectUniqueName": "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\DataAccessLayer\\EmployeesTracking.Data.csproj",
+      "projectName": "EmployeesTracking.Data",
+      "projectPath": "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\DataAccessLayer\\EmployeesTracking.Data.csproj",
       "packagesPath": "C:\\Users\\STElb\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\DataAccessLayer\\obj\\",
       "projectStyle": "PackageReference",
@@ -7105,11 +7089,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\CoreLayer\\CoreLayer.csproj": {
-              "projectPath": "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\CoreLayer\\CoreLayer.csproj"
-            },
-            "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\EntityLayer\\EntityLayer.csproj": {
-              "projectPath": "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\EntityLayer\\EntityLayer.csproj"
+            "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\CoreLayer\\EmployeesTracking.Core.csproj": {
+              "projectPath": "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\CoreLayer\\EmployeesTracking.Core.csproj"
             }
           }
         }

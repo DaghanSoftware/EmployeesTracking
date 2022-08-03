@@ -1,11 +1,11 @@
-﻿using CoreLayer.Models;
+﻿using Libraries.EmployeesTracking.Core.Models.ViewModel;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BusinessLayer.ValidationRules
+namespace Libraries.EmployeesTracking.Services.ValidationRules
 {
     public class PersonelImageUpdateValidator : AbstractValidator<PersonelImageUpdateModel>
     {

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "U4rUxXLtG0iOOa3y+zPGI2u7UuCCisVVEeFvysUQFoVhyWxEF1fWz4DFjQ3A+0jN6z1L9V4oNgcyfdb/uuigDA==",
+  "dgSpecHash": "EvM4EGzmEsPlhETY2KuipJ8XNomnefdHTWkm5IJEdeUiYsv7STcSGsnm1uXpvqgVDzyMxk0w/dLtykOeVfc08A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\DataAccessLayer\\DataAccessLayer.csproj",
+  "projectFilePath": "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\DataAccessLayer\\EmployeesTracking.Data.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\STElb\\.nuget\\packages\\entityframework\\6.3.0\\entityframework.6.3.0.nupkg.sha512",
     "C:\\Users\\STElb\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",

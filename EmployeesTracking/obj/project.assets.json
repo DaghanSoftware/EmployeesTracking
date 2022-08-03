@@ -3580,41 +3580,24 @@
           "Microsoft.AspNetCore.App"
         ]
       },
-      "BusinessLayer/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
-        "dependencies": {
-          "DataAccessLayer": "1.0.0",
-          "EntityLayer": "1.0.0",
-          "FluentValidation": "11.1.0",
-          "FluentValidation.AspNetCore": "11.1.2"
-        },
-        "compile": {
-          "bin/placeholder/BusinessLayer.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/BusinessLayer.dll": {}
-        }
-      },
-      "CoreLayer/1.0.0": {
+      "EmployeesTracking.Core/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
           "Microsoft.AspNetCore.Http.Features": "5.0.17"
         },
         "compile": {
-          "bin/placeholder/CoreLayer.dll": {}
+          "bin/placeholder/EmployeesTracking.Core.dll": {}
         },
         "runtime": {
-          "bin/placeholder/CoreLayer.dll": {}
+          "bin/placeholder/EmployeesTracking.Core.dll": {}
         }
       },
-      "DataAccessLayer/1.0.0": {
+      "EmployeesTracking.Data/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
-          "CoreLayer": "1.0.0",
-          "EntityLayer": "1.0.0",
+          "EmployeesTracking.Core": "1.0.0",
           "LinqKit": "1.2.2",
           "Microsoft.AspNetCore.Identity": "2.2.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.17",
@@ -3622,20 +3605,26 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.17"
         },
         "compile": {
-          "bin/placeholder/DataAccessLayer.dll": {}
+          "bin/placeholder/EmployeesTracking.Data.dll": {}
         },
         "runtime": {
-          "bin/placeholder/DataAccessLayer.dll": {}
+          "bin/placeholder/EmployeesTracking.Data.dll": {}
         }
       },
-      "EntityLayer/1.0.0": {
+      "EmployeesTracking.Services/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "EmployeesTracking.Core": "1.0.0",
+          "FluentValidation": "11.1.0",
+          "FluentValidation.AspNetCore": "11.1.2",
+          "LinqKit": "1.2.2"
+        },
         "compile": {
-          "bin/placeholder/EntityLayer.dll": {}
+          "bin/placeholder/EmployeesTracking.Services.dll": {}
         },
         "runtime": {
-          "bin/placeholder/EntityLayer.dll": {}
+          "bin/placeholder/EmployeesTracking.Services.dll": {}
         }
       }
     }
@@ -11006,36 +10995,30 @@
         "x.pagedlist.mvc.core.nuspec"
       ]
     },
-    "BusinessLayer/1.0.0": {
+    "EmployeesTracking.Core/1.0.0": {
       "type": "project",
-      "path": "../BusinessLayer/BusinessLayer.csproj",
-      "msbuildProject": "../BusinessLayer/BusinessLayer.csproj"
+      "path": "../CoreLayer/EmployeesTracking.Core.csproj",
+      "msbuildProject": "../CoreLayer/EmployeesTracking.Core.csproj"
     },
-    "CoreLayer/1.0.0": {
+    "EmployeesTracking.Data/1.0.0": {
       "type": "project",
-      "path": "../CoreLayer/CoreLayer.csproj",
-      "msbuildProject": "../CoreLayer/CoreLayer.csproj"
+      "path": "../DataAccessLayer/EmployeesTracking.Data.csproj",
+      "msbuildProject": "../DataAccessLayer/EmployeesTracking.Data.csproj"
     },
-    "DataAccessLayer/1.0.0": {
+    "EmployeesTracking.Services/1.0.0": {
       "type": "project",
-      "path": "../DataAccessLayer/DataAccessLayer.csproj",
-      "msbuildProject": "../DataAccessLayer/DataAccessLayer.csproj"
-    },
-    "EntityLayer/1.0.0": {
-      "type": "project",
-      "path": "../EntityLayer/EntityLayer.csproj",
-      "msbuildProject": "../EntityLayer/EntityLayer.csproj"
+      "path": "../BusinessLayer/EmployeesTracking.Services.csproj",
+      "msbuildProject": "../BusinessLayer/EmployeesTracking.Services.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
-      "BusinessLayer >= 1.0.0",
       "ClosedXML >= 0.95.4",
       "ClosedXML.Report >= 0.2.4",
-      "CoreLayer >= 1.0.0",
-      "DataAccessLayer >= 1.0.0",
+      "EmployeesTracking.Core >= 1.0.0",
+      "EmployeesTracking.Data >= 1.0.0",
+      "EmployeesTracking.Services >= 1.0.0",
       "EntityFramework >= 6.4.4",
-      "EntityLayer >= 1.0.0",
       "FluentValidation >= 11.1.0",
       "FluentValidation.AspNetCore >= 11.1.2",
       "LinqKit >= 1.2.2",
@@ -11057,9 +11040,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\EmployeesTracking\\EmployeesTracking.csproj",
-      "projectName": "EmployeesTracking",
-      "projectPath": "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\EmployeesTracking\\EmployeesTracking.csproj",
+      "projectUniqueName": "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\EmployeesTracking\\EmployeesTracking.WebUI.csproj",
+      "projectName": "EmployeesTracking.WebUI",
+      "projectPath": "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\EmployeesTracking\\EmployeesTracking.WebUI.csproj",
       "packagesPath": "C:\\Users\\STElb\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\EmployeesTracking\\obj\\",
       "projectStyle": "PackageReference",
@@ -11084,17 +11067,14 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\BusinessLayer\\BusinessLayer.csproj": {
-              "projectPath": "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\BusinessLayer\\BusinessLayer.csproj"
+            "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\BusinessLayer\\EmployeesTracking.Services.csproj": {
+              "projectPath": "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\BusinessLayer\\EmployeesTracking.Services.csproj"
             },
-            "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\CoreLayer\\CoreLayer.csproj": {
-              "projectPath": "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\CoreLayer\\CoreLayer.csproj"
+            "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\CoreLayer\\EmployeesTracking.Core.csproj": {
+              "projectPath": "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\CoreLayer\\EmployeesTracking.Core.csproj"
             },
-            "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\DataAccessLayer\\DataAccessLayer.csproj": {
-              "projectPath": "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\DataAccessLayer\\DataAccessLayer.csproj"
-            },
-            "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\EntityLayer\\EntityLayer.csproj": {
-              "projectPath": "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\EntityLayer\\EntityLayer.csproj"
+            "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\DataAccessLayer\\EmployeesTracking.Data.csproj": {
+              "projectPath": "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\DataAccessLayer\\EmployeesTracking.Data.csproj"
             }
           }
         }

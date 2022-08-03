@@ -3,15 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32126.315
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeesTracking", "EmployeesTracking\EmployeesTracking.csproj", "{C69D0E0E-20F3-43D6-A0D1-F294F1E8E584}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeesTracking.WebUI", "EmployeesTracking\EmployeesTracking.WebUI.csproj", "{C69D0E0E-20F3-43D6-A0D1-F294F1E8E584}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityLayer", "EntityLayer\EntityLayer.csproj", "{57D520E4-CB1A-464C-BA52-89C51B3C7B49}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeesTracking.Data", "DataAccessLayer\EmployeesTracking.Data.csproj", "{175F6271-2AFA-406B-872B-7232D426FDF3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{175F6271-2AFA-406B-872B-7232D426FDF3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeesTracking.Services", "BusinessLayer\EmployeesTracking.Services.csproj", "{BB9012EA-20E4-4724-B011-F6AAA2A75ACB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLayer", "BusinessLayer\BusinessLayer.csproj", "{BB9012EA-20E4-4724-B011-F6AAA2A75ACB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeesTracking.Core", "CoreLayer\EmployeesTracking.Core.csproj", "{F4355C6F-3E25-418B-90A8-AA970231C982}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreLayer", "CoreLayer\CoreLayer.csproj", "{F4355C6F-3E25-418B-90A8-AA970231C982}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{17657129-7251-489A-9A4A-13B7B3866D13}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{F5392431-685D-4FC5-887B-074145A5FF6B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeesTracking.WebAPI", "EmployeesTracking.WebAPI\EmployeesTracking.WebAPI.csproj", "{20693B15-D38E-4CF7-9BBB-D76FF3F2D707}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +27,6 @@ Global
 		{C69D0E0E-20F3-43D6-A0D1-F294F1E8E584}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C69D0E0E-20F3-43D6-A0D1-F294F1E8E584}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C69D0E0E-20F3-43D6-A0D1-F294F1E8E584}.Release|Any CPU.Build.0 = Release|Any CPU
-		{57D520E4-CB1A-464C-BA52-89C51B3C7B49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{57D520E4-CB1A-464C-BA52-89C51B3C7B49}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{57D520E4-CB1A-464C-BA52-89C51B3C7B49}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{57D520E4-CB1A-464C-BA52-89C51B3C7B49}.Release|Any CPU.Build.0 = Release|Any CPU
 		{175F6271-2AFA-406B-872B-7232D426FDF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{175F6271-2AFA-406B-872B-7232D426FDF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{175F6271-2AFA-406B-872B-7232D426FDF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,9 +39,20 @@ Global
 		{F4355C6F-3E25-418B-90A8-AA970231C982}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4355C6F-3E25-418B-90A8-AA970231C982}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4355C6F-3E25-418B-90A8-AA970231C982}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20693B15-D38E-4CF7-9BBB-D76FF3F2D707}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20693B15-D38E-4CF7-9BBB-D76FF3F2D707}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20693B15-D38E-4CF7-9BBB-D76FF3F2D707}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20693B15-D38E-4CF7-9BBB-D76FF3F2D707}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C69D0E0E-20F3-43D6-A0D1-F294F1E8E584} = {F5392431-685D-4FC5-887B-074145A5FF6B}
+		{175F6271-2AFA-406B-872B-7232D426FDF3} = {17657129-7251-489A-9A4A-13B7B3866D13}
+		{BB9012EA-20E4-4724-B011-F6AAA2A75ACB} = {17657129-7251-489A-9A4A-13B7B3866D13}
+		{F4355C6F-3E25-418B-90A8-AA970231C982} = {17657129-7251-489A-9A4A-13B7B3866D13}
+		{20693B15-D38E-4CF7-9BBB-D76FF3F2D707} = {F5392431-685D-4FC5-887B-074145A5FF6B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EDF137BE-7FE9-43D9-8AB6-1374199DAC87}

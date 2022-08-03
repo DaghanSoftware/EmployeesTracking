@@ -15,9 +15,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\EntityLayer\\EntityLayer.csproj",
-      "projectName": "EntityLayer",
-      "projectPath": "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\EntityLayer\\EntityLayer.csproj",
+      "projectUniqueName": "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\EntityLayer\\EmployeesTracking.EntityLayer.csproj",
+      "projectName": "EmployeesTracking.EntityLayer",
+      "projectPath": "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\EntityLayer\\EmployeesTracking.EntityLayer.csproj",
       "packagesPath": "C:\\Users\\STElb\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\EntityLayer\\obj\\",
       "projectStyle": "PackageReference",
