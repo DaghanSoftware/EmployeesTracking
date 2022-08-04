@@ -1,5 +1,11 @@
+using EmployeesTracking.Core;
+using EmployeesTracking.Data;
 using FluentValidation.AspNetCore;
+using Libraries.EmployeesTracking.Core.Repositories;
+using Libraries.EmployeesTracking.Core.Services;
 using Libraries.EmployeesTracking.Data;
+using Libraries.EmployeesTracking.Data.Repositories;
+using Libraries.EmployeesTracking.Services.Concrete;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -29,9 +35,17 @@ namespace EmployeesTracking
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<Context>();
+            //services.AddDbContext<Context>();
             //Katmanlý mimariye geçerken hata verdiði için database yolunu context içinde oluþturdum.
-            //services.AddDbContext<Context>(options => options.UseSqlServer(Configuration.GetConnectionString("DatabaseEmployees")));
+            services.AddDbContext<Context>(options => options.UseSqlServer(Configuration.GetConnectionString("DatabaseEmployees")));
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            //services.Add(new ServiceDescriptor(typeof(IAdminRepository), new AdminRepository(), ServiceLifetime.Transient));
+            services.AddTransient<IAdminService, AdminService>();
+            services.AddTransient<ICityService, CityService>();
+            services.AddTransient<IDistrictService, DistrictService>();
+            services.AddTransient<IMaritalStatusService, MaritalStatusService>();
+            services.AddTransient<IPersonelService, PersonelService>();
+            services.AddTransient<IGenderService, GenderService>();
 
             //Fluent Validation için eklemiþ olduðumuz service
             services.AddControllersWithViews().AddFluentValidation(x=>x.RegisterValidatorsFromAssemblyContaining<Startup>());
@@ -55,6 +69,7 @@ namespace EmployeesTracking
             {
                 app.UseDeveloperExceptionPage();
             }
+            //app.UseHttpsRedirection();
             app.UseSession();
             app.UseRouting();
             app.UseStaticFiles();

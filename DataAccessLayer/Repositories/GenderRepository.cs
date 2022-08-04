@@ -11,7 +11,7 @@ namespace Libraries.EmployeesTracking.Data.Repositories
 {
     public class GenderRepository : GenericRepository<Gender>, IGenderRepository
     {
-        public GenderRepository(DbContext context) : base(context)
+        public GenderRepository(Context context) : base(context)
         {
         }
     }

@@ -11,15 +11,21 @@ using Libraries.EmployeesTracking.Core.Models.ViewModel;
 
 namespace Libraries.EmployeesTracking.Data.Repositories
 {
-    public class PersonelRepository : GenericRepository<MaritalStatu>, IMaritalStatusRepository
+    public class PersonelRepository : GenericRepository<Personel>, IPersonelRepository
     {
-        public PersonelRepository(DbContext context) : base(context)
+        public PersonelRepository(Context context) : base(context)
         {
         }
 
+        public List<PersonelViewModel> GetListAllPersonelOrFilterPersonel(string q, int gendernumber, int maritalnumber, int sehir, DateTime baslangictarih, DateTime bitistarih, int Districtid, int page = 1)
+        {
+            throw new NotImplementedException();
+        }
+
+
         //public List<PersonelViewModel> GetListAllPersonelOrFilterPersonel(string q, int gendernumber, int maritalnumber, int sehir, DateTime baslangictarih, DateTime bitistarih, int Districtid, int page = 1)
         //{
-           
+
         //        var predicate = PredicateBuilder.New<Personel>();
         //        predicate = predicate.And(te => te.Id > 0);
 
@@ -66,6 +72,6 @@ namespace Libraries.EmployeesTracking.Data.Repositories
         //        return query;
 
         //}
-  
+
     }
 }

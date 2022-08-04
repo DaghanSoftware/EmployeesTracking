@@ -11,7 +11,7 @@ namespace Libraries.EmployeesTracking.Data.Repositories
 {
     public class AdminRepository : GenericRepository<Admin>, IAdminRepository
     {
-        public AdminRepository(DbContext context) : base(context)
+        public AdminRepository(Context context) : base(context)
         {
         }
     }

@@ -11,7 +11,7 @@ namespace Libraries.EmployeesTracking.Data.Repositories
 {
     public class MaritalStatusRepository : GenericRepository<MaritalStatu>, IMaritalStatusRepository
     {
-        public MaritalStatusRepository(DbContext context) : base(context)
+        public MaritalStatusRepository(Context context) : base(context)
         {
         }
     }

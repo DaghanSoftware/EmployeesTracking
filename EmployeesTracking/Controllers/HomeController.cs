@@ -14,6 +14,9 @@ using Libraries.EmployeesTracking.Core.Models.ViewModel;
 using Libraries.EmployeesTracking.Data;
 using Libraries.EmployeesTracking.Services.Filter;
 using Libraries.EmployeesTracking.Services.ValidationRules;
+using Libraries.EmployeesTracking.Core.Services;
+using EmployeesTracking.Data;
+using EmployeesTracking.Core;
 
 namespace EmployeesTracking.Controllers
 {
@@ -21,130 +24,45 @@ namespace EmployeesTracking.Controllers
     public class HomeController : Controller
     {
 
-        //private IPersonelService _personelServices;
-        //readonly IAdminService _adminServices;
-        //private ICityService _cityServices;
-        //private IDistrictService _districtServices;
-        //private IMaritalStatusService _maritalstatusServices;
-        //private IGenderService _genderServices;
-        //private readonly Context _context;
-        //public HomeController(IPersonelService personelServices, IAdminService adminService, ICityService cityService, IDistrictService districtService, IMaritalStatusService maritalStatusService, IGenderService genderService, Context context)
-        //{
-        //    //_personelServices = personelServices;
-        //    //_adminServices = adminService;
-        //    //_cityServices = cityService;
-        //    //_districtServices = districtService;
-        //    //_maritalstatusServices = maritalStatusService;
-        //    //_genderServices = genderService;
-        //    _context = context;
-        //}
 
 
-
+        private readonly IPersonelService _personelService;
+        private readonly IAdminService _adminServices;
+        private readonly ICityService _cityServices;
+        private readonly IDistrictService _districtServices;
+        private readonly IMaritalStatusService _maritalstatusServices;
+        private readonly IGenderService _genderServices;
         private readonly Context _context;
-        public HomeController(Context context)
+        public HomeController(Context context, IPersonelService personelService, IAdminService adminServices, ICityService cityServices, IDistrictService districtServices, IMaritalStatusService maritalstatusServices, IGenderService genderServices)
         {
+            _personelService = personelService;
+            _adminServices = adminServices;
+            _cityServices = cityServices;
+            _districtServices = districtServices;
+            _maritalstatusServices = maritalstatusServices;
+            _genderServices = genderServices;
             _context = context;
         }
         public IActionResult Index()
         {
-            ViewBag.Cities = new SelectList(_context.Cities.ToList(), "CityId", "CityName");
+            ViewBag.Cities = new SelectList(_cityServices.GetList(), "CityId", "CityName");
             return View();
         }
         public IActionResult PersonelListele()
         {
-            ViewBag.Cities = new SelectList(_context.Cities.ToList(), "CityId", "CityName");
+            ViewBag.Cities = new SelectList(_cityServices.GetList(), "CityId", "CityName");
             return View();
         }
 
         public IActionResult PersonelListesiPartial(string q, int gendernumber, int maritalnumber, int sehir, DateTime baslangictarih, DateTime bitistarih, int Districtid, int page = 1)
         {
-            var predicate = PredicateBuilder.New<Personel>();
-            predicate = predicate.And(te => te.Id > 0);
-
-            if (gendernumber > 0)
-                predicate = predicate.And(te => te.GenderId == gendernumber);
-            if (maritalnumber > 0)
-                predicate = predicate.And(te => te.MaritalStatusId == maritalnumber);
-            if (sehir > 0)
-                predicate = predicate.And(te => te.CityId == sehir);
-            if (Districtid > 0)
-                predicate = predicate.And(te => te.DistrictId == Districtid);
-            if (baslangictarih != DateTime.MinValue && bitistarih != DateTime.MinValue)
-            {
-                predicate = predicate.And(te => te.DogumTarihi >= baslangictarih && te.DogumTarihi <= bitistarih);
-            }
-            if (!string.IsNullOrEmpty(q))
-            {
-                predicate = predicate.And(te => te.Adi.ToLower().Contains(q.ToLower()) || te.Soyadi.ToLower().Contains(q.ToLower()));
-            }
-
-            var query = (from p in _context.Personels.Where(predicate)
-                         from s in _context.Genders.Where(x => x.GenderId == p.GenderId).DefaultIfEmpty()
-                         from c in _context.Cities.Where(x => x.CityId == p.CityId).DefaultIfEmpty()
-                         from m in _context.MaritalStatus.Where(x => x.MaritalStatusId == p.MaritalStatusId).DefaultIfEmpty()
-                         from d in _context.Districts.Where(x => x.DistrictId == p.DistrictId).DefaultIfEmpty()
-                             //where p.GenderId==gendernumber || p.MaritalStatusId==maritalnumber
-                         select new PersonelViewModel
-                         {
-                             Id = p.Id,
-                             Adi = p.Adi,
-                             Soyadi = p.Soyadi,
-                             TcNo = p.TcNo,
-                             BabaAdi = p.BabaAdi,
-                             AnaAdi = p.AnaAdi,
-                             GenderId = p.GenderId,
-                             GenderName = s.GenderName,
-                             MaritalStatusId = p.MaritalStatusId,
-                             MaritalStatusName = m.MaritalStatusName,
-                             CityId = p.CityId,
-                             CityName = c.CityName,
-                             DistrictName = d.DistrictName
-                         }).ToList();
-            return View(query);
+            var personeller = _personelService.PersonelleriListele(q,gendernumber,maritalnumber,sehir,baslangictarih,bitistarih,Districtid,page);
+            return View(personeller);
         }
         public IActionResult PersonelEkleGuncellePartial(int? id)
         {
-            ViewBag.Cities = new SelectList(_context.Cities.ToList(), "CityId", "CityName");
-
-            PersonelViewModel model;
-            Personel personel;
-            if (id > 0)
-            {
-                personel = _context.Personels.FirstOrDefault(m => m.Id == id);
-                // ViewBag.Ilceler = new SelectList(_context.Districts.Where(x => x.CityID == personel.CityId).ToList(), "DistrictId", "DistrictName");
-                model = new PersonelViewModel
-                {
-                    Id = personel.Id,
-                    Adi = personel.Adi,
-                    Soyadi = personel.Soyadi,
-                    TcNo = personel.TcNo,
-                    BabaAdi = personel.BabaAdi,
-                    AnaAdi = personel.AnaAdi,
-                    GenderId = personel.GenderId,
-                    MaritalStatusId = personel.MaritalStatusId,
-                    CityId = personel.CityId,
-                    DistrictId = personel.DistrictId,
-                    DogumTarihi = DateTime.Parse(personel.DogumTarihi.ToShortDateString()),
-                    Resim = personel.Resim,
-                    Biyografi = personel.Biyografi,
-                    PhoneNumber = personel.PhoneNumber,
-                    Mail = personel.Mail,
-                    Hakkinda = personel.Hakkinda,
-                    Position = personel.Position,
-                    Adres = personel.Adres,
-                    KurumBaslamaTarihi = DateTime.Parse(personel.KurumBaslamaTarihi.ToShortDateString())
-                };
-            }
-            else
-            {
-                model = new PersonelViewModel
-                {
-                    DogumTarihi = DateTime.Parse(DateTime.Now.ToShortDateString()),
-                    KurumBaslamaTarihi = DateTime.Parse(DateTime.Now.ToShortDateString())
-                };
-            }
-            return PartialView("_PersonelEkleGuncellePartial", model);
+            ViewBag.Cities = new SelectList(_cityServices.GetList(), "CityId", "CityName");
+            return PartialView("_PersonelEkleGuncellePartial", _personelService.PersonelEkleGuncellePartial(id));
         }
 
         [HttpPost]
@@ -432,7 +350,7 @@ namespace EmployeesTracking.Controllers
 
         public IActionResult Test(int? id)
         {
-            ViewBag.Cities = new SelectList(_context.Cities.ToList(), "CityId", "CityName");
+            ViewBag.Cities = new SelectList(_cityServices.GetList(), "CityId", "CityName");
 
             PersonelViewModel model;
             Personel personel;

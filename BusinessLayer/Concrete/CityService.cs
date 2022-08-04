@@ -24,7 +24,7 @@ namespace Libraries.EmployeesTracking.Services.Concrete
 
         public List<City> GetList()
         {
-            throw new NotImplementedException();
+            return _unitOfWork._Cities.Table.ToList();
         }
 
         public void TAdd(City t)

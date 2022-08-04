@@ -11,7 +11,7 @@ namespace Libraries.EmployeesTracking.Data.Repositories
 {
     public class DistrictRepository : GenericRepository<District>, IDistrictRepository
     {
-        public DistrictRepository(DbContext context) : base(context)
+        public DistrictRepository(Context context) : base(context)
         {
         }
     }
