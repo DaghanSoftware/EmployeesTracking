@@ -16,5 +16,6 @@ namespace EmployeesTracking.Core
         IMaritalStatusRepository _MaritalStatus { get; }
         IPersonelRepository _Personels { get; }
         Task<int> CommitAsync();
+        int Commit();
     }
 }

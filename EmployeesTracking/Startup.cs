@@ -38,7 +38,7 @@ namespace EmployeesTracking
             //services.AddDbContext<Context>();
             //Katmanlý mimariye geçerken hata verdiði için database yolunu context içinde oluþturdum.
             services.AddDbContext<Context>(options => options.UseSqlServer(Configuration.GetConnectionString("DatabaseEmployees")));
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
             //services.Add(new ServiceDescriptor(typeof(IAdminRepository), new AdminRepository(), ServiceLifetime.Transient));
             services.AddTransient<IAdminService, AdminService>();
             services.AddTransient<ICityService, CityService>();

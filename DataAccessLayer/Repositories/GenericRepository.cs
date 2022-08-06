@@ -19,6 +19,12 @@ namespace Libraries.EmployeesTracking.Data.Repositories
 
         public IQueryable<TEntity> Table => _context.Set<TEntity>();
 
+        public TEntity Add(TEntity entity)
+        {
+             _context.Set<TEntity>().Add(entity);
+            return entity;
+        }
+
         public async Task AddAsync(TEntity entity)
         {
             await _context.Set<TEntity>().AddAsync(entity);
@@ -34,9 +40,19 @@ namespace Libraries.EmployeesTracking.Data.Repositories
             return _context.Set<TEntity>().Where(predicate);
         }
 
+        public TEntity Get(int Id)
+        {
+            return _context.Set<TEntity>().Find(Id);
+        }
+
         public async Task<IEnumerable<TEntity>> GetAllAsync()
         {
             return await _context.Set<TEntity>().ToListAsync();
+        }
+
+        public async Task<TEntity> GetAsync(int id)
+        {
+            throw new NotImplementedException();
         }
 
         public ValueTask<TEntity> GetByIdAsync(int id)
@@ -57,6 +73,18 @@ namespace Libraries.EmployeesTracking.Data.Repositories
         public Task<TEntity> SingleOrDefaultAsync(Expression<Func<TEntity, bool>> predicate)
         {
             return _context.Set<TEntity>().SingleOrDefaultAsync(predicate);
+        }
+
+        public TEntity Update(TEntity entity)
+        {
+            _context.Set<TEntity>().Update(entity);
+            return entity;
+        }
+
+        public IEnumerable<TEntity> UpdateRange(IEnumerable<TEntity> entities)
+        {
+            _context.Set<TEntity>().UpdateRange(entities);
+            return entities;
         }
     }
 }

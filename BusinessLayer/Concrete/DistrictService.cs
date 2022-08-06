@@ -28,6 +28,16 @@ namespace Libraries.EmployeesTracking.Services.Concrete
             throw new NotImplementedException();
         }
 
+        public List<District> IlceleriListele(int? id)
+        {
+            var district = _unitOfWork._Districts.Table.Where(x=>x.CityID==id).ToList();
+            if (id > 0)
+            {
+                return district;
+            }
+            return _unitOfWork._Districts.Table.Where(x => x.CityID == 0).ToList();
+        }
+
         public void TAdd(District t)
         {
             throw new NotImplementedException();

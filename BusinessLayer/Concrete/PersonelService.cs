@@ -9,6 +9,7 @@ using Libraries.EmployeesTracking.Core.Repositories;
 using EmployeesTracking.Core;
 using Libraries.EmployeesTracking.Core.Services;
 using LinqKit;
+using System.IO;
 
 namespace Libraries.EmployeesTracking.Services.Concrete
 {
@@ -30,6 +31,9 @@ namespace Libraries.EmployeesTracking.Services.Concrete
         {
             throw new NotImplementedException();
         }
+
+
+        
 
         public PersonelViewModel PersonelEkleGuncellePartial(int? id)
         {
@@ -74,9 +78,98 @@ namespace Libraries.EmployeesTracking.Services.Concrete
             }
         }
 
-        public List<PersonelViewModel> PersonelEkleGüncelle(PersonelViewModel personelgelenveri)
+        public void PersonelEkle(PersonelViewModel personelgelenveri)
         {
-            throw new NotImplementedException();
+            Personel personel = new Personel();
+            personel.Adi = personelgelenveri.Adi;
+            personel.Soyadi = personelgelenveri.Soyadi;
+            personel.BabaAdi = personelgelenveri.BabaAdi;
+            personel.TcNo = personelgelenveri.TcNo;
+            personel.AnaAdi = personelgelenveri.AnaAdi;
+            personel.GenderId = personelgelenveri.GenderId;
+            personel.MaritalStatusId = personelgelenveri.MaritalStatusId;
+            personel.CityId = personelgelenveri.CityId;
+            personel.DistrictId = personelgelenveri.DistrictId;
+            personel.DogumTarihi = DateTime.Parse(personelgelenveri.DogumTarihi.ToShortDateString());
+            personel.Biyografi = personelgelenveri.Biyografi;
+            personel.PhoneNumber = personelgelenveri.PhoneNumber;
+            personel.Mail = personelgelenveri.Mail;
+            personel.Hakkinda = personelgelenveri.Hakkinda;
+            personel.Position = personelgelenveri.Position;
+            personel.Adres = personelgelenveri.Adres;
+            personel.KurumBaslamaTarihi = DateTime.Parse(personelgelenveri.KurumBaslamaTarihi.ToShortDateString());
+            _unitOfWork._Personels.Add(personel);
+            _unitOfWork.Commit();
+        }
+        public void PersonelGüncelle(PersonelViewModel personelgelenveriguncelle)
+        {
+            Personel personel = _unitOfWork._Personels.Get(personelgelenveriguncelle.Id);
+            personel.Adi = personelgelenveriguncelle.Adi;
+            personel.Soyadi = personelgelenveriguncelle.Soyadi;
+            personel.BabaAdi = personelgelenveriguncelle.BabaAdi;
+            personel.TcNo = personelgelenveriguncelle.TcNo;
+            personel.AnaAdi = personelgelenveriguncelle.AnaAdi;
+            personel.GenderId = personelgelenveriguncelle.GenderId;
+            personel.MaritalStatusId = personelgelenveriguncelle.MaritalStatusId;
+            personel.CityId = personelgelenveriguncelle.CityId;
+            personel.DistrictId = personelgelenveriguncelle.DistrictId;
+            personel.DogumTarihi = DateTime.Parse(personelgelenveriguncelle.DogumTarihi.ToShortDateString());
+            personel.Biyografi = personelgelenveriguncelle.Biyografi;
+            personel.PhoneNumber = personelgelenveriguncelle.PhoneNumber;
+            personel.Mail = personelgelenveriguncelle.Mail;
+            personel.Hakkinda = personelgelenveriguncelle.Hakkinda;
+            personel.Position = personelgelenveriguncelle.Position;
+            personel.Adres = personelgelenveriguncelle.Adres;
+            personel.KurumBaslamaTarihi = DateTime.Parse(personelgelenveriguncelle.KurumBaslamaTarihi.ToShortDateString());
+            _unitOfWork._Personels.Update(personel);
+            _unitOfWork.Commit();
+        }
+
+        PersonelDetayCardViewModel IPersonelService.PersonelDetayCardPartial(int id)
+        {
+            var query = (from p in _unitOfWork._Personels.Table
+                         from s in _unitOfWork._Genders.Table.Where(x => x.GenderId == p.GenderId).DefaultIfEmpty()
+                         from c in _unitOfWork._Cities.Table.Where(x => x.CityId == p.CityId).DefaultIfEmpty()
+                         from m in _unitOfWork._MaritalStatus.Table.Where(x => x.MaritalStatusId == p.MaritalStatusId).DefaultIfEmpty()
+                             //where p.GenderId==gendernumber || p.MaritalStatusId==maritalnumber
+                         select new PersonelDetayCardViewModel
+                         {
+                             Id = p.Id,
+                             Adi = p.Adi,
+                             Soyadi = p.Soyadi,
+                             TcNo = p.TcNo,
+                             BabaAdi = p.BabaAdi,
+                             AnaAdi = p.AnaAdi,
+                             GenderId = p.GenderId,
+                             GenderName = s.GenderName,
+                             MaritalStatusId = p.MaritalStatusId,
+                             MaritalStatusName = m.MaritalStatusName,
+                             CityId = p.CityId,
+                             CityName = c.CityName,
+                             Resim = p.Resim
+                         });
+
+            var yazarlar = query.FirstOrDefault(x => x.Id == id);
+            return yazarlar;
+        }
+
+        public PersonelDetayCardViewModel PersonelImageUploadCardModel(int id)
+        {
+            var query = (from p in _unitOfWork._Personels.Table
+                         from s in _unitOfWork._Genders.Table.Where(x => x.GenderId == p.GenderId).DefaultIfEmpty()
+                         from c in _unitOfWork._Cities.Table.Where(x => x.CityId == p.CityId).DefaultIfEmpty()
+                         from m in _unitOfWork._MaritalStatus.Table.Where(x => x.MaritalStatusId == p.MaritalStatusId).DefaultIfEmpty()
+                             //where p.GenderId==gendernumber || p.MaritalStatusId==maritalnumber
+                         select new PersonelDetayCardViewModel
+                         {
+                             Id = p.Id,
+                             Adi = p.Adi,
+                             Soyadi = p.Soyadi,
+                             Resim = p.Resim
+                         });
+
+            var yazarlar = query.FirstOrDefault(x => x.Id == id);
+            return yazarlar;
         }
 
         public List<PersonelViewModel> PersonelleriListele(string q, int gendernumber, int maritalnumber, int sehir, DateTime baslangictarih, DateTime bitistarih, int Districtid, int page = 1)
@@ -127,6 +220,25 @@ namespace Libraries.EmployeesTracking.Services.Concrete
             return query;
         }
 
+        public void PersonelSil(int id)
+        {
+            Personel personel = _unitOfWork._Personels.Get(id);
+            _unitOfWork._Personels.Remove(personel);
+            _unitOfWork.Commit();
+        }
+
+        public async Task PersonelImageUpload(PersonelImageUpdateModel personelgelenresimverisi)
+        {
+            Personel personel = _unitOfWork._Personels.Get(personelgelenresimverisi.Id);
+
+            var extension = Path.GetExtension(personelgelenresimverisi.Resim.FileName);
+            var newimagename = Guid.NewGuid() + extension;
+            var location = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", newimagename);
+            var stream = new FileStream(location, FileMode.Create);
+            personelgelenresimverisi.Resim.CopyTo(stream);
+            personel.Resim = newimagename;
+            await _unitOfWork.CommitAsync();
+        }
         public void TAdd(Personel t)
         {
             throw new NotImplementedException();
@@ -141,5 +253,7 @@ namespace Libraries.EmployeesTracking.Services.Concrete
         {
             throw new NotImplementedException();
         }
+
+
     }
 }

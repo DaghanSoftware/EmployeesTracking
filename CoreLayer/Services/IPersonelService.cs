@@ -12,6 +12,11 @@ namespace Libraries.EmployeesTracking.Core.Services
     {
         List<PersonelViewModel> PersonelleriListele(string q, int gendernumber, int maritalnumber, int sehir, DateTime baslangictarih, DateTime bitistarih, int Districtid, int page = 1);
         PersonelViewModel PersonelEkleGuncellePartial(int? id);
-        List<PersonelViewModel> PersonelEkleGüncelle(PersonelViewModel personelgelenveri);
+        void PersonelEkle(PersonelViewModel personelgelenveri);
+        void PersonelGüncelle(PersonelViewModel personelgelenveriguncelle);
+        void PersonelSil(int id);
+        PersonelDetayCardViewModel PersonelDetayCardPartial(int id);
+        PersonelDetayCardViewModel PersonelImageUploadCardModel(int id);
+        Task PersonelImageUpload(PersonelImageUpdateModel personelgelenresimverisi);
     }
 }
