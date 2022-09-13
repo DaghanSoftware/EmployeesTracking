@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "lY7H0CO3/KoDBtsxSWCP9zYqj0W3zz8p0nydfEg0a+HUGVbBXKFy9AWkkax9eZ90jj7roYvYVk/sIcgcmaNSvA==",
+  "dgSpecHash": "rHjpnskWiEjVpVwqz0l+9kv6kavVa+dW2QtN5AzCj5yBsj916NHlws9m/XDM7bWhI616GWq1gsCHUyIT98DXIQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\EmployeesTracking\\EmployeesTracking.WebUI.csproj",
   "expectedPackageFiles": [
@@ -232,7 +232,8 @@
     "C:\\Users\\STElb\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
     "C:\\Users\\STElb\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
     "C:\\Users\\STElb\\.nuget\\packages\\x.pagedlist\\8.1.0\\x.pagedlist.8.1.0.nupkg.sha512",
-    "C:\\Users\\STElb\\.nuget\\packages\\x.pagedlist.mvc.core\\8.1.0\\x.pagedlist.mvc.core.8.1.0.nupkg.sha512"
+    "C:\\Users\\STElb\\.nuget\\packages\\x.pagedlist.mvc.core\\8.1.0\\x.pagedlist.mvc.core.8.1.0.nupkg.sha512",
+    "C:\\Users\\STElb\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.17\\microsoft.netcore.app.host.win-x64.5.0.17.nupkg.sha512"
   ],
   "logs": []
 }

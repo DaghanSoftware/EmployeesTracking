@@ -32,9 +32,6 @@ namespace Libraries.EmployeesTracking.Services.Concrete
             throw new NotImplementedException();
         }
 
-
-        
-
         public PersonelViewModel PersonelEkleGuncellePartial(int? id)
         {
             PersonelViewModel model;

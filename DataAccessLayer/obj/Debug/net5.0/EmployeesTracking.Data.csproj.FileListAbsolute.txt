@@ -2,7 +2,6 @@ C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Trackin
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\DataAccessLayer\bin\Debug\net5.0\EmployeesTracking.Data.runtimeconfig.json
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\DataAccessLayer\bin\Debug\net5.0\EmployeesTracking.Data.runtimeconfig.dev.json
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\DataAccessLayer\bin\Debug\net5.0\EmployeesTracking.Data.dll
-C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\DataAccessLayer\bin\Debug\net5.0\ref\EmployeesTracking.Data.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\DataAccessLayer\bin\Debug\net5.0\EmployeesTracking.Data.pdb
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\DataAccessLayer\bin\Debug\net5.0\EmployeesTracking.Core.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\DataAccessLayer\bin\Debug\net5.0\EmployeesTracking.Core.pdb
@@ -16,3 +15,4 @@ C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Trackin
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\DataAccessLayer\obj\Debug\net5.0\ref\EmployeesTracking.Data.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\DataAccessLayer\obj\Debug\net5.0\EmployeesTracking.Data.pdb
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\DataAccessLayer\obj\Debug\net5.0\EmployeesTracking.Data.genruntimeconfig.cache
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\DataAccessLayer\obj\Debug\net5.0\refint\EmployeesTracking.Data.dll

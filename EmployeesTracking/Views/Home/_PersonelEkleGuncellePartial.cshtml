@@ -1,4 +1,4 @@
-﻿@model EmployeesTracking.Models.PersonelViewModel
+﻿@model Libraries.EmployeesTracking.Core.Models.ViewModel.PersonelViewModel
 <script src="~/js/jquery.validate.min.js"></script>
 <script src="~/js/jquery.validate.unobtrusive.js"></script>
 <script src="~/js/jquery.validate.unobtrusive.min.js"></script>
@@ -536,4 +536,56 @@
             //            }
             //        });
             //    });
+
+
+
+@*    var ilId = '@Model.il_id';
+    var ilceId = '@Model.ilce_id';
+    var mahalleId = '@Model.mahalle_id';
+
+    $(document).ready(function () {
+
+
+        $("#ulke_id").change(function () {
+            $.getJSON("/Home/TanimGetir", { ustId: $("#ulke_id").val() }, function (data) {
+                var items = '';
+                items += "<option value='0'>Seçiniz</option>";
+                $.each(data, function (i, item) { items += "<option value='" + item.id + "'>" + item.degeri + "</option>"; });
+                $("#il_id").empty().html(items);
+
+                if (ilId > 0)
+                    $("#il_id").val(ilId).trigger("change");
+                ilId = 0;
+            });
+        });
+
+        $("#il_id").change(function () {
+            $.getJSON("/Home/TanimGetir", { ustId: $("#il_id").val() }, function (data) {
+                var items = '';
+                items += "<option value='0'>Seçiniz</option>";
+                $.each(data, function (i, item) { items += "<option value='" + item.id + "'>" + item.degeri + "</option>"; });
+                $("#ilce_id").empty().html(items);
+
+                if (ilceId > 0)
+                    $("#ilce_id").val(ilceId).trigger("change");
+                ilceId = 0;
+            });
+        });
+
+        $("#ilce_id").change(function () {
+            $.getJSON("/Home/TanimGetir", { ustId: $("#ilce_id").val() }, function (data) {
+                var items = '';
+                items += "<option value='0'>Seçiniz</option>";
+                $.each(data, function (i, item) { items += "<option value='" + item.id + "'>" + item.degeri + "</option>"; });
+                $("#mahalle_id").empty().html(items);
+
+                if (mahalleId > 0)
+                    $("#mahalle_id").val(mahalleId).change();
+                mahalleId = 0;
+            });
+        });
+
+        $('#ulke_id').trigger('change');
+
+    });*@
 </script>

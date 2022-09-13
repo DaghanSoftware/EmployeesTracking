@@ -50,7 +50,7 @@ namespace Libraries.EmployeesTracking.Data.Repositories
             return await _context.Set<TEntity>().ToListAsync();
         }
 
-        public async Task<TEntity> GetAsync(int id)
+        public Task<TEntity> GetAsync(int id)
         {
             throw new NotImplementedException();
         }

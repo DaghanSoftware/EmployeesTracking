@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "LPkaOqyTDg2Io8vnkNuS5PyhDF7uUJY+OQysVqsXdsuTCIqHOUcTHT0WgM02gzqsdVIkF0gQt41o94bLnQWTEg==",
+  "dgSpecHash": "uP4g1LxjWx56UEOKWplJ/HcL+wNlv1i43B1+glZs/9/hBCEy0xGnKEGf+USUFYUkXVAUBcl6936q5aszIYtuaw==",
   "success": true,
   "projectFilePath": "C:\\Users\\STElb\\OneDrive\\Belgeler\\GitHub\\Asp.Net-Core--lk-Proje-Employees-Tracking-\\EmployeesTracking.WebAPI\\EmployeesTracking.WebAPI.csproj",
   "expectedPackageFiles": [
@@ -144,7 +144,8 @@
     "C:\\Users\\STElb\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\STElb\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\STElb\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\STElb\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    "C:\\Users\\STElb\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
+    "C:\\Users\\STElb\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.17\\microsoft.netcore.app.host.win-x64.5.0.17.nupkg.sha512"
   ],
   "logs": []
 }

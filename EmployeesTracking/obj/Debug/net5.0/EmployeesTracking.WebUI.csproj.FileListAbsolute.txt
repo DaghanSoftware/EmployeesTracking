@@ -8,7 +8,6 @@ C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Trackin
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\obj\Debug\net5.0\EmployeesTracking.WebUI.RazorAssemblyInfo.cache
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\obj\Debug\net5.0\EmployeesTracking.WebUI.RazorAssemblyInfo.cs
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\obj\Debug\net5.0\staticwebassets\EmployeesTracking.WebUI.StaticWebAssets.Manifest.cache
-C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\obj\Debug\net5.0\staticwebassets\EmployeesTracking.WebUI.StaticWebAssets.xml
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\obj\Debug\net5.0\scopedcss\bundle\EmployeesTracking.WebUI.styles.css
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\obj\Debug\net5.0\EmployeesTracking.WebUI.TagHelpers.input.cache
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\obj\Debug\net5.0\EmployeesTracking.WebUI.TagHelpers.output.cache
@@ -49,7 +48,6 @@ C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Trackin
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\EmployeesTracking.WebUI.runtimeconfig.json
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\EmployeesTracking.WebUI.runtimeconfig.dev.json
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\EmployeesTracking.WebUI.dll
-C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\ref\EmployeesTracking.WebUI.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\EmployeesTracking.WebUI.pdb
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Antiforgery.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Authentication.Abstractions.dll
@@ -479,3 +477,4 @@ C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Trackin
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\EmployeesTracking.Data.pdb
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\EmployeesTracking\obj\Debug\net5.0\refint\EmployeesTracking.WebUI.dll

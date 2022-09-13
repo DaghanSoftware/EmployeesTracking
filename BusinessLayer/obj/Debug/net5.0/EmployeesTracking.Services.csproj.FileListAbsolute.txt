@@ -5,7 +5,6 @@ C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Trackin
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\BusinessLayer\obj\Debug\net5.0\EmployeesTracking.Services.csproj.CoreCompileInputs.cache
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\BusinessLayer\bin\Debug\net5.0\EmployeesTracking.Services.deps.json
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\BusinessLayer\bin\Debug\net5.0\EmployeesTracking.Services.dll
-C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\BusinessLayer\bin\Debug\net5.0\ref\EmployeesTracking.Services.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\BusinessLayer\bin\Debug\net5.0\EmployeesTracking.Services.pdb
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\BusinessLayer\bin\Debug\net5.0\EmployeesTracking.Core.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\BusinessLayer\bin\Debug\net5.0\EmployeesTracking.Core.pdb
@@ -13,3 +12,4 @@ C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Trackin
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\BusinessLayer\obj\Debug\net5.0\EmployeesTracking.Services.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\BusinessLayer\obj\Debug\net5.0\ref\EmployeesTracking.Services.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\BusinessLayer\obj\Debug\net5.0\EmployeesTracking.Services.pdb
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\BusinessLayer\obj\Debug\net5.0\refint\EmployeesTracking.Services.dll

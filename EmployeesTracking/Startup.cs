@@ -35,9 +35,9 @@ namespace EmployeesTracking
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddDbContext<Context>();
+            services.AddDbContext<Context>();
             //Katmanlý mimariye geçerken hata verdiði için database yolunu context içinde oluþturdum.
-            services.AddDbContext<Context>(options => options.UseSqlServer(Configuration.GetConnectionString("DatabaseEmployees")));
+            //services.AddDbContext<Context>(options => options.UseSqlServer(Configuration.GetConnectionString("DatabaseEmployees")));
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             //services.Add(new ServiceDescriptor(typeof(IAdminRepository), new AdminRepository(), ServiceLifetime.Transient));
             services.AddTransient<IAdminService, AdminService>();

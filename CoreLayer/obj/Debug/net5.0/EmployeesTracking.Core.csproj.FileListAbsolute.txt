@@ -1,6 +1,5 @@
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\CoreLayer\bin\Debug\net5.0\EmployeesTracking.Core.deps.json
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\CoreLayer\bin\Debug\net5.0\EmployeesTracking.Core.dll
-C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\CoreLayer\bin\Debug\net5.0\ref\EmployeesTracking.Core.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\CoreLayer\bin\Debug\net5.0\EmployeesTracking.Core.pdb
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\CoreLayer\obj\Debug\net5.0\EmployeesTracking.Core.csproj.AssemblyReference.cache
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\CoreLayer\obj\Debug\net5.0\EmployeesTracking.Core.GeneratedMSBuildEditorConfig.editorconfig
@@ -10,3 +9,4 @@ C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Trackin
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\CoreLayer\obj\Debug\net5.0\EmployeesTracking.Core.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\CoreLayer\obj\Debug\net5.0\ref\EmployeesTracking.Core.dll
 C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\CoreLayer\obj\Debug\net5.0\EmployeesTracking.Core.pdb
+C:\Users\STElb\OneDrive\Belgeler\GitHub\Asp.Net-Core--lk-Proje-Employees-Tracking-\CoreLayer\obj\Debug\net5.0\refint\EmployeesTracking.Core.dll
